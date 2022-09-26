@@ -3,7 +3,7 @@
 /app/frontend/.gitignore
 /app/frontend/node_modules
 /app/frontend/package-lock.json
-/app/secrets.env
+/app/.env
 /app/logs
 /app/frontend/public/main.bundle.js
 /app/frontend/public/vendor.bundle.js

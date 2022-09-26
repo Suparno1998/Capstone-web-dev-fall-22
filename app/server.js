@@ -2,14 +2,12 @@ const express = require('express')
 const path = require('path')
 const logger = require('./utils/logger')
 const { connectToDB, getDb } = require('./utils/dbHandler')
-require('dotenv').config({
-    path : "secrets.env"
-})
+require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT 
-const DB_URL = process.env.mode === "DEV" ? process.env.DEV_DB_URL : process.env.PRODUCTION_DB_URL
-app.use(express.static("./frontend/public"))
+const DB_URL = process.env.mode === "DEV" ? "mongodb://localhost:27017/capstonedb": process.env.DB_URL
+app.use(express.static(process.env.BUILD_PATH))
 
 //testing endpoint
 app.get('/check',(req,res)=>{
