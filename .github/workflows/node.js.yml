@@ -18,14 +18,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run:
-       cd app
-       pwd
-       npm i
-       cd frontend
-       pwd
-       npm i
-       npm run build
-       cd ..
-       pwd
-       npm start
-       pm2 save 0
+       cd app && pwd && npm i && cd frontend && pwd && npm i && npm run build && cd .. && pwd && npm start && pm2 save 0
