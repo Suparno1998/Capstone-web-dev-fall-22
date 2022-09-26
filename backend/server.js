@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const logger = require('./utils/logger')
 const { connectToDB, getDb } = require('./utils/dbHandler')
 require('dotenv').config({
@@ -8,7 +9,7 @@ require('dotenv').config({
 const app = express()
 const PORT = process.env.PORT 
 const DB_URL = process.env.mode === "DEV" ? process.env.DEV_DB_URL : process.env.PRODUCTION_DB_URL
-
+app.use(express.static("../frontend/build"))
 
 //testing endpoint
 app.get('/check',(req,res)=>{
