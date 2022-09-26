@@ -1,6 +1,7 @@
-/backend/node_modules
-/backend/package-lock.json
-/frontend/node_modules
-/frontend/package-lock.json
-/backend/secrets.env
-/backend/logs
+/app/node_modules
+/app/package-lock.json
+/app/frontend/.gitignore
+/app/frontend/node_modules
+/app/frontend/package-lock.json
+/app/secrets.env
+/app/logs
