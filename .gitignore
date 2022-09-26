@@ -5,4 +5,6 @@
 /app/frontend/package-lock.json
 /app/secrets.env
 /app/logs
-/app/frontend/public
+/app/frontend/public/main.bundle.js
+/app/frontend/public/vendor.bundle.js
+/app/frontend/public/vendor.bundle.js.LICENSE.txt
