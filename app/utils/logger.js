@@ -31,7 +31,7 @@ const logger = winston.createLogger({
     level: 'info',
     format : winston.format.combine(
         winston.format.splat(),
-        winston.format.timestamp(),
+        winston.format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
         customLogger
       ),
     transports: [
