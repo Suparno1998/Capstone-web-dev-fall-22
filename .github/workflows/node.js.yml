@@ -18,10 +18,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run:
-        cd backend
-        npm i
-        cd ..
-        cd frontend
+        cd backend && npm i
+        cd .. && cd frontend
         npm i
         npm run build
         cd ..
