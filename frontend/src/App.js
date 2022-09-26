@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [team, setTeam] = useState([])
+
+  useEffect(()=>{
+    async function fetchData(){
+      const response = await fetch('/check')
+      let data = await response.json()
+      console.log(data)
+      console.log(data.data)
+      if(data.status === "works")
+        setTeam(data.data)
+      else
+        alert("Error")
+    }
+    fetchData()
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {team.map((v,index) => <li>Team Member {index+1} - {v}</li>)}
     </div>
   );
 }
