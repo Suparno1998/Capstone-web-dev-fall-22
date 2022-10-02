@@ -1,5 +1,6 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client'
+import {createRoot} from 'react-dom/client';
+import Navbar from './componants/Navbar';
 
 export default class App extends React.Component{
     constructor(){
@@ -16,11 +17,18 @@ export default class App extends React.Component{
             this.setState({team : response.data})
         }
     }
-    render(){
+    /* render(){
         return <div>
                     <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1>
                 </div>
+    } */
+    render(){
+        return (
+            <React.Fragment>
+                <Navbar/>
+            </React.Fragment>
+        );
     }
 }
 
