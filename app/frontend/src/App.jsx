@@ -18,22 +18,23 @@ export default class App extends React.Component{
             this.setState({team : response.data})
         }
     }
-    /* render(){
+    render(){
         return <div>
                     <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1>
                 </div>
-    } */
-    render(){
-        return (
-            <React.Fragment>
-                <Test/>
-            </React.Fragment>
-        );
     }
+    /* render(){
+        return (
+            
+                <Test/>
+        );
+    } */
 }
 
 
 const element = document.getElementById('app')
 const root = createRoot(element);
 root.render(<App/>)
+
+
