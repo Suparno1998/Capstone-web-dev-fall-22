@@ -1,6 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import Navbar from './componants/Navbar';
+import Navbar from './components/Navbar';
+import Test from './components/Test';
 
 export default class App extends React.Component{
     constructor(){
@@ -26,7 +27,7 @@ export default class App extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <Navbar/>
+                <Test/>
             </React.Fragment>
         );
     }
