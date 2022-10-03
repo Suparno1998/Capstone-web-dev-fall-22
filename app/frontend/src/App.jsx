@@ -1,7 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import Navbar from './components/Navbar';
-import Test from './components/Test';
+import Navbar from './components/Navbar.jsx';
+import Test from './components/Test.jsx';
 
 export default class App extends React.Component{
     constructor(){
