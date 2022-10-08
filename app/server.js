@@ -1,13 +1,22 @@
 const express = require('express')
 const path = require('path')
 const logger = require('./utils/logger')
-const { connectToDB, getDb } = require('./utils/dbHandler')
+const { connectToDB } = require('./utils/dbHandler')
+const { authHandler } = require('./routes/auth')
+const { router } = require('./routes/routes')
 require('dotenv').config()
 //logger.info(process.env.PORT, process.env.DB_URL, process.env.BUILD_PATH)
 const app = express()
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const DB_URL = process.env.mode === "DEV" ? "mongodb://localhost:27017/capstonedb": process.env.DB_URL //process.env.DB_URL
 app.use(express.static("./frontend/public"))
+
+//auth handler handling all authentication requests
+app.use('/auth',authHandler)
+
+//insecure router handling all insecure requests
+app.use('/other',router)
+
 
 //testing endpoint
 app.get('/check',(req,res)=>{
