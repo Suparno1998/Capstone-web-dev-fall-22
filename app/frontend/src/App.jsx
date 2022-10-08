@@ -1,7 +1,9 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import Navbar from './components/Navbar';
-import Test from './components/Test';
+import Navbar from './components/Navbar.jsx';
+import HeroHomePage from './components/HeroHomePage.jsx';
+import Footer from './components/Footer.jsx';
+import Test from './components/Test.jsx';
 
 export default class App extends React.Component{
     constructor(){
@@ -18,18 +20,21 @@ export default class App extends React.Component{
             this.setState({team : response.data})
         }
     }
-    render(){
+    /* render(){
         return <div>
                     <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1>
                 </div>
-    }
-    /* render(){
-        return (
-            
-                <Test/>
-        );
     } */
+    render(){
+        return (
+            <React.Fragment>
+                <Navbar/>
+                <HeroHomePage/>
+                <Footer/>
+            </React.Fragment>
+        );
+    }
 }
 
 
