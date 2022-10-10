@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 17px;
+    font-family: 'Roboto';
+}
+
+body {
+    background: linear-gradient(90deg, #29335c);
+}
+
+.wrapper {
+    height: 65vh;
+    position: realtive;
+}
+
+
+
+.fas.fa-envelope {
+    color: #fff;
+    font-size: 2rem;
+    background: #29335c;
+    padding: 1rem;
+    border-radius: 100%;
+    margin: 0 0 1rem 0;
+}
+
+.card-content {
+    background-color: #ffffff;
+    height: 47vh;
+    max-width: 61rem;
+    background-color: #fff;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    padding: 4rem .5rem;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, .3);
+    text-align: center;
+}
+
+.card-content h1 {
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+}
+
+.card-content p {
+    font-size: .8rem;
+    margin: 0 0 2rem 0;
+}
+
+input {
+    padding: .6rem .8rem;
+    width: 35%;
+    border-radius: 5rem;
+    outline: none;
+    border: .1rem solid #d1d1d1;
+    font-size: .9rem;
+    color: black;
+}
+
+input:first-child {
+    margin-right: 1em;
+}
+
+::placeholder {
+    color: #d1d1d1;
+}
+
+.subscribe-btn {
+    padding: .8rem 2rem;
+    border-radius: 5rem;
+    background: #29335c;
+    color: #fff;
+    font-size: .8rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1em;
+    /* display: block; */
+    /* margin-left: 18em; */
+    margin-left: 2em;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-content {
+        height: 65vh;
+        max-width: 40rem;
+        padding: 4rem .5rem;
+    }
+
+    .wrapper {
+        height: 85vh;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    .name {
+        display: block;
+    }
+
+    .email {
+        display: block;
+    }
+}
+
+/* .form-input {
+    justify-content: space-between;
+} */
+
+/* .newletter {
+    background-color: #f3f3f3;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 44px;
+}
+
+.newsletter-card {
+    text-align: center;
+    border: 2px solid black;
+    justify-content: center;
+    margin-left: 15em;
+    margin-right: 15em;
+    margin-top: 3em;
+    padding: 2em;
+    background-color: white;
+}
+
+.newsletter-detail {
+    display: flex;
+    text-align: center;
+
+} */
