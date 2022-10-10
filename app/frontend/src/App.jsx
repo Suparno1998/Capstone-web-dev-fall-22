@@ -1,20 +1,14 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-<<<<<<< HEAD
-import Navbar from './components/Navbar.jsx';
-import HeroHomePage from './components/HeroHomePage.jsx';
-import Footer from './components/Footer.jsx';
-import Test from './components/Test.jsx';
-
-=======
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Navbar from './components/Navbar.jsx';
+import HeroHomePage from './components/HeroHomePage.jsx';
+import Footer from './components/Footer.jsx';
 import Modal from 'react-bootstrap/Modal';
 import Login from './components/Login.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register.jsx';
->>>>>>> 61be4e030e921ca4d0b6ad8d0acf673c6a5c9fa7
 export default class App extends React.Component{
     constructor(){
         super()
@@ -35,9 +29,6 @@ export default class App extends React.Component{
             this.setState({team : response.data})
         }
     }
-<<<<<<< HEAD
-    /* render(){
-=======
     handleOpen(){
         console.log('hi')
         this.setState({
@@ -56,11 +47,12 @@ export default class App extends React.Component{
         })
     }
     render(){
->>>>>>> 61be4e030e921ca4d0b6ad8d0acf673c6a5c9fa7
         return <div>
                     <Navbar handleOpen = {this.handleOpen} handleClose = {this.handleClose}></Navbar>
-                    <h2>Hello, world!</h2>
-                    <h1>Hello, {this.state.team.join(", ")}</h1>
+                    {/* <h2>Hello, world!</h2>
+                    <h1>Hello, {this.state.team.join(", ")}</h1> */}
+                    <HeroHomePage/>
+                    <Footer/>
                     <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose} >
                         <Modal.Body className="p-0">
                             <Tabs defaultActiveKey="login" id="uncontrolled-tab-example" className="mb-3" fill>
@@ -73,19 +65,8 @@ export default class App extends React.Component{
                             </Tabs>
                         </Modal.Body>
                     </Modal>
+                    
                 </div>
-<<<<<<< HEAD
-    } */
-    render(){
-        return (
-            <React.Fragment>
-                <Navbar/>
-                <HeroHomePage/>
-                <Footer/>
-            </React.Fragment>
-        );
-=======
->>>>>>> 61be4e030e921ca4d0b6ad8d0acf673c6a5c9fa7
     }
 }
 

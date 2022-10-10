@@ -12,22 +12,24 @@ function Navbar(props) {
 
 	return (
 		<header>
-			<h3>LOGO</h3>
-			<nav ref={navRef}>
-				<a href="/#">Home</a>
-				<a href="/#">Plans</a>
-				<a href="/#">Recipes</a>
-				<a href="/#">Contact Us</a>
-				<a href="/#" onClick={props.handleOpen}>Login / Register</a>
-				<button
-					className="nav-btn nav-close-btn"
-					onClick={showNavbar}>
-					<FaTimes />
+			<div class="container topbar">
+				<h3>LOGO</h3>
+				<nav ref={navRef}>
+					<a href="/#">Home</a>
+					<a href="/#">Plans</a>
+					<a href="/#">Recipes</a>
+					<a href="/#">Contact Us</a>
+					<a href="/#" onClick={props.handleOpen}>Login / Register</a>
+					<button
+						className="nav-btn nav-close-btn"
+						onClick={showNavbar}>
+						<FaTimes />
+					</button>
+				</nav>
+				<button className="nav-btn" onClick={showNavbar}>
+					<FaBars />
 				</button>
-			</nav>
-			<button className="nav-btn" onClick={showNavbar}>
-				<FaBars />
-			</button>
+			</div>
 		</header>
 	);
 }
