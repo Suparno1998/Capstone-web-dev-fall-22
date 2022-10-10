@@ -1,15 +1,12 @@
 const logger = require('./logger')
-const { MongoClient } = require('mongodb')
+const mongoose = require('mongoose')
 
 let db = null
 
 async function connectToDB(dbUrl){
     try{
-        const client = new MongoClient(dbUrl, { useNewUrlParser: true })
-        await client.connect();
-        logger.info(`Database connected successfully @ ${dbUrl}`);
-        db = client.db();
-        return db
+        db = mongoose.connect(dbUrl)
+        mongoose.set("useCreateIndex", true)
     }catch(err){
         logger.error(err.message)
     }
