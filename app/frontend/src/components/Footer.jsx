@@ -22,25 +22,25 @@ function Footer() {
         <div class="footer-info-media">
           <h4>Social Media Links</h4>
           <img
-            width={90}
+            width={60}
             className="facebook"
             src="/images/facebook.png"
             alt="Facebook Logo"
           />
           <img
-            width={90}
+            width={60}
             className="instagram"
             src="/images/instagram.png"
             alt="Instagram Logo"
           />
           <img
-            width={90}
+            width={60}
             className="twitter"
             src="/images/twitter.png"
             alt="Twitter Logo"
           />
           <img
-            width={90}
+            width={60}
             className="linkedIn"
             src="/images/linkedIn.png"
             alt="LinkedIn Logo"

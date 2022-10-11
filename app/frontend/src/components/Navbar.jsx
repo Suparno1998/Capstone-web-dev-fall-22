@@ -4,11 +4,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/main.css";
 
 function Navbar(props) {
-	const navRef = useRef();
+  const navRef = useRef();
 
-	const showNavbar = () => {
-		navRef.current.classList.toggle("responsive_nav");
-	};
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
 
 	return (
 		<header>

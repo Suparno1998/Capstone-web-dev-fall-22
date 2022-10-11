@@ -24,7 +24,7 @@ body {
 .fas.fa-envelope {
     color: #fff;
     font-size: 2rem;
-    background: #29335c;
+    background: #28a745;
     padding: 1rem;
     border-radius: 100%;
     margin: 0 0 1rem 0;
@@ -76,7 +76,7 @@ input:first-child {
 .subscribe-btn {
     padding: .8rem 2rem;
     border-radius: 5rem;
-    background: #29335c;
+    background: #28a745;
     color: #fff;
     font-size: .8rem;
     border: none;
