@@ -12,7 +12,7 @@ function Navbar(props) {
 
 	return (
 		<header>
-			<div class="container topbar">
+			<div className="container topbar">
 				<h3>LOGO</h3>
 				<nav ref={navRef}>
 					<a href="/#">Home</a>

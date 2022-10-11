@@ -39,6 +39,6 @@ const logger = winston.createLogger({
         transportError  // will be used on error level
     ]
 });
-
+logger.add(new winston.transports.Console());
 module.exports = logger
 

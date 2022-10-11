@@ -15,7 +15,22 @@ export default function Login(){
     }
     const handleLogin = (e)=>{
         e.preventDefault()
-        console.log(email,password)
+        if(email === ""){
+            setError("Email is required")
+            setHasError(true)
+            return
+        }
+        if(password === ""){
+            setError("Password is required")
+            setHasError(true)
+            return
+        }
+        setError("")
+        setHasError(false)
+        const loginObject = {
+            email : email,
+            password : password
+        }
     }
     return (
 		<Form className="p-1">

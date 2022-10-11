@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser')
 const logger = require("./utils/logger");
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
@@ -12,6 +13,10 @@ const DB_URL =
   process.env.mode === "DEV"
     ? "mongodb://localhost:27017/capstonedb"
     : process.env.DB_URL; //process.env.DB_URL
+app.use(express.urlencoded({
+  extended : false
+}))
+app.use(express.json())
 app.use(express.static("./frontend/public"));
 
 //auth handler handling all authentication requests

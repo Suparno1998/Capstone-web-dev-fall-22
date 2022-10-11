@@ -6,7 +6,7 @@ let db = null
 async function connectToDB(dbUrl){
     try{
         db = mongoose.connect(dbUrl)
-        mongoose.set("useCreateIndex", true)
+        logger.info("Database connected to "+dbUrl)
     }catch(err){
         logger.error(err.message)
     }

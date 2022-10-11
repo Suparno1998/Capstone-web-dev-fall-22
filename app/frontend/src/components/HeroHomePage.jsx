@@ -3,9 +3,9 @@ import "../styles/main.css";
 
 function HeroHomePage() {
     return(
-        <section class="hero">
-            <div class="container">
-                <div class="text-block">
+        <section className="hero">
+            <div className="container">
+                <div className="text-block">
                     <p>For Active People</p>
                     <h1>Healthy Food <br/>For Better Life</h1>
                     <h2>Join Our Nutrition Programs</h2>

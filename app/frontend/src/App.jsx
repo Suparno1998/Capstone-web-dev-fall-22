@@ -24,11 +24,11 @@ export default class App extends React.Component {
     this.handleRegister = this.handleRegister.bind(this);
   }
   async componentDidMount() {
-    const data = await fetch("/check");
-    let response = await data.json();
-    if (response.status === "works") {
-      this.setState({ team: response.data });
-    }
+    // const data = await fetch("/check");
+    // let response = await data.json();
+    // if (response.status === "works") {
+    //   this.setState({ team: response.data });
+    // }
   }
   handleOpen() {
     console.log("hi");
