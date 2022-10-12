@@ -1,9 +1,9 @@
 const express = require("express");
-const path = require("path");
-const bodyParser = require('body-parser')
 const logger = require("./utils/logger");
+const passport = require('passport');
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
+const { secureRouter } = require("./routes/secureRoutes")
 const { router } = require("./routes/routes");
 require("dotenv").config();
 //logger.info(process.env.PORT, process.env.DB_URL, process.env.BUILD_PATH)
@@ -24,7 +24,7 @@ app.use("/auth", authHandler);
 
 //insecure router handling all insecure requests
 app.use("/other", router);
-
+app.use('/api', passport.authenticate('jwt', { session: false }), secureRouter);
 //testing endpoint
 app.get("/check", (req, res) => {
   try {

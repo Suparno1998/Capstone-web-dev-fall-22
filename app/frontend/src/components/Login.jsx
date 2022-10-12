@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Form, Button, Alert } from "react-bootstrap"
-export default function Login(){
+import jwt from 'jwt-decode';
+export default function Login(props){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -38,7 +39,14 @@ export default function Login(){
         })
 
         let data = await response.json()
-        console.log(response)
+        if(data.token){
+            let tokenData = jwt(data.token)
+            let user = tokenData.user
+            localStorage.setItem("loggedIn",true)
+            localStorage.setItem("email",user.email)
+            localStorage.setItem("token",data.token)
+            props.handleClose()
+        }
     }
     return (
 		<Form className="p-1">

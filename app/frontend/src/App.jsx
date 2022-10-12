@@ -64,10 +64,10 @@ export default class App extends React.Component {
               fill
             >
               <Tab eventKey="login" title="Login">
-                <Login></Login>
+                <Login handleClose={this.handleClose}></Login>
               </Tab>
               <Tab eventKey="register" title="Register">
-                <Register></Register>
+                <Register handleClose={this.handleClose}></Register>
               </Tab>
             </Tabs>
           </Modal.Body>

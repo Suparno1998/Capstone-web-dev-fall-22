@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { Form, Button, Alert } from "react-bootstrap"
-export default function Register(){
+export default function Register(props){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [verifyPassword, setVerifyPassword] = useState("")
@@ -55,6 +55,7 @@ export default function Register(){
 
         let data = await response.json()
         if(data.message === 'Signup successful'){
+            props.handleClose()
             alert("You have been registered successfully")
         }
         else{
