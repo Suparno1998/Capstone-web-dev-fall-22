@@ -43,7 +43,7 @@ function Navbar(props) {
           <a href="/#">Home</a>
           <a href="/#">Plans</a>
           <a href="/#">Recipes</a>
-          <a href="/#">Contact Us</a>
+          <a href="/#">About Us</a>
           <a href="/#">Contact Us</a>
           {loggedIn ? (
             <span>
