@@ -21,12 +21,15 @@ function Footer() {
         </div>
         <div class="footer-info-media">
           <h4>Social Media Links</h4>
-          <img
-            width={60}
-            className="facebook"
-            src="/images/facebook.png"
-            alt="Facebook Logo"
-          />
+          <a href="https://www.facebook.com/profile.php?id=100086862995354">
+            <img
+              width={60}
+              className="facebook"
+              src="/images/facebook.png"
+              alt="Facebook Logo"
+            />
+          </a>
+
           <img
             width={60}
             className="instagram"
