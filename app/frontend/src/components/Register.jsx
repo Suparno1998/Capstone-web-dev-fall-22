@@ -54,7 +54,12 @@ export default function Register(){
         })
 
         let data = await response.json()
-        console.log(response)
+        if(data.message === 'Signup successful'){
+            alert("You have been registered successfully")
+        }
+        else{
+            console.log(data)
+        }
     }
     return (
 		<Form className="p-1">
