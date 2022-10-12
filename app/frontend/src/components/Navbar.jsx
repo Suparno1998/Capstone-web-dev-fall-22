@@ -44,6 +44,7 @@ function Navbar(props) {
           <a href="/#">Plans</a>
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
+          <a href="/#">Contact Us</a>
           {loggedIn ? (
             <span>
               <a>Hello, {userEmail}</a>{" "}
