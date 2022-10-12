@@ -13,7 +13,7 @@ export default function Login(){
             setPassword(evt.target.value)
         }
     }
-    const handleLogin = (e)=>{
+    const handleLogin = async (e)=>{
         e.preventDefault()
         if(email === ""){
             setError("Email is required")
@@ -31,6 +31,14 @@ export default function Login(){
             email : email,
             password : password
         }
+        let response = await fetch("/auth/login",{
+            method : "post",
+            headers: { 'Content-Type': 'application/json' },
+            body : JSON.stringify(loginObject)
+        })
+
+        let data = await response.json()
+        console.log(response)
     }
     return (
 		<Form className="p-1">

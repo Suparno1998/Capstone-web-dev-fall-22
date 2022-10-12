@@ -11,7 +11,7 @@ router.post('/newsletter',async (req,res)=>{
         var subscriber = new SubscriberModel(req.body)
         await subscriber.save()
         let status = await sendEmail(req.body.email,"Thanks for subscribing","<p>You are receiving this email because you are signed up to receive promotional communications. This message was sent by the Food Lab.</p> <strong>Thank you for subscribing to our newsletter</strong>",true,"Newsletter <news@themadcooks.me>")
-        logger.info(status)
+        logger.info(JSON.stringify(status))
         res.json({"status" : true})
     }catch(e){
         logger.error(e)

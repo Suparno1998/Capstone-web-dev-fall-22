@@ -29,7 +29,7 @@ function Newletter() {
       email : email,
     }
     console.log(subscribeObj)
-    const response = await fetch('http://localhost:3000/other/newsletter',{
+    const response = await fetch('/other/newsletter',{
       method : "POST",
       headers: { 'Content-Type': 'application/json' },
       body : JSON.stringify(subscribeObj)

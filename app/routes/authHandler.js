@@ -1,6 +1,7 @@
 const express = require('express')
 const logger = require('../utils/logger')
 const passport = require('passport')
+require('../utils/auth')
 const authHandler = express.Router()
 
 authHandler.post('/signup',
