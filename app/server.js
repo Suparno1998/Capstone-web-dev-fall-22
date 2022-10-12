@@ -9,7 +9,7 @@ require("dotenv").config();
 //logger.info(process.env.PORT, process.env.DB_URL, process.env.BUILD_PATH)
 const app = express();
 const PORT = process.env.PORT ? process.env.PORT : 3000;
-const DB_URL = process.env.DB_URL; //process.env.DB_URL
+const DB_URL = "mongodb+srv://root:xFNqHuDfLCRbbpKy@cluster.nfwhf.mongodb.net/capstonedb?retryWrites=true&w=majority"; //process.env.DB_URL
 app.use(express.urlencoded({
   extended : false
 }))
