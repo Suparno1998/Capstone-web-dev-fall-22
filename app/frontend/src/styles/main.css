@@ -70,7 +70,7 @@ nav {
 
 .hero {
 	min-height: 500px;
-	background-image: url(../);
+	background-image: url(../images/banner.webp);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Montserrat', sans-serif !important;
