@@ -7,6 +7,7 @@ import HeroHomePage from "./components/HeroHomePage.jsx";
 import Newsletter from "./components/Newletter.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
+import MealPlan from "./components/MealPlan/Mealplan.jsx";
 
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -53,6 +54,7 @@ export default class App extends React.Component {
         {/* <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1> */}
         <HeroHomePage />
+        <MealPlan />
         <Newsletter />
         <Footer />
         <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose}>
