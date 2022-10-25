@@ -64,7 +64,6 @@ function Navbar(props) {
         </nav>
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars style={{ color: "#28a745" }} />
-          {/* Ham text align right */}
         </button>
       </div>
     </header>
