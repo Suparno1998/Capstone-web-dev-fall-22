@@ -41,7 +41,7 @@ function Navbar(props) {
         <h3></h3>
         <nav ref={navRef}>
           <a href="/#">Home</a>
-          <a href="/#">Plans</a>
+          <a href="/#">Meal Plans</a>
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
           <a href="/#">About Us</a>
