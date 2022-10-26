@@ -9,7 +9,7 @@ const Mealplan = () => {
         <div className="row">
           <h2 className="meal-plan-heading">Our Meal Plan</h2>
           <div className="meal-plan-list">
-            <MealPlanCard />
+           
             <MealPlanCard />
             <MealPlanCard />
             <MealPlanCard />
