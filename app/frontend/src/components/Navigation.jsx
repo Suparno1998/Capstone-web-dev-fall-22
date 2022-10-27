@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import {
+    Navbar, Nav, NavItem, NavDropdown,
+    MenuItem, Glyphicon, Tooltip, OverlayTrigger,
+  } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import UserProfile from "./UserProfile/UserProfile.js";
 import "../styles/main.css";
 
-function Navbar(props) {
+function Navigation(props) {
   const navRef = useRef();
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("loggedIn") ? localStorage.getItem("loggedIn") : false
@@ -29,6 +36,7 @@ function Navbar(props) {
   };
 
   return (
+    <Fragment>
     <header>
       <div className="container topbar">
         <a href="/#">
@@ -52,11 +60,14 @@ function Navbar(props) {
               <a href="#" onClick={logout}>
                 Logout
               </a>
+
             </span>
           ) : (
-            <a href="#" onClick={props.handleOpen}>
-              Login / Register
-            </a>
+            <Fragment>
+              <a href="#" onClick={props.handleOpen}>
+                Login / Register
+              </a>
+            </Fragment>
           )}
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
@@ -65,9 +76,25 @@ function Navbar(props) {
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars style={{ color: "#28a745" }} />
         </button>
+        
       </div>
     </header>
+   {/*  <div>
+      <Router>
+            <Navbar>
+                <Nav>
+                    <LinkContainer to="/user-profile">
+                        <NavItem>Profile</NavItem>
+                    </LinkContainer>
+                </Nav>
+            </Navbar>
+            <Routes>
+                <Route path="/user-profile" element={<UserProfile/>} />
+            </Routes>
+        </Router>
+    </div> */}
+    </Fragment>
   );
 }
 
-export default Navbar;
+export default Navigation;

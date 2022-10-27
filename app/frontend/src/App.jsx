@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Navbar from "./components/Navbar.jsx";
+import Navigation from "./components/Navigation.jsx";
 import HeroHomePage from "./components/HeroHomePage.jsx";
 import Newsletter from "./components/Newletter.jsx";
 import Footer from "./components/Footer.jsx";
@@ -47,10 +47,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Navbar
+        <Navigation
           handleOpen={this.handleOpen}
           handleClose={this.handleClose}
-        ></Navbar>
+        ></Navigation>
         {/* <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1> */}
         <HeroHomePage />
