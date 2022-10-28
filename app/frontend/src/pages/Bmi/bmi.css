@@ -1,7 +1,7 @@
 body{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to right, #c3ffc5, #96ffa0);
+    background: linear-gradient(to right, #28a745, #38ce47b5);
 }
 span{
     color: rgb(206, 255, 131);
@@ -13,9 +13,9 @@ span{
     transform:translate(-50%, -50%);
     padding: 15px;
     width: 50%;
-    background: rgb(48, 190, 93);
+    background:  #28a745;
     border-radius: 5px;
-    box-shadow: rgb(0, 255, 26) 0px 20px 30px -10px;
+    box-shadow: rgb(171, 255, 180) 0px 20px 30px -10px;
 }
 input{
     outline: none;
