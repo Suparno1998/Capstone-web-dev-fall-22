@@ -8,7 +8,7 @@ import Newsletter from "./components/Newletter.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
 import MealPlan from "./components/MealPlan/Mealplan.jsx";
-
+import BMIComponent from "./pages/Bmi/bmi.jsx";
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./components/Register.jsx";
@@ -29,7 +29,7 @@ export default class App extends React.Component {
     // let response = await data.json();
     // if (response.status === "works") {
     //   this.setState({ team: response.data });
-    // }
+    // 
   }
   handleOpen() {
     console.log("hi");
@@ -55,6 +55,7 @@ export default class App extends React.Component {
                     <h1>Hello, {this.state.team.join(", ")}</h1> */}
         <HeroHomePage />
         <MealPlan />
+        <BMIComponent/>
         <Newsletter />
         <Footer />
         <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose}>
