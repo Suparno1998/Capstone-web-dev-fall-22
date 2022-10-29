@@ -5,8 +5,10 @@ import Tabs from "react-bootstrap/Tabs";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
+
 import Mealplan from "./pages/mealplan/MealPlan.jsx";
 import AboutUs from "./pages/aboutus/AboutUs.jsx";
+import BMIComponent from "./pages/Bmi/bmi.jsx";
 
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,7 +33,7 @@ export default class App extends React.Component {
     // let response = await data.json();
     // if (response.status === "works") {
     //   this.setState({ team: response.data });
-    // }
+    //
   }
   handleOpen() {
     console.log("hi");

@@ -1,32 +1,25 @@
-body{
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to right, #28a745, #38ce47b5);
-}
-span{
+.span{
     color: rgb(206, 255, 131);
 }
-.wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%, -50%);
-    padding: 15px;
-    width: 50%;
-    background:  #28a745;
-    border-radius: 5px;
+.wrapper-bmi{
+    padding-left:520px;
+    width:100%;
+    border-radius:5px;
     box-shadow: rgb(171, 255, 180) 0px 20px 30px -10px;
 }
-input{
-    outline: none;
-    border: none;
-    padding: 5px;
+.card{
+    width:50%;
 }
-button{
+.input{
+    outline: none;
+    padding: 10px;
+    color:#00400f;
+}
+.button{
     color: white;
     padding: 10px;
     border: 2px solid white;
-    background: rgb(86, 201, 109);
+    background: #28a745;
     display: block;
     margin-top: 10%;
     cursor: pointer;
