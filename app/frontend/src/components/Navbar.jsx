@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/main.css";
@@ -38,13 +39,24 @@ function Navbar(props) {
             alt="Food Lab Logo"
           />
         </a>
-        <h3></h3>
         <nav ref={navRef}>
-          <a href="/#">Home</a>
+          <NavLink to="/">
+            <a>Home</a>
+          </NavLink>
+          <NavLink to="/mealplan">
+            <a>Meal Plan</a>
+          </NavLink>
+          <NavLink to="/contact-us">
+            <a>Contact Us</a>
+          </NavLink>
+          <NavLink to="/aboutus">
+            <a>AboutUs</a>
+          </NavLink>
+          {/* <a href="/#">Home</a>
           <a href="/#">Meal Plans</a>
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
-          <a href="/#">About Us</a>
+          <a href="/#">About Us</a> */}
 
           {loggedIn ? (
             <span>

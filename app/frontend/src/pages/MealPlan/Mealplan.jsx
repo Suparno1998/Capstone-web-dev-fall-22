@@ -1,6 +1,6 @@
 import React from "react";
 import "../MealPlan/mealplan.css";
-import MealPlanCard from "../MealPlan/MealPlanCard/Mealplancard.jsx";
+import MealPlanCard from "./MealPlanCard/Mealplancard.jsx";
 
 const Mealplan = () => {
   return (

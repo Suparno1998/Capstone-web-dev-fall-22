@@ -3,15 +3,17 @@ import { createRoot } from "react-dom/client";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Navbar from "./components/Navbar.jsx";
-import HeroHomePage from "./components/HeroHomePage.jsx";
-import Newsletter from "./components/Newletter.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
-import MealPlan from "./components/MealPlan/Mealplan.jsx";
+import Mealplan from "./pages/mealplan/MealPlan.jsx";
+import AboutUs from "./pages/aboutus/AboutUs.jsx";
 
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./components/Register.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/homepage/HomePage.jsx";
+import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 export default class App extends React.Component {
   constructor() {
     super();
@@ -46,17 +48,20 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Navbar
-          handleOpen={this.handleOpen}
-          handleClose={this.handleClose}
-        ></Navbar>
-        {/* <h2>Hello, world!</h2>
-                    <h1>Hello, {this.state.team.join(", ")}</h1> */}
-        <HeroHomePage />
-        <MealPlan />
-        <Newsletter />
-        <Footer />
+      <>
+        <BrowserRouter>
+          <Navbar
+            handleOpen={this.handleOpen}
+            handleClose={this.handleClose}
+          ></Navbar>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/mealplan" element={<Mealplan />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
         <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose}>
           <Modal.Body className="p-0">
             <Tabs
@@ -74,7 +79,7 @@ export default class App extends React.Component {
             </Tabs>
           </Modal.Body>
         </Modal>
-      </div>
+      </>
     );
   }
 }
