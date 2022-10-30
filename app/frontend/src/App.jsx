@@ -2,13 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-<<<<<<< HEAD
-import Navigation from "./components/Navigation.jsx";
-import HeroHomePage from "./components/HeroHomePage.jsx";
-import Newsletter from "./components/Newletter.jsx";
-=======
 import Navbar from "./components/Navbar.jsx";
->>>>>>> 9d7298fcc3146b5a1b6b7934305385af4905acf8
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
 
