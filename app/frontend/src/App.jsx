@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Navbar from "./components/Navbar.jsx";
+import Navigation from "./components/Navigation.jsx";
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
 
@@ -54,10 +54,10 @@ export default class App extends React.Component {
     return (
       <>
         <BrowserRouter>
-          <Navbar
+          <Navigation
             handleOpen={this.handleOpen}
             handleClose={this.handleClose}
-          ></Navbar>
+          ></Navigation>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/mealplan" element={<Mealplan />} />

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Fragment } from "react";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import UserProfile from "./UserProfile/UserProfile.js";
+import { NavLink } from "react-router-dom";
+import UserProfile from "./UserProfile/UserProfile.jsx";
 import "../styles/main.css";
 
 function Navigation(props) {
@@ -75,6 +77,9 @@ function Navigation(props) {
               <a href="#" onClick={props.handleOpen}>
                 Login / Register
               </a>
+              <NavLink to="/user-profile">
+                  <a>Profile</a>
+              </NavLink>
             </Fragment>
           )}
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>

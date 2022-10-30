@@ -1,7 +1,7 @@
 import React from "react";
 import UserProfile from "../../components/UserProfile/UserProfile.jsx";
 
-const UserProfile = () => {
+const UserProfiles = () => {
   return (
     <>
       <UserProfile />
@@ -9,4 +9,4 @@ const UserProfile = () => {
   );
 };
 
-export default HomePage;
+export default UserProfiles;
