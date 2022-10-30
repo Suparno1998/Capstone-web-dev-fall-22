@@ -57,19 +57,6 @@ export default class App extends React.Component {
   }
   render() {
     return (
-<<<<<<< HEAD
-      <div>
-        <Navigation
-          handleOpen={this.handleOpen}
-          handleClose={this.handleClose}
-        ></Navigation>
-        {/* <h2>Hello, world!</h2>
-                    <h1>Hello, {this.state.team.join(", ")}</h1> */}
-        <HeroHomePage />
-        <MealPlan />
-        <Newsletter />
-        <Footer />
-=======
       <>
         <BrowserRouter>
           <Navbar
@@ -84,7 +71,6 @@ export default class App extends React.Component {
           </Routes>
           <Footer />
         </BrowserRouter>
->>>>>>> 9d7298fcc3146b5a1b6b7934305385af4905acf8
         <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose}>
           <Modal.Body className="p-0">
             <Tabs
