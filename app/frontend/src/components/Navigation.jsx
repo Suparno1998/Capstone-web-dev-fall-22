@@ -1,10 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import {
-    Navbar, Nav, NavItem, NavDropdown,
-    MenuItem, Glyphicon, Tooltip, OverlayTrigger,
-  } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import UserProfile from "./UserProfile/UserProfile.js";
@@ -46,13 +40,24 @@ function Navigation(props) {
             alt="Food Lab Logo"
           />
         </a>
-        <h3></h3>
         <nav ref={navRef}>
-          <a href="/#">Home</a>
-          <a href="/#">Plans</a>
+          <NavLink to="/">
+            <a>Home</a>
+          </NavLink>
+          <NavLink to="/mealplan">
+            <a>Meal Plan</a>
+          </NavLink>
+          <NavLink to="/contact-us">
+            <a>Contact Us</a>
+          </NavLink>
+          <NavLink to="/aboutus">
+            <a>AboutUs</a>
+          </NavLink>
+          {/* <a href="/#">Home</a>
+          <a href="/#">Meal Plans</a>
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
-          <a href="/#">About Us</a>
+          <a href="/#">About Us</a> */}
 
           {loggedIn ? (
             <span>

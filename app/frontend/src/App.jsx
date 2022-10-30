@@ -2,16 +2,27 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+<<<<<<< HEAD
 import Navigation from "./components/Navigation.jsx";
 import HeroHomePage from "./components/HeroHomePage.jsx";
 import Newsletter from "./components/Newletter.jsx";
+=======
+import Navbar from "./components/Navbar.jsx";
+>>>>>>> 9d7298fcc3146b5a1b6b7934305385af4905acf8
 import Footer from "./components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
-import MealPlan from "./components/MealPlan/Mealplan.jsx";
+
+import Mealplan from "./pages/mealplan/MealPlan.jsx";
+import AboutUs from "./pages/aboutus/AboutUs.jsx";
+import BMIComponent from "./pages/Bmi/bmi.jsx";
 
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./components/Register.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/homepage/HomePage.jsx";
+import ContactUs from "./pages/ContactUs/ContactUs.jsx";
+import Admin from "./pages/admin/Admin.jsx";
 export default class App extends React.Component {
   constructor() {
     super();
@@ -29,7 +40,7 @@ export default class App extends React.Component {
     // let response = await data.json();
     // if (response.status === "works") {
     //   this.setState({ team: response.data });
-    // }
+    //
   }
   handleOpen() {
     console.log("hi");
@@ -46,6 +57,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
+<<<<<<< HEAD
       <div>
         <Navigation
           handleOpen={this.handleOpen}
@@ -57,6 +69,22 @@ export default class App extends React.Component {
         <MealPlan />
         <Newsletter />
         <Footer />
+=======
+      <>
+        <BrowserRouter>
+          <Navbar
+            handleOpen={this.handleOpen}
+            handleClose={this.handleClose}
+          ></Navbar>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/mealplan" element={<Mealplan />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+>>>>>>> 9d7298fcc3146b5a1b6b7934305385af4905acf8
         <Modal show={this.state.isLoginModalOpen} onHide={this.handleClose}>
           <Modal.Body className="p-0">
             <Tabs
@@ -74,7 +102,7 @@ export default class App extends React.Component {
             </Tabs>
           </Modal.Body>
         </Modal>
-      </div>
+      </>
     );
   }
 }

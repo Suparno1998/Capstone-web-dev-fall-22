@@ -21,3 +21,8 @@
     width: 350px;
     height: 250px;
 }
+
+.meal-plan-title {
+    margin-top: 10px;
+    font-weight: bold;
+}
