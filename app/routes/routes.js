@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const logger = require('../utils/logger')
 const { SubscriberModel } = require('../models/Subscriber')
+const { UserProfileModel } = require('../models/UserProfile')
 const {sendEmail} = require('../utils/utils')
 
 

@@ -17,7 +17,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import Admin from "./pages/admin/Admin.jsx";
-import UserProfile from "./pages/UserProfile/UserProfile.jsx"
+import UserProfile from "./pages/homepage/UserProfile/UserProfile.jsx"
 export default class App extends React.Component {
   constructor() {
     super();

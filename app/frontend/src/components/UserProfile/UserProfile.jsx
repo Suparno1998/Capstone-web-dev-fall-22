@@ -2,12 +2,58 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap"
 import "./UserProfile.css";
 
-function UserProfile(){
+function UserProfile(props){
+    const [firstName, setFirstname] = useState("")
+    const [lastName, setLastname] = useState("")
+    const [contactNo, setContactno] = useState("")
+    const [error, setError] = useState("")
+    const [hasError, setHasError] = useState(false)
+
+    const handleChange = (evt)=>{
+        if(evt.target.name === "firstName"){
+            setFirstname(evt.target.value)
+        }
+        else if(evt.target.name === "lastName"){
+            setLastname(evt.target.value)
+        }
+        else if(evt.target.name === "contactNo"){
+            setContactno(evt.target.value)
+        }
+    }
+    const handleEdit = async (e)=>{
+        e.preventDefault()
+        if(firstName === ""){
+            setError("Firstname is required")
+            setHasError(true)
+            return
+        }
+        if(lastName === ""){
+            setError("Lastname is required")
+            setHasError(true)
+            return
+        }
+        if(contactNo === ""){
+            setError("Contactno is required")
+            setHasError(true)
+            return
+        }
+        
+        setError("")
+        setHasError(false)
+        const profileObject = {
+            firstname : firstName,
+            lastname : lastName,
+            contactno : contactNo
+        }
+
+        if(profileObject){
+            alert("Profile Updated");
+        }
+        
+        
+    }
     return(
         <div>
-            <div>
-                User profile
-            </div>
             <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
                 <span className="mask bg-gradient-default opacity-8"></span>
                 <div class="container-fluid d-flex align-items-center">
@@ -24,6 +70,27 @@ function UserProfile(){
                 <div className="row">
                     <p>Hello, {localStorage.getItem("email")}</p>
                 </div>
+                <Form className="p-1">
+                    <Alert variant="danger" show={hasError}>
+                        <p>{error}</p>
+                    </Alert>
+                    <Form.Group className="mb-3" controlId="formLoginEmail">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter firstname" value={firstName} onChange={handleChange} name="firstName" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formLoginEmail">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter lastname" value={lastName} onChange={handleChange} name="lastName" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formLoginEmail">
+                        <Form.Label>Contact No</Form.Label>
+                        <Form.Control type="text" placeholder="Enter contactno" value={contactNo} onChange={handleChange} name="contactNo" required/>
+                    </Form.Group>
+                    
+                    <Button variant="primary" type="submit" onClick={handleEdit}>
+                        Edit Profile
+                    </Button>
+                </Form>
             </div>
         </div>
     )
