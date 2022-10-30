@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import UserProfile from "./UserProfile/UserProfile.jsx";
 import "../styles/main.css";
 
 function Navigation(props) {

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const UserProfileSchema = mongoose.Schema({
-    email : {
+    /* email : {
         type : String,
         required : true,
-    },
+    }, */
     firstname : {
         type : String,
         required : true,

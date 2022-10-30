@@ -35,6 +35,13 @@ app.get("/check", (req, res) => {
   }
 });
 
+/* app.get('/demo', (req,res) => {
+  logger.info("test-endpoint works");
+  res.send({
+    status: "works",
+    data: ["Suparno", "Mohammed", "Meet", "Rupesh", "Vasu"],
+  });
+}) */
 app.listen(PORT, async (req, res) => {
   await connectToDB(DB_URL);
   logger.info(`Server is running at ${PORT}`);

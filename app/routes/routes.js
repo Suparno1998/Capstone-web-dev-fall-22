@@ -20,5 +20,16 @@ router.post('/newsletter',async (req,res)=>{
     }
 })
 
+router.post('/profile',async (req,res)=>{
+    try{
+        var userprofile = new UserProfileModel(req.body)
+        await userprofile.save()
+        res.json({"status" : true})
+    }
+    catch(e){
+        res.json({"status": false, error : e})
+    }
+})
+
 
 module.exports = {router}
