@@ -62,10 +62,13 @@ function Navigation(props) {
           {loggedIn ? (
             <span>
               <a>Hello, {userEmail}</a>{" "}
+              <NavLink to="/user-profile">
+                  <a>Profile</a>
+              </NavLink>
               <a href="#" onClick={logout}>
                 Logout
               </a>
-
+              
             </span>
           ) : (
             <Fragment>

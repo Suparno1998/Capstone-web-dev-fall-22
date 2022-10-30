@@ -1,14 +1,10 @@
 import React from "react";
-import HeroHomePage from "../../components/HeroHomePage.jsx";
-import Mealplan from "../mealplan/MealPlan.jsx";
-import Newsletter from "../../components/Newletter.jsx";
+import UserProfile from "../../components/UserProfile/UserProfile.jsx";
 
 const UserProfile = () => {
   return (
     <>
-      <HeroHomePage />
-      <Mealplan />
-      <Newsletter />
+      <UserProfile />
     </>
   );
 };

@@ -17,6 +17,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import Admin from "./pages/admin/Admin.jsx";
+import UserProfile from "./pages/UserProfile/UserProfile.jsx"
 export default class App extends React.Component {
   constructor() {
     super();
@@ -62,6 +63,7 @@ export default class App extends React.Component {
             <Route path="/mealplan" element={<Mealplan />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/user-profile" element={<UserProfile />} />
           </Routes>
           <Footer />
         </BrowserRouter>
