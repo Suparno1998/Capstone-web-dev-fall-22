@@ -1,8 +1,24 @@
+
 import React, { Fragment, useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap"
 import "./UserProfile.css";
-//const UserProfileModel = require('../../../../models/UserProfile.js');
+
+//const UserProfileModel = require('../../../../models/UserProfile');
+//const profile = require("../../../../models/UserProfile")
 function UserProfiles(props){
+
+    //const profileData = UserProfileModel.find("firstname":"demo");
+    
+    const [userData, setUser] = useState([]);
+    const fetchData = async () => {
+        return await fetch("/other/profile-data")
+            .then((response) => response.json())
+            .then((data) => setUser(data));
+    }
+    useEffect(() => {
+        fetchData();
+      },[])
+
     const [firstName, setFirstname] = useState("")
     const [lastName, setLastname] = useState("")
     const [contactNo, setContactno] = useState("")
@@ -67,6 +83,14 @@ function UserProfiles(props){
     }
     return(
         <div>
+            <h1>User profile data</h1>
+            <h2>{userData.length}</h2>
+            <ul>
+                {userData && userData.length > 0 && userData.map((userObj, index) => (
+                    <li key={userObj.id}>{userObj.lastname}</li>
+                ))}
+                {JSON.stringify(userData)}
+            </ul>
             <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
                 <span className="mask bg-gradient-default opacity-8"></span>
                 <div className="container-fluid d-flex align-items-center">

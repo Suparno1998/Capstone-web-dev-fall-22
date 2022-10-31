@@ -31,5 +31,22 @@ router.post('/profile',async (req,res)=>{
     }
 })
 
+router.get('/profile-data',async (req,res)=>{
+    try{
+        var userprofile = UserProfileModel.find()
+        
+        console.log("$$$$$$$$"+JSON.stringify(userprofile))
+        //await userprofile.save()
+        res.json({"status" : true,
+                "data":JSON.stringify(userprofile)})
+    }
+    catch(e){
+        console.log("@@@@@@@@@@@@@@@@@")
+        res.json({"status": false, error : e})
+    }
+})
+
+
+
 
 module.exports = {router}
