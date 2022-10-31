@@ -1,6 +1,6 @@
 import React from "react";
 import HeroHomePage from "../../components/HeroHomePage.jsx";
-import Mealplan from "../mealplan/MealPlan.jsx";
+import Mealplan from "../Mealplan/MealPlan.jsx";
 import Newsletter from "../../components/Newletter.jsx";
 
 const HomePage = () => {
