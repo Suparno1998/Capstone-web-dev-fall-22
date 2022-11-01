@@ -6,10 +6,12 @@ const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes")
 const { router } = require("./routes/routes");
 require("dotenv").config();
+const constants = require("./constants")(process.env.MODE);
+console.log(constants)
 //logger.info(process.env.PORT, process.env.DB_URL, process.env.BUILD_PATH)
 const app = express();
 const PORT = process.env.PORT ? process.env.PORT : 3000;
-const DB_URL = "mongodb+srv://root:xFNqHuDfLCRbbpKy@cluster.nfwhf.mongodb.net/capstonedb?retryWrites=true&w=majority"; //process.env.DB_URL
+const DB_URL = constants.DB_URL; //process.env.DB_URL
 app.use(express.urlencoded({
   extended : false
 }))
@@ -34,7 +36,10 @@ app.get("/check", (req, res) => {
     logger.error(err.message);
   }
 });
-
+// app.use((req,res,next)=>{
+//   res.status(404)
+//   res.redirect('/')
+// })
 app.listen(PORT, async (req, res) => {
   await connectToDB(DB_URL);
   logger.info(`Server is running at ${PORT}`);

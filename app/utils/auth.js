@@ -1,7 +1,9 @@
 const passport = require('passport');
 const logger = require('./logger')
 const localStrategy = require('passport-local').Strategy;
+const {sendVerificationEmail} = require('./utils')
 const { UserModel } = require('../models/User');
+const sha1 = require('sha1')
 
 
 passport.use(
@@ -13,10 +15,14 @@ passport.use(
       },
       async (email, password, done) => {
         try {
-          const user = await UserModel.create({ email, password });
-          logger.info("New User : ",user)
+          console.log(email)
+          let emailToken = sha1(email+password)
+          const user = await UserModel.create({ email, password, isConfirmed : false, verificationToken : emailToken});
+          await sendVerificationEmail(email,emailToken)
+          //logger.info("New User : ",user)
           return done(null, user);
         } catch (error) {
+          console.log(error)
           done(error);
         }
       }
@@ -44,6 +50,10 @@ passport.use(
           if (!validate) {
             logger.info(`Wrong password for ${email}`)
             return done(null, false, { message: 'Wrong Password' });
+          }
+          if(!user.isConfirmed){
+            logger.info(`Account not verified for ${email}`)
+            return done(null, false, {message : "Account not verified"})
           }
           logger.info(`Login successfull for ${email}`)
           return done(null, user, { message: 'Logged in Successfully' });

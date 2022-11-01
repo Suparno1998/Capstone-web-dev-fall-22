@@ -10,7 +10,19 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true,
         unique : true,
-    }
+    },
+    isConfirmed : {
+        type : Boolean,
+        required : true,
+        default : false,
+    },
+    verificationToken : {
+        type : String,
+        required : true,
+        unique : true
+    },
+    refreshToken : [String],
+    role : String,
 })
 
 UserSchema.pre('save', async function(next) {

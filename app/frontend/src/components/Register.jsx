@@ -1,11 +1,15 @@
 import React, {useState} from "react"
 import { Form, Button, Alert } from "react-bootstrap"
+import { useSignUp } from "../utils/useSignup"
+
 export default function Register(props){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [verifyPassword, setVerifyPassword] = useState("")
-    const [error, setError] = useState("")
+    const [message, setMessage] = useState("")
+    const [variant, setVariant] = useState("danger")
     const [hasError, setHasError] = useState(false)
+    const {signup, isLoading} = useSignUp()
     const handleChange = (evt)=>{
         switch(evt.target.id){
             case "email":
@@ -22,50 +26,39 @@ export default function Register(props){
     const handleRegister = async (evt)=>{
         evt.preventDefault()
         if(email === ""){
-            setError("Email is required")
+            setMessage("Email is required")
             setHasError(true)
             return
         }
         if(password === ""){
-            setError("Password is required")
+            setMessage("Password is required")
             setHasError(true)
             return
         }
         if(verifyPassword === ""){
-            setError("Verify Password is required")
+            setMessage("Verify Password is required")
             setHasError(true)
             return
         }
         if(verifyPassword !== password){
-            setError("Password and verify password do not match")
+            setMessage("Password and verify password do not match")
             setHasError(true)
             return
         }
-        setError("")
+        setMessage("")
         setHasError(false)
-        const registerObject = {
-            email : email,
-            password : password
-        }
-        let response = await fetch("/auth/signup",{
-            method : "post",
-            headers: { 'Content-Type': 'application/json' },
-            body : JSON.stringify(registerObject)
-        })
-
-        let data = await response.json()
-        if(data.message === 'Signup successful'){
-            props.handleClose()
-            alert("You have been registered successfully")
-        }
-        else{
-            console.log(data)
+        let response = await signup(email, password)
+        console.log(response)
+        if(response.status){
+            setVariant("success")
+            setHasError(true)
+            setMessage("Registration is successful, please verify your email address before signing up.")
         }
     }
     return (
 		<Form className="p-1">
-            <Alert variant="danger" show={hasError}>
-                <p>{error}</p>
+            <Alert variant={variant} show={hasError} dismissible>
+                <p>{message}</p>
             </Alert>
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email address</Form.Label>
@@ -83,7 +76,7 @@ export default function Register(props){
                 <Form.Label>Verify - Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" name="verifypassword" value={verifyPassword} onChange={handleChange}/>
             </Form.Group>
-            <Button variant="primary" type="button" onClick={handleRegister}>
+            <Button variant="primary" type="button" onClick={handleRegister} disabled={isLoading}>
                 Submit
             </Button>
         </Form>

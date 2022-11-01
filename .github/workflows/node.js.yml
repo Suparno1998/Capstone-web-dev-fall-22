@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      DB_URL: mongodb+srv://root:xFNqHuDfLCRbbpKy@cluster.nfwhf.mongodb.net/capstonedb?retryWrites=true&w=majority
+      MODE: PROD
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}

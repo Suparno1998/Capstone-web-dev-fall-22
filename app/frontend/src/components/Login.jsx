@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import { Form, Button, Alert } from "react-bootstrap"
-import jwt from 'jwt-decode';
+import { useNavigate } from "react-router";
+import { useLogIn } from "../utils/useLogin";
 export default function Login(props){
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca")
+    const [password, setPassword] = useState("testab101")
+    const [variant, setVariant] = useState("danger")
     const [hasError, setHasError] = useState(false)
+    const {login, error, isLoading} = useLogIn()
     const handleChange = (evt)=>{
         if(evt.target.name === "email"){
             setEmail(evt.target.value)
@@ -26,31 +29,23 @@ export default function Login(props){
             setHasError(true)
             return
         }
-        setError("")
         setHasError(false)
         const loginObject = {
             email : email,
             password : password
         }
-        let response = await fetch("/auth/login",{
-            method : "post",
-            headers: { 'Content-Type': 'application/json' },
-            body : JSON.stringify(loginObject)
-        })
-
-        let data = await response.json()
-        if(data.token){
-            let tokenData = jwt(data.token)
-            let user = tokenData.user
-            localStorage.setItem("loggedIn",true)
-            localStorage.setItem("email",user.email)
-            localStorage.setItem("token",data.token)
-            props.handleClose()
+        let response = await login(email, password)
+        if(!response.status){
+            setHasError(true)
+            setVariant("danger")
+        }else{
+            navigate('/home')
         }
+        
     }
     return (
 		<Form className="p-1">
-            <Alert variant="danger" show={hasError}>
+            <Alert variant={variant} show={hasError} dismissible>
                 <p>{error}</p>
             </Alert>
             <Form.Group className="mb-3" controlId="formLoginEmail">
@@ -70,7 +65,7 @@ export default function Login(props){
                     Please enter a valid password
                 </Form.Control.Feedback>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleLogin}>
+            <Button variant="primary" type="submit" onClick={handleLogin} disabled={isLoading}>
                 Login
             </Button>
         </Form>

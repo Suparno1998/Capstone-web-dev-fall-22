@@ -25,5 +25,8 @@ module.exports = {
             name: 'vendor',
             chunks : 'all'
         }
+    },
+    devServer : {
+        historyApiFallback: true,
     }
 }

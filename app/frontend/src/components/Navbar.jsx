@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import {useLogout} from '../utils/useLogout.js'
+import {useAuthContext} from '../utils/AuthContext.js'
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/main.css";
+import { useNavigate } from "react-router";
 
 function Navbar(props) {
   const navRef = useRef();
-  const [loggedIn, setLoggedIn] = useState(
-    localStorage.getItem("loggedIn") ? localStorage.getItem("loggedIn") : false
-  );
-  const [userEmail, setUserEmail] = useState(
-    localStorage.getItem("email") ? localStorage.getItem("email") : ""
-  );
-  useEffect(() => {
-    let logInStatus = localStorage.getItem("loggedIn");
-    if (logInStatus) {
-      setLoggedIn(true);
-      setUserEmail(localStorage.getItem("email"));
-    }
-  });
+  const navigate = useNavigate()
+  const {user} = useAuthContext();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-
-  const logout = () => {
-    localStorage.clear();
-    setLoggedIn(false);
-    setUserEmail("");
-  };
-
+  const {logout} = useLogout()
+  const handleLogout = ()=>{
+    logout()
+    navigate('/')
+  }
   return (
     <header>
       <div className="container topbar">
@@ -45,24 +35,24 @@ function Navbar(props) {
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
           <a href="/#">About Us</a>
-          {loggedIn ? (
+          {user ? 
             <span>
-              <a>Hello, {userEmail}</a>{" "}
-              <a href="#" onClick={logout}>
+              <a>Hello, {user.email}</a>{" "}
+              <a href="#" onClick={handleLogout}>
                 Logout
               </a>
             </span>
-          ) : (
+            :
             <a href="#" onClick={props.handleOpen}>
               Login / Register
             </a>
-          )}
+          }
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
           </button>
         </nav>
         <button className="nav-btn" onClick={showNavbar}>
-          <FaBars />
+          <FaBars style={{color:"#28a745"}} />
         </button>
       </div>
     </header>
