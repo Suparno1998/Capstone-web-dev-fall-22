@@ -33,12 +33,13 @@ router.post('/profile',async (req,res)=>{
 
 router.get('/profile-data',async (req,res)=>{
     try{
-        var userprofile = UserProfileModel.find()
+        var userprofile = new UserProfileModel
+        var profiledata = userprofile.find()
         
-        console.log("$$$$$$$$"+JSON.stringify(userprofile))
+        console.log("$$$$$$$$"+JSON.stringify(profiledata))
         //await userprofile.save()
         res.json({"status" : true,
-                "data":JSON.stringify(userprofile)})
+                "data":JSON.stringify(profiledata)})
     }
     catch(e){
         console.log("@@@@@@@@@@@@@@@@@")
