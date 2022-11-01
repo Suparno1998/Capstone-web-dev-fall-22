@@ -15,9 +15,12 @@ import Footer from "./components/Footer.jsx";
 import {FaCalculator} from 'react-icons/fa';
 import BMIComponent from "./pages/Bmi/bmi.jsx";
 import { AuthContextProvider } from "./utils/AuthContext.js";
-
+import {useAuthContext} from './utils/AuthContext.js'
+import AdminHomePage from "./pages/admin/adminPages/homepage/AdminHomePage.jsx";
+import AdminMealPlan from "./pages/admin/adminPages/mealplan/AdminMealPlan.jsx";
 export default function App(){
   const [bmiModal, setBMIModal] = useState(false)
+  const {user} = useAuthContext();
   const handleOpen = ()=>{
     setBMIModal(true)
   }
@@ -28,8 +31,8 @@ export default function App(){
       <Navbar></Navbar>
       <BrowserRouter>
         <Routes>
-          
-          <Route path="/admin" element={<Admin/>}></Route>
+          {user && user.role === "admin" ? <Route path="/admin-home" element={<AdminHomePage />} ></Route> : <></>}
+          {user && user.role === "admin" ? <Route path="/admin-mealplan" element={<AdminMealPlan />} ></Route> : <></>}
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>

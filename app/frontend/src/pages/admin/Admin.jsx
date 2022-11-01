@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../homepage/HomePage.jsx";
 import "./Admin.css";
-import AdminMealPlan from "./adminPages/mealplan/AdminMealPlan.jsx";
+
 import Sidebar from "./components/sidebar/Sidebar.jsx";
 
 const Admin = () => {
@@ -20,8 +20,7 @@ const Admin = () => {
             </a>
           </div>
           <Routes>
-            <Route path="/admin" element={<HomePage />} />
-            <Route path="/admin/mealplan" element={<AdminMealPlan />} />
+            
           </Routes>
         </div>
       </BrowserRouter>

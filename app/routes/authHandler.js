@@ -88,7 +88,7 @@ authHandler.post('/login', async (req, res, next) => {
                 async (error) => {
                   if (error) res.json({status : false, error : error});
     
-                  const body = { _id: user._id, email: user.email };
+                  const body = { _id: user._id, email: user.email, role: user.role };
                   const token = jwt.sign({ user: body }, 'test_data',{
                     expiresIn : 3600
                   });
