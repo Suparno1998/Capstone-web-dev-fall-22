@@ -31,7 +31,7 @@ export default function App(){
       <Navbar></Navbar>
       <BrowserRouter>
         <Routes>
-          {user && user.role === "admin" ? <Route path="/admin-home" element={<AdminHomePage />} ></Route> : <></>}
+          {user && user.role === "admin" ? <Route path="/admin-home" element={<Admin/>} ></Route> : <></>}
           {user && user.role === "admin" ? <Route path="/admin-mealplan" element={<AdminMealPlan />} ></Route> : <></>}
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>
@@ -51,7 +51,7 @@ export default function App(){
           <BMIComponent/>
         </Modal.Body>
       </Modal>
-    <Footer></Footer>
+    {user && user.role === "admin" ? <></> : <Footer></Footer>}
     
   </div>
 }
