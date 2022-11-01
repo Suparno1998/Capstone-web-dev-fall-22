@@ -21,7 +21,9 @@ export default function LandingPage(){
    setIsLoginModalOpen(false)
   }
   useEffect(()=>{
-    if(message === "verfied"){
+    console.log(message)
+    if(message === "verified"){
+      console.log('works')
       alert("Your email was verified successfully. Please login to continue")
     }
   },[])

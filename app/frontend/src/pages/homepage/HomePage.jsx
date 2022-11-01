@@ -1,14 +1,12 @@
 import React from "react";
-import HeroHomePage from "../../components/HeroHomePage.jsx";
-import Mealplan from "../Mealplan/MealPlan.jsx";
-import Newsletter from "../../components/Newletter.jsx";
+import Mealplan from "../MealPlan/Mealplan.jsx";
+import Navbar from "../../components/Navbar.jsx";
 
 const HomePage = () => {
   return (
     <>
-      <HeroHomePage />
+      <Navbar />
       <Mealplan />
-      <Newsletter />
     </>
   );
 };
