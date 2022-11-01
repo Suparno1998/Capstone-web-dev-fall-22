@@ -34,3 +34,12 @@
 .user-profile h1{
     text-align: left !important;
 }
+.edit-profile-btn{
+    background-color: #04994a;
+    border: none;
+}
+.edit-profile-btn:hover{
+    background-color: #7ae8ad;
+    color:#444;
+    border: none;
+}

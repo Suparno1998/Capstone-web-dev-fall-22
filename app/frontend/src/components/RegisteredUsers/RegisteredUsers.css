@@ -1,14 +1,25 @@
-.subscriber-list{
+.register-user-list{
     padding: 20px;
     margin: 20px;
     border: 1px solid #eee;
     border-radius: 5px;
 }
 
-.subscriber-list h1{
+.register-user-list h1{
     padding: 50px;
     text-align: center;
     background: #ececec;
     border-radius: 10px;
     margin-bottom: 40px;
+}
+.register-user-list .btn{
+    min-width: 110px;
+}
+
+.register-user-list .btn-primary{
+    background-color: #04994a;
+    border: none;
+}
+.register-user-list .btn-primary:hover{
+    background-color: #025428;
 }

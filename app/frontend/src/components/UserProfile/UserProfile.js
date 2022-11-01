@@ -124,7 +124,7 @@ function UserProfiles(props){
                         <Form.Control type="text" placeholder="Enter contactno" value={contactNo} onChange={handleChange} name="contactNo" required/>
                     </Form.Group>
                     
-                    <Button variant="primary" type="submit" onClick={handleEdit}>
+                    <Button className="edit-profile-btn" variant="primary" type="submit" onClick={handleEdit}>
                         Edit Profile
                     </Button>
                 </Form>
