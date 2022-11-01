@@ -6,6 +6,7 @@ const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes")
 const { router } = require("./routes/routes");
+const adminRouter = require("./routes/admin");
 require("dotenv").config();
 const constants = require("./constants")(process.env.MODE);
 console.log(constants)
@@ -18,12 +19,9 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 app.use(express.static("./frontend/public"));
-app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname,'./frontend/public/index.html'));
-});
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
-
+app.use("/admin",adminRouter)
 //insecure router handling all insecure requests
 app.use("/other", router);
 app.use('/api', passport.authenticate('jwt', { session: false }), secureRouter);
@@ -43,6 +41,9 @@ app.get("/check", (req, res) => {
 //   res.status(404)
 //   res.redirect('/')
 // })
+app.get('/*', function(req,res) {
+  res.sendFile(path.join(__dirname,'./frontend/public/index.html'));
+})
 app.listen(PORT, async (req, res) => {
   await connectToDB(DB_URL);
   logger.info(`Server is running at ${PORT}`);

@@ -21,8 +21,12 @@ const UserSchema = mongoose.Schema({
         required : true,
         unique : true
     },
-    refreshToken : [String],
-    role : String,
+    role : {
+        type : String,
+        required : true,
+        enum : ["admin","user"],
+        default : "user"
+    },
 })
 
 UserSchema.pre('save', async function(next) {

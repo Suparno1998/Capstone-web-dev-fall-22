@@ -29,7 +29,7 @@ const sendVerificationEmail = async (email,token)=>{
     let emailLink = `${constants.main_url}/auth/verify?token=${token}&email=${email}`
     console.log(email,token)
     let body = `<strong> Hi there, </strong><br> <p> Please click on this <a href="${emailLink}">link</a> to verify your account, or copy paste the address into your browser's address bar </p> <a href="${emailLink}">${emailLink}</a>`
-    let response = await sendEmail(email, "Verification Email",body, true, "Newsletter <news@themadcooks.me>")
+    let response = await sendEmail(email, "Verification Email",body, true, "Test Email <ssuparno1998@gmail.com>")
     console.log(response)
 }
 module.exports = {sendEmail, sendVerificationEmail}

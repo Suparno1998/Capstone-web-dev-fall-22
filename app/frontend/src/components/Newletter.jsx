@@ -48,12 +48,11 @@ function Newletter() {
           <div className="image">
             <i className="fas fa-envelope"></i>
           </div>
-          <h1>Join Our Club</h1>
+          <h1 className="newsletter-h1">Join Our Club</h1>
           {/* <p>Get updates about our latest food plan.</p> */}
         </div>
         <div className="form-input">
           <input className="name" name="name" id="name" type="text" placeholder="Enter your name" onChange={handleChange}/>
-          <label htmlFor="email"></label>
           <input className="email" type="email" name="email" id="email" placeholder="Your Email" onChange={handleChange}/>
           <button className="subscribe-btn" type="button" onClick={handleSubmit}>Subscribe</button>
         </div>
