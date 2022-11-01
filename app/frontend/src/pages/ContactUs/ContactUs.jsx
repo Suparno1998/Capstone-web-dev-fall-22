@@ -3,6 +3,12 @@ import Footer from "../../components/Footer.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import "./ContactUs.css"
 const ContactUs = () => {
+  const [email,setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [message, setMessage] = useState("")
+  const [response, setResponse] = useState("")
+  const [variant, setVariant] = useState("")
+  const [hasResponse, setHasResponse] = useState("")
   return (
     <div>
       <div className="container-fluid">
