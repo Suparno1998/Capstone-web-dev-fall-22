@@ -6,6 +6,7 @@ const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes")
 const { router } = require("./routes/routes");
+const adminRouter = require("./routes/admin");
 require("dotenv").config();
 const constants = require("./constants")(process.env.MODE);
 console.log(constants)
@@ -20,7 +21,7 @@ app.use(express.json())
 app.use(express.static("./frontend/public"));
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
-
+app.use("/admin",adminRouter)
 //insecure router handling all insecure requests
 app.use("/other", router);
 app.use('/api', passport.authenticate('jwt', { session: false }), secureRouter);

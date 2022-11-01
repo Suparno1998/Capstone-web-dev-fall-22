@@ -28,6 +28,7 @@ export default function App(){
       <Navbar></Navbar>
       <BrowserRouter>
         <Routes>
+          
           <Route path="/admin" element={<Admin/>}></Route>
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>

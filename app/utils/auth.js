@@ -39,7 +39,7 @@ passport.use(
       async (email, password, done) => {
         try {
           const user = await UserModel.findOne({ email });
-  
+          
           if (!user) {
             logger.info(`No account found for for ${email}`)
             return done(null, false, { message: 'User not found' });
