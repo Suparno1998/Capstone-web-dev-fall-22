@@ -82,7 +82,7 @@ function UserProfiles(props){
         
     }
     return(
-        <div>
+        <div className="user-profile">
             {/* <h1>User profile data</h1>
             <h2>{userData.length}</h2>
             <ul>

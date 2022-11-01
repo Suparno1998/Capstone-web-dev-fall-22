@@ -60,6 +60,9 @@ a:hover{
 #about .container {
    position: relative;
    z-index: 10;
+   background: #fff;
+   padding: 30px;
+   border-radius: 10px;
 }
 
 #about .about-col {
@@ -67,6 +70,7 @@ a:hover{
    border-radius: 0 0 4px 4px;
    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
    margin-bottom: 20px;
+   padding:20px;
 }
 
 #about .about-col .img {
@@ -113,7 +117,7 @@ a:hover{
    font-weight: 700;
    font-size: 20px;
    padding: 0;
-   margin: 40px 0 12px 0;
+   /*margin: 40px 0 12px 0;*/
 }
 
 #about .about-col h2 a {
@@ -130,6 +134,7 @@ a:hover{
    color: #333;
    margin-bottom: 0;
    padding: 0 20px 20px 20px;
+   text-align: justify;
 }
 .btn-sm-default-web {
    background: #0c2b4b;
@@ -138,4 +143,14 @@ a:hover{
    padding: 5px 30px;
    color: #ffffff;
    letter-spacing: 1px;
+}
+#about .about-col h2 a{
+   text-decoration: none;
+}
+#about .btn-sm-default-web{
+   background-color: #04994a;
+   color: #fff;
+   text-decoration: none;
+   padding:10px 30px;
+   border-radius: 5px;
 }

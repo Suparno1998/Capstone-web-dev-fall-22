@@ -65,7 +65,7 @@ function Navigation(props) {
 
             {loggedIn ? (
               <span>
-                <a>Hello, {userEmail}</a>{" "}
+                {/* <a>Hello, {userEmail}</a>{" "} */}
                 <NavLink to="/user-profile">
                   <a>Profile</a>
                 </NavLink>
