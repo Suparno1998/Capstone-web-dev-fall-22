@@ -10,6 +10,9 @@ function Navigation(props) {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("loggedIn") ? localStorage.getItem("loggedIn") : false
   );
+  const [isAdmin, setIsAdmin] = useState(
+    localStorage.getItem("isAdmin") === "true" ? true : false
+  );
   const [userEmail, setUserEmail] = useState(
     localStorage.getItem("email") ? localStorage.getItem("email") : ""
   );
@@ -32,66 +35,65 @@ function Navigation(props) {
 
   return (
     <Fragment>
-    <header>
-      <div className="container topbar">
-        <a href="/#">
-          <img
-            width={170}
-            src="/images/foodlabLogonew.png"
-            alt="Food Lab Logo"
-          />
-        </a>
-        <nav ref={navRef}>
-          <NavLink to="/">
-            <a>Home</a>
-          </NavLink>
-          <NavLink to="/mealplan">
-            <a>Meal Plan</a>
-          </NavLink>
-          <NavLink to="/contact-us">
-            <a>Contact Us</a>
-          </NavLink>
-          <NavLink to="/aboutus">
-            <a>AboutUs</a>
-          </NavLink>
-          {/* <a href="/#">Home</a>
+      <header>
+        <div className="container topbar">
+          <a href="/#">
+            <img
+              width={170}
+              src="/images/foodlabLogonew.png"
+              alt="Food Lab Logo"
+            />
+          </a>
+          <nav ref={navRef}>
+            <NavLink to="/">
+              <a>Home</a>
+            </NavLink>
+            <NavLink to="/mealplan">
+              <a>Meal Plan</a>
+            </NavLink>
+            <NavLink to="/contact-us">
+              <a>Contact Us</a>
+            </NavLink>
+            <NavLink to="/aboutus">
+              <a>AboutUs</a>
+            </NavLink>
+            {/* <a href="/#">Home</a>
           <a href="/#">Meal Plans</a>
           <a href="/#">Recipes</a>
           <a href="/#">Contact Us</a>
           <a href="/#">About Us</a> */}
 
-          {loggedIn ? (
-            <span>
-              <a>Hello, {userEmail}</a>{" "}
-              <NavLink to="/user-profile">
+            {loggedIn ? (
+              <span>
+                <a>Hello, {userEmail}</a>{" "}
+                <NavLink to="/user-profile">
                   <a>Profile</a>
-              </NavLink>
-              <a href="#" onClick={logout}>
-                Logout
-              </a>
-              
-            </span>
-          ) : (
-            <Fragment>
-              <a href="#" onClick={props.handleOpen}>
-                Login / Register
-              </a>
-              <NavLink to="/user-profile">
+                </NavLink>
+                <a href="#" onClick={logout}>
+                  Logout
+                </a>
+              </span>
+            ) : (
+              <Fragment>
+                <a href="#" onClick={props.handleOpen}>
+                  Login / Register
+                </a>
+                <NavLink to="/user-profile">
                   <a>Profile</a>
-              </NavLink>
-            </Fragment>
-          )}
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
+                </NavLink>
+              </Fragment>
+            )}
+            {/* {isAdmin ?  <>is a admin</> : <>is a user</> } */}
+            <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+              <FaTimes />
+            </button>
+          </nav>
+          <button className="nav-btn" onClick={showNavbar}>
+            <FaBars style={{ color: "#28a745" }} />
           </button>
-        </nav>
-        <button className="nav-btn" onClick={showNavbar}>
-          <FaBars style={{ color: "#28a745" }} />
-        </button>
-        
-      </div>
-    </header>
-   {/*  <div>
+        </div>
+      </header>
+      {/*  <div>
       <Router>
             <Navbar>
                 <Nav>
