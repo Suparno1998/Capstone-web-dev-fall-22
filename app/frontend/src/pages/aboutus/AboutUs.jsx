@@ -35,7 +35,7 @@ const AboutUs = () => {
               <div class="col-md-4">
                 <div class="about-col">
                   <h2 class="title"><a href="#">Our Vision</a></h2>
-                  <p>FoodLab will be the first food management system that combines dining out, eating store-bought food, and cooking at home to help you find and organize the restaurants, products, and recipes that fit your diet and can help you reach your nutrition goals.</p>
+                  <p>FoodLab will be the first food management system that combines dining out, eating store-bought food, and cooking at home to help you find and organize the restaurants, products, and recipes that fit your diet and can help you reach your nutrition goals and keep you healthy.</p>
                   <div class="d-flex justify-content-center">
                     <a href="#" class="btn-sm-default-web">Read more</a>
                   </div>
