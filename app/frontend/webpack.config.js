@@ -26,7 +26,9 @@ module.exports = {
             chunks : 'all'
         }
     },
-    devServer : {
-        historyApiFallback: true,
+    devServer: {
+        port: 3000,
+        open: true,
+        historyApiFallback: true
     }
 }

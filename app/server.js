@@ -1,5 +1,6 @@
 const express = require("express");
 const logger = require("./utils/logger");
+const path = require('path')
 const passport = require('passport');
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
@@ -17,7 +18,9 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 app.use(express.static("./frontend/public"));
-
+app.get('/*', function(req,res) {
+  res.sendFile(path.join(__dirname,'./frontend/public/index.html'));
+});
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
 

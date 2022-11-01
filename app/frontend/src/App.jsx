@@ -8,11 +8,13 @@ import MealPlan from './pages/MealPlan/Mealplan.jsx'
 import AboutUs from './pages/aboutus/AboutUs.jsx'
 import ContactUs from './pages/ContactUs/ContactUs.jsx'
 import UserProfile from './pages/UserProfile/UserProfile.jsx'
+import Admin from "./pages/admin/Admin.jsx";
 import { AuthContextProvider } from "./utils/AuthContext.js";
 
 export default function App(){
   return <BrowserRouter>
       <Routes>
+        <Route path="/admin" element={<Admin/>}></Route>
         <Route path="/" element={<LandingPage/>}></Route>
         <Route path="/home" element={<HomePage/>}></Route>
         <Route path="/verify" exact element={<VerifyEmail/>}></Route>

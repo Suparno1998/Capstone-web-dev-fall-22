@@ -30,11 +30,11 @@ function Navbar(props) {
         </a>
         <h3></h3>
         <nav ref={navRef}>
-          <a href="/#">Home</a>
-          <a href="/#">Plans</a>
-          <a href="/#">Recipes</a>
-          <a href="/#">Contact Us</a>
-          <a href="/#">About Us</a>
+          <a href="/home">Home</a>
+          <a href="/mealplans">Plans</a>
+          <a href="/recipes">Recipes</a>
+          <a href="/contact-us">Contact Us</a>
+          <a href="/about-us">About Us</a>
           {user ? 
             <span>
               <a>Hello, {user.email}</a>{" "}
