@@ -1,0 +1,14 @@
+.subscriber-list{
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.subscriber-list h1{
+    padding: 50px;
+    text-align: center;
+    background: #ececec;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,14 @@
+.meal-plan-section {
+    background-color: #f4f4f7;
+}
+
+.meal-plan-heading {
+    text-align: center;
+    color: black;
+    line-height: 1em;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 1em !important;
+    margin-bottom: 1em;
+}
+

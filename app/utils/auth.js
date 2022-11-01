@@ -25,9 +25,9 @@ passport.use(
           console.log(error)
           done(error);
         }
-      }
-    )
-);
+      })
+)
+
 
 passport.use(
     'login',
@@ -60,6 +60,5 @@ passport.use(
         } catch (error) {
           return done(error);
         }
-      }
-    )
-);
+    })
+  )
