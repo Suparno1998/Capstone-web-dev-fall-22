@@ -1,22 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import {useLogout} from '../utils/useLogout.js'
 import {useAuthContext} from '../utils/AuthContext.js'
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Footer from "../components/Footer.jsx";
+import Modal from "react-bootstrap/Modal";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import Login from "../components/Login.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Register from "../components/Register.jsx";
 import "../styles/main.css";
-import { useNavigate } from "react-router";
 
 function Navbar(props) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const navRef = useRef();
-  const navigate = useNavigate()
   const {user} = useAuthContext();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+  function handleOpen() {
+    console.log("hi");
+    setIsLoginModalOpen(true)
+  }
+  function handleClose() {
+   setIsLoginModalOpen(false)
+  }
   const {logout} = useLogout()
   const handleLogout = ()=>{
     logout()
-    navigate('/')
+    window.location.href="/"
   }
   return (
     <header>
@@ -31,10 +44,10 @@ function Navbar(props) {
         <h3></h3>
         <nav ref={navRef}>
           <a href="/home">Home</a>
-          <a href="/mealplans">Plans</a>
+          <a href="/mealplan">Plans</a>
           <a href="/recipes">Recipes</a>
           <a href="/contact-us">Contact Us</a>
-          <a href="/about-us">About Us</a>
+          <a href="/aboutus">About Us</a>
           {user ? 
             <span>
               <a>Hello, {user.email}</a>{" "}
@@ -43,7 +56,7 @@ function Navbar(props) {
               </a>
             </span>
             :
-            <a href="#" onClick={props.handleOpen}>
+            <a href="#" onClick={handleOpen}>
               Login / Register
             </a>
           }
@@ -55,6 +68,23 @@ function Navbar(props) {
           <FaBars style={{color:"#28a745"}} />
         </button>
       </div>
+      <Modal show={isLoginModalOpen} onHide={handleClose}>
+          <Modal.Body className="p-0">
+            <Tabs
+              defaultActiveKey="login"
+              id="uncontrolled-tab-example"
+              className="mb-3"
+              fill
+            >
+              <Tab eventKey="login" title="Login">
+                <Login handleClose={handleClose}></Login>
+              </Tab>
+              <Tab eventKey="register" title="Register">
+                <Register handleClose={handleClose}></Register>
+              </Tab>
+            </Tabs>
+          </Modal.Body>
+        </Modal>
     </header>
   );
 }

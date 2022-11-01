@@ -1,9 +1,7 @@
 import React, { useState } from "react"
 import { Form, Button, Alert } from "react-bootstrap"
-import { useNavigate } from "react-router";
 import { useLogIn } from "../utils/useLogin";
 export default function Login(props){
-    const navigate = useNavigate();
     const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca")
     const [password, setPassword] = useState("testab101")
     const [variant, setVariant] = useState("danger")
@@ -39,7 +37,7 @@ export default function Login(props){
             setHasError(true)
             setVariant("danger")
         }else{
-            navigate('/home')
+            window.location.href="/home"
         }
         
     }
