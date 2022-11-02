@@ -43,6 +43,8 @@ function Navbar(props) {
         </a>
         <h3></h3>
         <nav ref={navRef}>
+          
+          <a href="/home">Home</a>
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
           ) : (
@@ -63,7 +65,6 @@ function Navbar(props) {
           ) : (
             <></>
           )}
-          <a href="/home">Home</a>
           <a href="/mealplan">Meal Plans</a>
           <a href="/contact-us">Contact Us</a>
           <a href="/aboutus">About Us</a>
