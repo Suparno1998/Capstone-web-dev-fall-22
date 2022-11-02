@@ -71,7 +71,7 @@ nav {
 }
 
 .hero {
-	min-height: 700px;
+	min-height: 500px;
 	background-image: url(../images/banner.webp);
 	background-repeat: no-repeat;
 	background-position: center center;

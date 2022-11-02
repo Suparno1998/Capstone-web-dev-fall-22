@@ -3,6 +3,7 @@ const router = express.Router()
 const logger = require('../utils/logger')
 const { SubscriberModel } = require('../models/Subscriber')
 const { UserProfileModel } = require('../models/UserProfile')
+const {MessageModel} = require('../models/Message')
 const {sendEmail} = require('../utils/utils')
 
 
@@ -47,6 +48,18 @@ router.get('/profile-data',async (req,res)=>{
     }
 })
 
+
+router.post('/contact',async (req,res)=>{
+    try{
+        const contacObject = req.body
+        console.log(contacObject)
+        await MessageModel.create(contacObject)
+        res.json({status : true, message : "Message was stored successfully"})
+    }catch(err){
+        console.log(err)
+        res.json({status : false, error : err})
+    }
+})
 
 
 
