@@ -4,8 +4,8 @@ const constants = require('../constants')(process.env.MODE)
 let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "ssuparno1998@gmail.com", // generated ethereal user
-      pass: "qccatqnsdpguazpu", // generated ethereal password
+      user: "myfoodlabsinfo@gmail.com", // generated ethereal user
+      pass: "igabcrxeeiovibyy", // generated ethereal password
     },
 });
 
