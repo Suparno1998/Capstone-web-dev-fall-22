@@ -71,8 +71,17 @@ function Navbar(props) {
           ) : (
             <></>
           )}
-          <a href="/contact-us">Contact Us</a>
-          <a href="/aboutus">About Us</a>
+          {user && user.role === "admin" ? (
+            <></>
+          ) : (
+            <a href="/contact-us">Contact Us</a>
+          )}
+          {user && user.role === "admin" ? (
+            <></>
+          ) : (
+            <a href="/aboutus">About Us</a>
+          )}
+          
           {user ? (
             <span>
               {/* <a>Hello, {user.email}</a>{" "} */}
