@@ -4,17 +4,18 @@ const UserProfileSchema = mongoose.Schema({
         type : String,
         required : true,
     }, */
-    firstname : {
+    user_id : {
         type : String,
         required : true,
+    },
+    firstname : {
+        type : String,
     },
     lastname : {
         type : String,
-        required : true,
     },
     contactno : {
         type : String,
-        required : true,
     }
 })
 

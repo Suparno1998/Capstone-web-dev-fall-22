@@ -50,27 +50,12 @@ function Navbar(props) {
           ) : (
             <></>
           )}
-          <a href="/home">Home</a>
           <a href="/mealplan">Meal Plans</a>
           {user && user.role === "admin" ? (
             <a href="/admin-mealplan">Admin Meal Plan</a>
           ) : (
             <></>
           )}
-<<<<<<< HEAD
-=======
-          {user && user.role === "admin" ? (
-            <a href="/registered-users">Users</a>
-          ) : (
-            <></>
-          )}
-          {user && user.role === "admin" ? (
-            <a href="/subscribers">Subscribers</a>
-          ) : (
-            <></>
-          )}
-          <a href="/mealplan">Meal Plans</a>
->>>>>>> 4b3463b28fdba907f9ade08d740f2839d46282c9
           <a href="/contact-us">Contact Us</a>
           <a href="/aboutus">About Us</a>
           {user ? (

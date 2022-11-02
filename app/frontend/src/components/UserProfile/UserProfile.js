@@ -8,23 +8,29 @@ import "./UserProfile.css";
 //const profile = require("../../../../models/UserProfile")
 function UserProfiles(props){
     const {user} = useAuthContext();
-    //const profileData = UserProfileModel.find("firstname":"demo");
-    
-    const [userData, setUser] = useState([]);
-    const fetchData = async () => {
-        return await fetch("/other/profile-data")
-            .then((response) => response.json())
-            .then((data) => setUser(data));
-    }
-    useEffect(() => {
-        fetchData();
-      },[])
-
     const [firstName, setFirstname] = useState("")
     const [lastName, setLastname] = useState("")
     const [contactNo, setContactno] = useState("")
     const [error, setError] = useState("")
     const [hasError, setHasError] = useState(false)
+    //const profileData = UserProfileModel.find("firstname":"demo");
+    
+    const [userData, setUser] = useState([]);
+    const fetchData = async (id) => {
+       const response = await fetch(`/other/profile-data?id=${id}`)
+       const data = await response.json()
+       console.log(data)
+       setFirstname(data.data.firstname)
+       setLastname(data.data.lastname)
+       setContactno(data.data.contactno)
+    }
+    useEffect(() => {
+        console.log(user)
+        if(user)
+            fetchData(user._id);
+      },user)
+
+    
 
     const handleChange = (evt)=>{
         if(evt.target.name === "firstName"){
@@ -58,6 +64,7 @@ function UserProfiles(props){
         setError("")
         setHasError(false)
         const profileObject = {
+            user_id : user._id,
             firstname : firstName,
             lastname : lastName,
             contactno : contactNo
