@@ -69,6 +69,12 @@ function Navigation(props) {
                 <NavLink to="/user-profile">
                   <a>Profile</a>
                 </NavLink>
+                <NavLink to="/registered-users">
+                  <a>Users</a>
+                </NavLink>
+                <NavLink to="/subscribers">
+                  <a>Subscribers</a>
+                </NavLink>
                 <a href="#" onClick={logout}>
                   Logout
                 </a>
