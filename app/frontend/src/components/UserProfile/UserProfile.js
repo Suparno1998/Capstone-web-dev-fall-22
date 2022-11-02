@@ -1,12 +1,13 @@
 
 import React, { Fragment, useEffect, useState } from "react";
+import {useAuthContext} from '../../utils/AuthContext.js'
 import { Form, Button, Alert } from "react-bootstrap"
 import "./UserProfile.css";
 
 //const UserProfileModel = require('../../../../models/UserProfile');
 //const profile = require("../../../../models/UserProfile")
 function UserProfiles(props){
-
+    const {user} = useAuthContext();
     //const profileData = UserProfileModel.find("firstname":"demo");
     
     const [userData, setUser] = useState([]);
@@ -96,7 +97,7 @@ function UserProfiles(props){
                 <div className="container-fluid d-flex align-items-center">
                     <div className="row name-container">
                         <div className="col-lg-7 col-md-10">
-                        <h1 className="display-2 text-white">Hello, User</h1>
+                        <h1 className="display-2 text-white">Hello, </h1>
                         <p className="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
                         {/* <a href="#!" className="btn btn-info">Edit profile</a> */}
                     </div>

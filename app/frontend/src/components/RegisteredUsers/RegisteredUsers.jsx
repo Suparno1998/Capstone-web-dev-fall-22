@@ -4,7 +4,7 @@ import { Form, Button, Alert } from "react-bootstrap"
 import "./RegisteredUsers.css";
 
 function RegisteredUsers(){
-
+    
     return(
         <div className="register-user-list">
             <h1>Registered Users</h1>

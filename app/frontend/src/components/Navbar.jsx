@@ -52,7 +52,8 @@ function Navbar(props) {
           <a href="/aboutus">About Us</a>
           {user ? 
             <span>
-              <a>Hello, {user.email}</a>{" "}
+              {/* <a>Hello, {user.email}</a>{" "} */}
+              <a href="user-profile">Profile</a>
               <a href="#" onClick={handleLogout}>
                 Logout
               </a>
