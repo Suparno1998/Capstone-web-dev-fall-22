@@ -48,18 +48,20 @@ function Navbar(props) {
           ) : (
             <></>
           )}
+          <a href="/home">Home</a>
+          <a href="/mealplan">Meal Plans</a>
           {user && user.role === "admin" ? (
             <a href="/admin-mealplan">Admin Meal Plan</a>
           ) : (
             <></>
           )}
-          <a href="/home">Home</a>
-          <a href="/mealplan">Meal Plans</a>
           <a href="/contact-us">Contact Us</a>
           <a href="/aboutus">About Us</a>
           {user ? (
             <span>
               {/* <a>Hello, {user.email}</a>{" "} */}
+              {/* <a href="/contact-us">Contact Us</a>
+              <a href="/aboutus">About Us</a> */}
               <a href="user-profile">Profile</a>
               <a href="#" onClick={handleLogout}>
                 Logout
