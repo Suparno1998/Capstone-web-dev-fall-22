@@ -996,7 +996,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     display: -ms-flex;
     display: -webkit-flex;
     display: flex;
-    height: 100%;
+    height: 700px;
 }
 
 .wrapper {
@@ -1012,6 +1012,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     position: relative !important;
     flex-shrink: 1;
     width: calc(100% - 220px);
+    background-color: #f4f4f7;
 }
 
 @media (min-width: 768px) {
