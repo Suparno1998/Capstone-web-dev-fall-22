@@ -1,3 +1,11 @@
+.row>* {
+    /* width: auto !important; */
+}
+
+.nav {
+    display: block !important;
+}
+
 .nav>li>a {
     color: #a7b1c2;
     font-weight: 600;
