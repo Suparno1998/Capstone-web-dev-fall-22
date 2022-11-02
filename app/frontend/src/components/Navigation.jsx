@@ -57,6 +57,12 @@ function Navigation(props) {
             <NavLink to="/aboutus">
               <a>AboutUs</a>
             </NavLink>
+            <NavLink to="/registered-users">
+              <a>Users</a>
+            </NavLink>
+            <NavLink to="/subscribers">
+              <a>Subscribers</a>
+            </NavLink>
             {/* <a href="/#">Home</a>
           <a href="/#">Meal Plans</a>
           <a href="/#">Recipes</a>
