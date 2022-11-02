@@ -18,6 +18,8 @@ import { AuthContextProvider } from "./utils/AuthContext.js";
 import {useAuthContext} from './utils/AuthContext.js'
 import AdminHomePage from "./pages/admin/adminPages/homepage/AdminHomePage.jsx";
 import AdminMealPlan from "./pages/admin/adminPages/mealplan/AdminMealPlan.jsx";
+import NewsletterSubscribers from "./components/NewsletterSubscribers/NewsletterSubscribers.jsx";
+import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
 export default function App(){
   const [bmiModal, setBMIModal] = useState(false)
   const {user} = useAuthContext();
@@ -33,6 +35,8 @@ export default function App(){
         <Routes>
           {user && user.role === "admin" ? <Route path="/admin-home" element={<Admin/>} ></Route> : <></>}
           {user && user.role === "admin" ? <Route path="/admin-mealplan" element={<AdminMealPlan />} ></Route> : <></>}
+          {user && user.role === "admin" ? <Route path="/registered-users" element={<RegisteredUsers />} ></Route> : <></>}
+          {user && user.role === "admin" ? <Route path="/subscribers" element={<NewsletterSubscribers />} ></Route> : <></>}
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
