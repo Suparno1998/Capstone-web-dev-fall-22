@@ -12,3 +12,10 @@
     border-radius: 10px;
     margin-bottom: 40px;
 }
+.subscriber-list .btn-primary{
+    background-color: #04994a;
+    border: none;
+}
+.subscriber-list .btn-primary:hover{
+    background-color: #025428;
+}

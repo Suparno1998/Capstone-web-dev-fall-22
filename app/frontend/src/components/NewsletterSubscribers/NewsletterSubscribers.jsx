@@ -15,6 +15,7 @@ function NewsletterSubscribers(){
                         <th scope="col">Firstname</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">Email</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,18 +24,21 @@ function NewsletterSubscribers(){
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>mark@mdo.com</td>
+                        <td><a className ="btn btn-primary">Send Newsletter</a></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>jacob@fat.com</td>
+                        <td><a className ="btn btn-primary">Send Newsletter</a></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td>Larry</td>
                         <td>the Bird</td>
                         <td>larry@twitter.com</td>
+                        <td><a className ="btn btn-primary">Send Newsletter</a></td>
                     </tr>
                 </tbody>
             </table>
