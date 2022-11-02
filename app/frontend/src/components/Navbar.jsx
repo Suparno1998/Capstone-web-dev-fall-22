@@ -43,21 +43,47 @@ function Navbar(props) {
         </a>
         <h3></h3>
         <nav ref={navRef}>
-          
           <a href="/home">Home</a>
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
           ) : (
             <></>
           )}
-          <a href="/mealplan">Meal Plans</a>
+          {user && user.role === "admin" ? (
+            <></>
+          ) : (
+            <a href="/mealplan">Meal Plans</a>
+          )}
+
           {user && user.role === "admin" ? (
             <a href="/admin-mealplan">Admin Meal Plan</a>
           ) : (
             <></>
           )}
+          {user && user.role === "admin" ? (
+            <a href="/registered-users">Users</a>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "admin" ? (
+            <a href="/subscribers">Subscribers</a>
+          ) : (
+            <></>
+          )}
+          <a href="/mealplan">Meal Plans</a>
           <a href="/contact-us">Contact Us</a>
           <a href="/aboutus">About Us</a>
+          {user && user.role === "admin" ? (
+            <></>
+          ) : (
+            <a href="/contact-us">Contact Us</a>
+          )}
+          {user && user.role === "admin" ? (
+            <></>
+          ) : (
+            <a href="/aboutus">About Us</a>
+          )}
+
           {user ? (
             <span>
               {/* <a>Hello, {user.email}</a>{" "} */}
