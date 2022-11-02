@@ -49,11 +49,11 @@ function Navbar(props) {
           ) : (
             <></>
           )}
-          {user && user.role === "admin" ? (
+          {/* {user && user.role === "admin" ? (
             <></>
           ) : (
             <a href="/mealplan">Meal Plans</a>
-          )}
+          )} */}
 
           {user && user.role === "admin" ? (
             <a href="/admin-mealplan">Admin Meal Plan</a>
@@ -71,8 +71,8 @@ function Navbar(props) {
             <></>
           )}
           <a href="/mealplan">Meal Plans</a>
-          <a href="/contact-us">Contact Us</a>
-          <a href="/aboutus">About Us</a>
+          {/* <a href="/contact-us">Contact Us</a>
+          <a href="/aboutus">About Us</a> */}
           {user && user.role === "admin" ? (
             <></>
           ) : (
