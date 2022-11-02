@@ -53,6 +53,16 @@ function Navbar(props) {
           ) : (
             <></>
           )}
+          {user && user.role === "admin" ? (
+            <a href="/registered-users">Users</a>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "admin" ? (
+            <a href="/subscribers">Subscribers</a>
+          ) : (
+            <></>
+          )}
           <a href="/home">Home</a>
           <a href="/mealplan">Meal Plans</a>
           <a href="/contact-us">Contact Us</a>
