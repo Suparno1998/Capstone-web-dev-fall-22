@@ -11,6 +11,12 @@ export default function Register(props){
     const [variant, setVariant] = useState("danger")
     const [hasError, setHasError] = useState(false)
     const {signup, isLoading} = useSignUp()
+
+    const openLogin = (e) =>{
+        e.preventDefault()
+        props.openFunction()
+    }
+
     const handleChange = (evt)=>{
         switch(evt.target.id){
             case "register-email":
@@ -88,7 +94,7 @@ export default function Register(props){
            </div>
            <div className="row d-flex justify-content-center mb-3">
                 <div className="col-md-6 text-center">
-                    <a href="/register" className="small">Already have an account? Sign In!</a>
+                    <a href="#" className="small" onClick={openLogin}>Already have an account? Sign In!</a>
                 </div>
            </div>
         </div>

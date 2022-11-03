@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { Form, Button, Alert } from "react-bootstrap"
-import {FaEye, FaEyeSlash} from 'react-icons/fa'
+import { Button, Alert } from "react-bootstrap"
 import { useLogIn } from "../utils/useLogin";
 import PasswordInput from "./PasswordInput.jsx";
 export default function Login(props){
@@ -8,8 +7,12 @@ export default function Login(props){
     const [password, setPassword] = useState("testab101")
     const [variant, setVariant] = useState("danger")
     const [hasError, setHasError] = useState(false)
-    const [showFlag, setShowFlag] = useState(false)
     const {login, error, isLoading} = useLogIn()
+
+    const openRegister = (e) =>{
+        e.preventDefault()
+        props.openFunction()
+    }
     const handleChange = (evt)=>{
         if(evt.target.name === "login-email"){
             setEmail(evt.target.value)
@@ -17,9 +20,6 @@ export default function Login(props){
         else if(evt.target.name === "login-password"){
             setPassword(evt.target.value)
         }
-    }
-    const ToggleShow = ()=>{
-        setShowFlag(!showFlag)
     }
     const handleLogin = async (e)=>{
         e.preventDefault()
@@ -85,7 +85,7 @@ export default function Login(props){
            </div>
            <div className="row d-flex justify-content-center mb-3">
                 <div className="col-md-6 text-center">
-                    <a href="/register" className="small">Don't have an account? Sign Up!</a>
+                    <a href="#" className="small" onClick={openRegister}>Don't have an account? Sign Up!</a>
                 </div>
            </div>
         </div>
