@@ -3,12 +3,13 @@ const logger = require('../utils/logger')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const { UserModel } = require('../models/User')
+const bcrypt = require('bcrypt')
 const { UserProfileModel } = require('../models/UserProfile')
 require('../utils/auth')
 const authHandler = express.Router()
 const JWTstrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJwt;
-
+const {sendForgetPasswordEmail, sendVerificationEmail} =require('../utils/utils')
+let password_forget_users = []
 var cookieExtractor = function(req) {
   try{
     let cookies = null;
@@ -67,6 +68,84 @@ authHandler.get('/verify',async (req,res)=>{
     res.redirect('/')
   }
 })
+authHandler.post('/reset', async (req,res)=>{
+  try{
+    const token = req.body.token
+    const password = req.body.password
+    const email = req.body.email
+    if(!token || !email || !password){
+      res.send({status : false, error : "Invalid Request"})
+      return
+    }
+    console.log(token,password,email)
+    let check = password_forget_users.filter(v => v[email] === token).length == 1
+    if(!check){
+      res.send({status : false, error : "Did not receive password reset request from this account"})
+    }
+    else{
+      let newHashedPassword = await bcrypt.hash(password,10)
+      await UserModel.updateOne({email : email},{password : bcrypt.hash(newHashedPassword,10)})
+    }
+    res.send({"status" : true, message : "Passowrd reset successfully"})
+  }catch(err){
+    console.log(err)
+    res.json({
+      status : false,
+      error : err
+    })
+  }
+  
+})
+authHandler.post('/resend', async (req,res)=>{
+  try{
+    const body = req.body
+    const userEmail = body.email
+    console.log(userEmail)
+    const userList = await UserModel.find({email : userEmail})
+    console.log(userList)
+    if(userList.length == 1){
+      const user = userList[0]
+      if(user.isConfirmed){
+        res.json({"status" : false, error: "User already verified"})
+        return
+      }else{
+        let response = await sendVerificationEmail(user.email, user.verificationToken)
+        console.log(response)
+        res.json({"status" : true, message : "Verification Email has been resent."})
+      }
+    }else{
+      res.send({status : false, error : "User not found"})
+      return
+    }
+  }catch(err){
+    console.log(err)
+    res.json({ status : false, error : err})
+  }
+})
+authHandler.post('/forget', async (req,res)=>{
+  try{
+    const body = req.body
+    const userEmail = body.email
+    console.log(userEmail)
+    const userList = await UserModel.find({email : userEmail})
+    console.log(userList)
+    if(userList.length == 1){
+      let token = await sendForgetPasswordEmail(userEmail)
+      console.log(token)
+      password_forget_users.push({[userList[0].email] : token})
+      res.send({status : true, message : "We have sent an email to your email. Please follow instructions there to reset password"})
+    }else{
+      res.send({status : false, error : "User not found"})
+    }
+  }catch(err){
+    console.log(err)
+    res.json({
+      status : false,
+      error : err
+    })
+  }
+})
+
 authHandler.post('/signup',
     passport.authenticate('signup', { session: false }),async (req, res, next) => {
       try{
