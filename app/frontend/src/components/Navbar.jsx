@@ -3,7 +3,6 @@ import { useLogout } from "../utils/useLogout.js";
 import { useAuthContext } from "../utils/AuthContext.js";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Footer from "../components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -14,6 +13,7 @@ import "../styles/main.css";
 
 function Navbar(props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("login")
   const navRef = useRef();
   const { user } = useAuthContext();
   const showNavbar = () => {
@@ -31,6 +31,14 @@ function Navbar(props) {
     logout();
     window.location.href = "/";
   };
+
+  const openRegister = ()=>{
+    setActiveTab("register")
+  }
+
+  const openLogin = () => {
+    setActiveTab("login")
+  }
   return (
     <header>
       <div className="container topbar">
@@ -86,9 +94,6 @@ function Navbar(props) {
 
           {user ? (
             <span>
-              {/* <a>Hello, {user.email}</a>{" "} */}
-              {/* <a href="/contact-us">Contact Us</a>
-              <a href="/aboutus">About Us</a> */}
               <a href="user-profile">Profile</a>
               <a href="#" onClick={handleLogout}>
                 Logout
@@ -109,17 +114,12 @@ function Navbar(props) {
       </div>
       <Modal show={isLoginModalOpen} onHide={handleClose}>
         <Modal.Body className="p-0">
-          <Tabs
-            defaultActiveKey="login"
-            id="uncontrolled-tab-example"
-            className="mb-3"
-            fill
-          >
+          <Tabs activeKey={activeTab} id="uncontrolled-tab-example" className="mb-3" fill>
             <Tab eventKey="login" title="Login">
-              <Login handleClose={handleClose}></Login>
+              <Login handleClose={handleClose} openFunction={openRegister}></Login>
             </Tab>
             <Tab eventKey="register" title="Register">
-              <Register handleClose={handleClose}></Register>
+              <Register handleClose={handleClose} openFunction={openLogin}></Register>
             </Tab>
           </Tabs>
         </Modal.Body>

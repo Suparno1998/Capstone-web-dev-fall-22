@@ -1,11 +1,12 @@
 const nodemailer = require('nodemailer')
+const sha1 = require('sha1')
 require('dotenv').config()
 const constants = require('../constants')(process.env.MODE)
 let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "ssuparno1998@gmail.com", // generated ethereal user
-      pass: "qccatqnsdpguazpu", // generated ethereal password
+      user: "myfoodlabsinfo@gmail.com", // generated ethereal user
+      pass: "igabcrxeeiovibyy", // generated ethereal password
     },
 });
 
@@ -32,4 +33,26 @@ const sendVerificationEmail = async (email,token)=>{
     let response = await sendEmail(email, "Verification Email",body, true, "Test Email <ssuparno1998@gmail.com>")
     console.log(response)
 }
-module.exports = {sendEmail, sendVerificationEmail}
+
+const sendForgetPasswordEmail = async (email)=>{
+    const token = sha1(makeid(20))
+    let emailLink = `${constants.main_url}/reset?token=${token}&email=${email}`
+    let body = `<strong> Hi there, </strong><br> <p> Please click on this <a href="${emailLink}">link</a> to reset your password, or copy paste the address into your browser's address bar </p> <a href="${emailLink}">${emailLink}</a>`
+    let response = await sendEmail(email, "Passowrd Reset Email",body, true, "Test Email <ssuparno1998@gmail.com>")
+    console.log(response)
+    return token
+}
+
+
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+
+module.exports = {sendEmail, sendVerificationEmail, sendForgetPasswordEmail}

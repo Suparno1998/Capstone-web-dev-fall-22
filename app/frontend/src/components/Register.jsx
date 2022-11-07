@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { Form, Button, Alert } from "react-bootstrap"
 import { useSignUp } from "../utils/useSignup"
+import PasswordInput from "./PasswordInput.jsx";
 
 export default function Register(props){
     const [email, setEmail] = useState("")
@@ -10,15 +11,21 @@ export default function Register(props){
     const [variant, setVariant] = useState("danger")
     const [hasError, setHasError] = useState(false)
     const {signup, isLoading} = useSignUp()
+
+    const openLogin = (e) =>{
+        e.preventDefault()
+        props.openFunction()
+    }
+
     const handleChange = (evt)=>{
         switch(evt.target.id){
-            case "email":
+            case "register-email":
                 setEmail(evt.target.value)
                 break;
-            case "password":
+            case "register-password":
                 setPassword(evt.target.value)
                 break;
-            case "verifypassword":
+            case "register-re-password":
                 setVerifyPassword(evt.target.value)
                 break;
         }
@@ -56,29 +63,40 @@ export default function Register(props){
         }
     }
     return (
-		<Form className="p-1">
-            <Alert variant={variant} show={hasError} dismissible>
-                <p>{message}</p>
-            </Alert>
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" name = "email" value={email} onChange={handleChange}/>
-                <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={handleChange}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="verifypassword">
-                <Form.Label>Verify - Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name="verifypassword" value={verifyPassword} onChange={handleChange}/>
-            </Form.Group>
-            <Button variant="primary" type="button" onClick={handleRegister} disabled={isLoading}>
-                Submit
-            </Button>
-        </Form>
+		<div className="form">
+            <div className="row">
+                <Alert variant={variant} show={hasError} dismissible>
+                    <p>{message}</p>
+                </Alert>
+            </div>
+            <div class="row form-group d-flex justify-content-center mb-3">
+                <div className="col-lg-8 col-md-11 col-sm-11">
+                    <label htmlFor="email" className="form-label">Email</label>
+                    <input type="email" className="form-control" name="register-email" id="register-email" value={email} onChange = {handleChange} required></input>
+                </div>
+            </div>
+            <div class="row form-group d-flex justify-content-center mb-3">
+                <div className="col-lg-8 col-md-11 col-sm-11">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <PasswordInput className="form-control" name="register-password" id="register-password" value={password} onChange={handleChange}></PasswordInput> 
+                </div>
+            </div>
+            <div class="row form-group d-flex justify-content-center mb-3">
+                <div className="col-lg-8 col-md-11 col-sm-11">
+                    <label htmlFor="password" className="form-label">Re-enter Password</label>
+                    <PasswordInput className="form-control" name="register-re-password" id="register-re-password" value={verifyPassword} onChange={handleChange}></PasswordInput>
+                </div>
+            </div>
+            <div className="row d-flex justify-content-center mb-3">
+                <div className="col-md-4 text-center">
+                    <Button variant="primary" type="submit" onClick={handleRegister} disabled={isLoading}>Sign Up {isLoading ? <i className="fas fa-spinner fa-spin"></i> : ""}</Button>
+                </div>
+           </div>
+           <div className="row d-flex justify-content-center mb-3">
+                <div className="col-md-6 text-center">
+                    <a href="#" className="small" onClick={openLogin}>Already have an account? Sign In!</a>
+                </div>
+           </div>
+        </div>
     )
 }

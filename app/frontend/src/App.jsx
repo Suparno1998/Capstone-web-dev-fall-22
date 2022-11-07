@@ -18,6 +18,9 @@ import { AuthContextProvider } from "./utils/AuthContext.js";
 import {useAuthContext} from './utils/AuthContext.js'
 import AdminHomePage from "./pages/admin/adminPages/homepage/AdminHomePage.jsx";
 import AdminMealPlan from "./pages/admin/adminPages/mealplan/AdminMealPlan.jsx";
+import ResendVerification from "./pages/ResendVerification.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import ForgetPassword from "./pages/ForgetPassword.jsx";
 import NewsletterSubscribers from "./components/NewsletterSubscribers/NewsletterSubscribers.jsx";
 import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
 export default function App(){
@@ -37,6 +40,9 @@ export default function App(){
           {user && user.role === "admin" ? <Route path="/admin-mealplan" element={<AdminMealPlan />} ></Route> : <></>}
           {user && user.role === "admin" ? <Route path="/registered-users" element={<RegisteredUsers />} ></Route> : <></>}
           {user && user.role === "admin" ? <Route path="/subscribers" element={<NewsletterSubscribers />} ></Route> : <></>}
+          <Route path="/resend" element={<ResendVerification/>}></Route>
+          <Route path="/forget" element={<ForgetPassword/>}></Route>
+          <Route path="/reset" element={<ResetPassword/>}></Route>
           <Route path="/" element={<LandingPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
