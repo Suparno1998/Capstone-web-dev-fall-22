@@ -7,23 +7,26 @@ import "./UserProfile.css";
 //const profile = require("../../../../models/UserProfile")
 function UserProfiles(props) {
   const { user } = useAuthContext();
-  //const profileData = UserProfileModel.find("firstname":"demo");
-
-  const [userData, setUser] = useState([]);
-  const fetchData = async () => {
-    return await fetch("/other/profile-data")
-      .then((response) => response.json())
-      .then((data) => setUser(data));
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
   const [contactNo, setContactno] = useState("");
   const [error, setError] = useState("");
   const [hasError, setHasError] = useState(false);
+  //const profileData = UserProfileModel.find("firstname":"demo");
+
+  const [userData, setUser] = useState([]);
+  const fetchData = async (id) => {
+    const response = await fetch(`/other/profile-data?id=${id}`);
+    const data = await response.json();
+    console.log(data);
+    setFirstname(data.data.firstname);
+    setLastname(data.data.lastname);
+    setContactno(data.data.contactno);
+  };
+  useEffect(() => {
+    console.log(user);
+    if (user) fetchData(user._id);
+  }, user);
 
   const handleChange = (evt) => {
     if (evt.target.name === "firstName") {
@@ -55,6 +58,7 @@ function UserProfiles(props) {
     setError("");
     setHasError(false);
     const profileObject = {
+      user_id: user._id,
       firstname: firstName,
       lastname: lastName,
       contactno: contactNo,
@@ -93,7 +97,7 @@ function UserProfiles(props) {
           <div className="row name-container">
             <div className="col-lg-7 col-md-10">
               <h1 className="display-2 text-white">
-                Hello, {localStorage.getItem("email")}
+                Hello {user && user.email},{" "}
               </h1>
               <p className="text-white mt-0 mb-5">
                 This is your profile page. You can see the progress you've made
@@ -106,7 +110,7 @@ function UserProfiles(props) {
       </div>
       <div className="details-container">
         <div className="row">
-          {/* <p>Hello, {localStorage.getItem("email")}</p> */}
+          <p>Hello, {localStorage.getItem("email")}</p>
         </div>
         <Form className="p-1">
           <Alert variant="danger" show={hasError}>

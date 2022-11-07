@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const mongoose = require('mongoose')
 const logger = require('../utils/logger')
 const { SubscriberModel } = require('../models/Subscriber')
 const { UserProfileModel } = require('../models/UserProfile')
@@ -23,27 +24,32 @@ router.post('/newsletter',async (req,res)=>{
 
 router.post('/profile',async (req,res)=>{
     try{
-        var userprofile = new UserProfileModel(req.body)
-        await userprofile.save()
+        var data = req.body
+        console.log(data)
+        var {user_id, ...data} = data
+        console.log(user_id,data)
+        await UserProfileModel.updateOne({user_id : user_id},{...data})
         res.json({"status" : true})
     }
     catch(e){
+        console.log(e)
         res.json({"status": false, error : e})
     }
 })
 
 router.get('/profile-data',async (req,res)=>{
     try{
-        var userprofile = new UserProfileModel
-        var profiledata = userprofile.find()
-        
-        console.log("$$$$$$$$"+JSON.stringify(profiledata))
+        const id = req.query.id
+        console.log(id)
+        const profiledata = await UserProfileModel.findOne({user_id : id})
+        console.log(profiledata)
         //await userprofile.save()
         res.json({"status" : true,
-                "data":JSON.stringify(profiledata)})
+                "data": profiledata})
     }
     catch(e){
         console.log("@@@@@@@@@@@@@@@@@")
+        console.log(e)
         res.json({"status": false, error : e})
     }
 })

@@ -3,7 +3,7 @@ const logger = require('../utils/logger')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const { UserModel } = require('../models/User')
-
+const { UserProfileModel } = require('../models/UserProfile')
 require('../utils/auth')
 const authHandler = express.Router()
 const JWTstrategy = require('passport-jwt').Strategy;
@@ -54,6 +54,12 @@ authHandler.get('/verify',async (req,res)=>{
   if(user){
     console.log("verified")
     await UserModel.updateOne({_id : user._id},{isConfirmed : true})
+    const userProfile = await UserProfileModel.create({
+      user_id : user._id,
+      firstname : "",
+      lastname : "",
+      contactno : "",
+    })
     res.redirect("/?message=verified")
   }
   else{

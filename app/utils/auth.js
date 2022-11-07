@@ -3,7 +3,8 @@ const logger = require('./logger')
 const localStrategy = require('passport-local').Strategy;
 const {sendVerificationEmail} = require('./utils')
 const { UserModel } = require('../models/User');
-const sha1 = require('sha1')
+const sha1 = require('sha1');
+const { UserProfileModel } = require('../models/UserProfile');
 
 
 passport.use(
