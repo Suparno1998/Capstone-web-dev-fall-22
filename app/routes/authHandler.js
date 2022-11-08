@@ -39,7 +39,6 @@ var cookieExtractor = function(req) {
   }
 };
 
-
 passport.use(
     new JWTstrategy(
       {
@@ -62,7 +61,7 @@ passport.use(
           done(error);
         }
       }
-    )
+  )
 );
 
 authHandler.get('/verify',async (req,res)=>{
@@ -74,16 +73,15 @@ authHandler.get('/verify',async (req,res)=>{
     logger.info("verified")
     await UserModel.updateOne({_id : user._id},{isConfirmed : true})
     const userProfile = await UserProfileModel.create({
-      user_id : user._id,
-      firstname : "",
-      lastname : "",
-      contactno : "",
-    })
-    res.redirect("/?message=verified")
-  }
-  else{
-    logger.info('error')
-    res.redirect('/')
+      user_id: user._id,
+      firstname: "",
+      lastname: "",
+      contactno: "",
+    });
+    res.redirect("/?message=verified");
+  } else {
+    console.log("error");
+    res.redirect("/");
   }
 })
 authHandler.post('/reset', async (req,res)=>{
@@ -108,9 +106,9 @@ authHandler.post('/reset', async (req,res)=>{
   }catch(err){
     logger.info(err)
     res.json({
-      status : false,
-      error : err
-    })
+      status: false,
+      error: err,
+    });
   }
   
 })
@@ -131,9 +129,9 @@ authHandler.post('/resend', async (req,res)=>{
         logger.info(response)
         res.json({"status" : true, message : "Verification Email has been resent."})
       }
-    }else{
-      res.send({status : false, error : "User not found"})
-      return
+    } else {
+      res.send({ status: false, error: "User not found" });
+      return;
     }
   }catch(err){
     logger.info(err)
@@ -158,11 +156,11 @@ authHandler.post('/forget', async (req,res)=>{
   }catch(err){
     logger.info(err)
     res.json({
-      status : false,
-      error : err
-    })
+      status: false,
+      error: err,
+    });
   }
-})
+});
 
 authHandler.post('/signup',
     passport.authenticate('signup', { session: false }),async (req, res, next) => {
@@ -211,4 +209,38 @@ authHandler.post('/login', async (req, res, next) => {
     }
 );
 
-module.exports = { authHandler }
+authHandler.post("/login", async (req, res, next) => {
+  logger.info(JSON.stringify(req.body));
+  passport.authenticate("login", async (err, user, info) => {
+    try {
+      //console.log(err,user,info)
+      if (err || !user) {
+        console.log("control was here");
+        res.json({
+          status: false,
+          error: info.message,
+        });
+      } else {
+        req.login(user, { session: false }, async (error) => {
+          if (error) res.json({ status: false, error: error });
+
+          const body = { _id: user._id, email: user.email, role: user.role };
+          const token = jwt.sign({ user: body }, "test_data", {
+            expiresIn: 3600,
+          });
+
+          return res
+            .cookie("token", token, {
+              httpOnly: true,
+              secure: true,
+            })
+            .send({ status: true, data: body });
+        });
+      }
+    } catch (error) {
+      res.json({ status: false, error: error });
+    }
+  })(req, res, next);
+});
+
+module.exports = { authHandler };
