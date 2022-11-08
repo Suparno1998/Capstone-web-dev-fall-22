@@ -6,7 +6,7 @@ const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes")
 const { router } = require("./routes/unsecureRoutes");
-const adminRouter = require("./routes/admin");
+const {adminRouter} = require("./routes/adminRouter");
 require("dotenv").config();
 const constants = require("./constants").getConstants(process.env.MODE);
 //logger.info(JSON.stringify(constants))

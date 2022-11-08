@@ -36,7 +36,8 @@ function UserProfiles(props){
     } else if (evt.target.name === "contactNo") {
       setContactno(evt.target.value);
     }
-    const handleEdit = async (e)=>{
+  }
+  const handleEdit = async (e)=>{
         e.preventDefault()
         if(firstName === ""){
             setError("Firstname is required")
@@ -79,8 +80,8 @@ function UserProfiles(props){
         }
 
         
-    }
-  };
+  }
+  
   return (
     <div className="user-profile">
       {/* <h1>User profile data</h1>
