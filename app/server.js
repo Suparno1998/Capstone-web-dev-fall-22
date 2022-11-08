@@ -1,15 +1,15 @@
 const express = require("express");
-const logger = require("./utils/logger");
+const logger = require("./utils/logger")('server.js');
 const path = require('path')
 const passport = require('passport');
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes")
-const { router } = require("./routes/routes");
+const { router } = require("./routes/unsecureRoutes");
 const adminRouter = require("./routes/admin");
 require("dotenv").config();
-const constants = require("./constants")(process.env.MODE);
-console.log(constants)
+const constants = require("./constants").getConstants(process.env.MODE);
+//logger.info(JSON.stringify(constants))
 //logger.info(process.env.PORT, process.env.DB_URL, process.env.BUILD_PATH)
 const app = express();
 const PORT = process.env.PORT ? process.env.PORT : 3000;

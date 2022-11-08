@@ -28,8 +28,8 @@ function Navbar(props) {
   }
   const { logout } = useLogout();
   const handleLogout = () => {
-    logout();
     window.location.href = "/";
+    logout();
   };
 
   const openRegister = ()=>{
@@ -42,7 +42,7 @@ function Navbar(props) {
   return (
     <header>
       <div className="container topbar">
-        <a href="/#">
+        <a href="/">
           <img
             width={170}
             src="/images/foodlabLogonew.png"
@@ -51,7 +51,8 @@ function Navbar(props) {
         </a>
         <h3></h3>
         <nav ref={navRef}>
-          <a href="/home">Home</a>
+          {!user ? <a href="/">Home</a> : <></>}
+          {user ? <a href="/home">{user.firstname}'s Home</a> : <></>}
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
           ) : (

@@ -1,5 +1,5 @@
 const express = require('express')
-const logger = require('../utils/logger')
+const logger = require('../utils/logger')('routes/authHandler.js')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const { UserModel } = require('../models/User')
@@ -10,19 +10,31 @@ const authHandler = express.Router()
 const JWTstrategy = require('passport-jwt').Strategy;
 const {sendForgetPasswordEmail, sendVerificationEmail} =require('../utils/utils')
 let password_forget_users = []
+
 var cookieExtractor = function(req) {
   try{
     let cookies = null;
     if (req && req.headers) cookies = req.headers.cookie;
     cookies = cookies.split(";")
-    token = cookies.filter(v => v.includes("token="))
-    let jwt = token[0].replace("token=","")
-    console.log(token[0],jwt)
-    return jwt;
+    let tokenString = cookies.filter(v => v.includes("token="))
+    let token = tokenString[0].replace("token=","")
+    let payload = jwt.decode(token)
+    const expirationDate = new Date(0)
+    const currentDate = new Date()
+    expirationDate.setUTCSeconds(payload.exp)
+    if(expirationDate > currentDate){
+      logger.info('not-expired')
+      req.isExpired = false
+    }
+    else{
+      logger.info('expired')
+      req.isExpired = true
+    }
+    return token;
   }
   catch(err)
   {
-    console.log(err)
+    logger.info(err)
     return null
   }
 };
@@ -37,10 +49,16 @@ passport.use(
       },
       async (req, token, done) => {
         try {
-          //console.log(token)
+          logger.info(req.isExpired)
+          if(token){
+            logger.info('token-epxired')
+          }
+          else{
+            req.user = token.user
+          }
           return done(null, token.user);
         } catch (error) {
-          console.log(error)
+          logger.info(error)
           done(error);
         }
       }
@@ -48,12 +66,12 @@ passport.use(
 );
 
 authHandler.get('/verify',async (req,res)=>{
-  console.log(req.query.email)
-  console.log(req.query.token)
+  logger.info(req.query.email)
+  logger.info(req.query.token)
   const user = await UserModel.findOne({verificationToken : req.query.token, email : req.query.email})
-  console.log(user)
+  logger.info(user)
   if(user){
-    console.log("verified")
+    logger.info("verified")
     await UserModel.updateOne({_id : user._id},{isConfirmed : true})
     const userProfile = await UserProfileModel.create({
       user_id : user._id,
@@ -64,7 +82,7 @@ authHandler.get('/verify',async (req,res)=>{
     res.redirect("/?message=verified")
   }
   else{
-    console.log('error')
+    logger.info('error')
     res.redirect('/')
   }
 })
@@ -77,7 +95,7 @@ authHandler.post('/reset', async (req,res)=>{
       res.send({status : false, error : "Invalid Request"})
       return
     }
-    console.log(token,password,email)
+    logger.info(token,password,email)
     let check = password_forget_users.filter(v => v[email] === token).length == 1
     if(!check){
       res.send({status : false, error : "Did not receive password reset request from this account"})
@@ -88,7 +106,7 @@ authHandler.post('/reset', async (req,res)=>{
     }
     res.send({"status" : true, message : "Passowrd reset successfully"})
   }catch(err){
-    console.log(err)
+    logger.info(err)
     res.json({
       status : false,
       error : err
@@ -100,9 +118,9 @@ authHandler.post('/resend', async (req,res)=>{
   try{
     const body = req.body
     const userEmail = body.email
-    console.log(userEmail)
+    logger.info(userEmail)
     const userList = await UserModel.find({email : userEmail})
-    console.log(userList)
+    logger.info(userList)
     if(userList.length == 1){
       const user = userList[0]
       if(user.isConfirmed){
@@ -110,7 +128,7 @@ authHandler.post('/resend', async (req,res)=>{
         return
       }else{
         let response = await sendVerificationEmail(user.email, user.verificationToken)
-        console.log(response)
+        logger.info(response)
         res.json({"status" : true, message : "Verification Email has been resent."})
       }
     }else{
@@ -118,7 +136,7 @@ authHandler.post('/resend', async (req,res)=>{
       return
     }
   }catch(err){
-    console.log(err)
+    logger.info(err)
     res.json({ status : false, error : err})
   }
 })
@@ -126,19 +144,19 @@ authHandler.post('/forget', async (req,res)=>{
   try{
     const body = req.body
     const userEmail = body.email
-    console.log(userEmail)
+    logger.info(userEmail)
     const userList = await UserModel.find({email : userEmail})
-    console.log(userList)
+    logger.info(userList)
     if(userList.length == 1){
       let token = await sendForgetPasswordEmail(userEmail)
-      console.log(token)
+      logger.info(token)
       password_forget_users.push({[userList[0].email] : token})
       res.send({status : true, message : "We have sent an email to your email. Please follow instructions there to reset password"})
     }else{
       res.send({status : false, error : "User not found"})
     }
   }catch(err){
-    console.log(err)
+    logger.info(err)
     res.json({
       status : false,
       error : err
@@ -160,9 +178,9 @@ authHandler.post('/login', async (req, res, next) => {
       logger.info(JSON.stringify(req.body))
       passport.authenticate('login', async (err, user, info) => {
           try {
-            //console.log(err,user,info)
+            //logger.info(err,user,info)
             if (err || !user) {
-              console.log('control was here')
+              logger.info('control was here')
               res.json({
                 status : false,
                 error : info.message
@@ -173,7 +191,7 @@ authHandler.post('/login', async (req, res, next) => {
                 async (error) => {
                   if (error) res.json({status : false, error : error});
     
-                  const body = { _id: user._id, email: user.email, role: user.role };
+                  const body = user;
                   const token = jwt.sign({ user: body }, 'test_data',{
                     expiresIn : 3600
                   });

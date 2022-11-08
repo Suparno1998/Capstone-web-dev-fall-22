@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
-const logger = require('../utils/logger')
+const logger = require('../utils/logger')('routes/unsercureRoutes.js')
 const { SubscriberModel } = require('../models/Subscriber')
-const { UserProfileModel } = require('../models/UserProfile')
 const {MessageModel} = require('../models/Message')
 const {sendEmail} = require('../utils/utils')
+const { MealPlanModel } = require('../models/Mealplan')
 
 
 
@@ -21,48 +20,26 @@ router.post('/newsletter',async (req,res)=>{
         res.json({status:false, error : e})
     }
 })
-
-router.post('/profile',async (req,res)=>{
+router.get('/plans',async (req,res)=>{
     try{
-        var data = req.body
-        console.log(data)
-        var {user_id, ...data} = data
-        console.log(user_id,data)
-        await UserProfileModel.updateOne({user_id : user_id},{...data})
-        res.json({"status" : true})
-    }
-    catch(e){
-        console.log(e)
-        res.json({"status": false, error : e})
+        const plans = await MealPlanModel.find({})
+        res.json({
+            status : true,
+            data : plans
+        })
+    }catch(err){
+        logger.error(e)
+        res.json({status : false, error : err})
     }
 })
-
-router.get('/profile-data',async (req,res)=>{
-    try{
-        const id = req.query.id
-        console.log(id)
-        const profiledata = await UserProfileModel.findOne({user_id : id})
-        console.log(profiledata)
-        //await userprofile.save()
-        res.json({"status" : true,
-                "data": profiledata})
-    }
-    catch(e){
-        console.log("@@@@@@@@@@@@@@@@@")
-        console.log(e)
-        res.json({"status": false, error : e})
-    }
-})
-
-
 router.post('/contact',async (req,res)=>{
     try{
         const contacObject = req.body
-        console.log(contacObject)
+        logger.info(contacObject)
         await MessageModel.create(contacObject)
         res.json({status : true, message : "Message was stored successfully"})
     }catch(err){
-        console.log(err)
+        logger.info(err)
         res.json({status : false, error : err})
     }
 })

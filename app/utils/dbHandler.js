@@ -1,4 +1,4 @@
-const logger = require('./logger')
+const logger = require('./logger')('utils/dbhandler.js')
 const mongoose = require('mongoose')
 
 let db = null

@@ -6,7 +6,10 @@
 	box-sizing: border-box;
 	font-family: "Titillium Web", sans-serif;
 }
-
+.nav-link {
+	width:100px !important;
+	margin:0px;
+}
 :root {
 	/* --mainColor: #29335c; */
 	--mainColor: #ffffff;

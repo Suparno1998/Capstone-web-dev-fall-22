@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom'
 import { Modal } from "react-bootstrap";
 import LandingPage from "./pages/LandingPage.jsx";
 import HomePage from "./pages/homepage/HomePage.jsx";
@@ -16,7 +16,7 @@ import {FaCalculator} from 'react-icons/fa';
 import BMIComponent from "./pages/Bmi/bmi.jsx";
 import { AuthContextProvider } from "./utils/AuthContext.js";
 import {useAuthContext} from './utils/AuthContext.js'
-import AdminHomePage from "./pages/admin/adminPages/homepage/AdminHomePage.jsx";
+import IncorrectAccess from './pages/IncorrectAccess.jsx'
 import AdminMealPlan from "./pages/admin/adminPages/mealplan/AdminMealPlan.jsx";
 import ResendVerification from "./pages/ResendVerification.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
@@ -26,30 +26,32 @@ import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
 export default function App(){
   const [bmiModal, setBMIModal] = useState(false)
   const {user} = useAuthContext();
+  console.log(user)
   const handleOpen = ()=>{
     setBMIModal(true)
   }
   const handleClose = ()=>{
     setBMIModal(false)
   }
+  const tempfunc = ()=>{console.log("state : ",user); return user ? <HomePage/> : <IncorrectAccess/>}
   return <div>
       <Navbar></Navbar>
       <BrowserRouter>
         <Routes>
-          {user && user.role === "admin" ? <Route path="/admin-home" element={<Admin/>} ></Route> : <></>}
-          {user && user.role === "admin" ? <Route path="/admin-mealplan" element={<AdminMealPlan />} ></Route> : <></>}
-          {user && user.role === "admin" ? <Route path="/registered-users" element={<RegisteredUsers />} ></Route> : <></>}
-          {user && user.role === "admin" ? <Route path="/subscribers" element={<NewsletterSubscribers />} ></Route> : <></>}
+          <Route path="/admin-home" element={user && user.role === "admin" ? <Admin/> : <IncorrectAccess/>} />
+          <Route path="/admin-mealplan" element={user && user.role === "admin" ? <AdminMealPlan /> : <IncorrectAccess/>} />
+          <Route path="/registered-users" element={user && user.role === "admin" ? <RegisteredUsers /> : <IncorrectAccess/>} />
+          <Route path="/subscribers" element={user && user.role === "admin" ? <NewsletterSubscribers /> : <IncorrectAccess/>} />
           <Route path="/resend" element={<ResendVerification/>}></Route>
           <Route path="/forget" element={<ForgetPassword/>}></Route>
           <Route path="/reset" element={<ResetPassword/>}></Route>
           <Route path="/" element={<LandingPage/>}></Route>
-          <Route path="/home" element={<HomePage/>}></Route>
+          <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-profile" element={user ? <UserProfile /> : <IncorrectAccess/>} />
       </Routes>
     </BrowserRouter>
     <button className="btn btn-success floating-button" onClick={handleOpen} ><FaCalculator></FaCalculator></button>

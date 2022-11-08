@@ -1,10 +1,9 @@
 import React, {createContext, useContext, useReducer, useEffect } from 'react';
-
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children})=>{
     const [state, dispatch] = useReducer(authReducer, {
-        user : null
+        user : null,
     })
     console.log("Authcontext state: ", state)
 

@@ -7,6 +7,7 @@ const ContactUs = () => {
   const [email,setEmail] = useState("")
   const [name, setName] = useState("")
   const [message, setMessage] = useState("")
+  const [getNewsletter, setGetNewsLetter] = useState(true)
   const [response, setResponse] = useState("")
   const [variant, setVariant] = useState("")
   const [hasResponse, setHasResponse] = useState(false)
@@ -23,8 +24,11 @@ const ContactUs = () => {
       case "message":
         setMessage(val)
         break
+      case "newsletter":
+        setGetNewsLetter(e.target.checked)
       default:
         console.log('error')
+      
     }
   }
   const getLocation = ()=>{
@@ -89,36 +93,58 @@ const ContactUs = () => {
     setResponse(message)
     setHasResponse(true)
   }
+  const clear = ()=>{
+    setName("")
+    setEmail("")
+    setMessage("")
+    setGetNewsLetter(true)
+    setPosition(null)
+  }
   const handleCloseAlert = ()=>{
     setVariant("")
     setHasResponse(false)
     setResponse("")
   }
   return (
-    <div>
-      <div className="container">
-          <div className="row d-flex justify-content-around" style={{height : "100vh"}}>
-              <div className="col-lg-4 col-md-6 col-sm-12">
-                  <div className="form">
-                    <Alert show={hasResponse} variant={variant} onClose={handleCloseAlert} dismissible>{response}</Alert>
-                    <div className="form-group">
-                      <input className="form-control mb-2" type="text" placeholder="Enter Your Name" name="name" id="name" onChange={handleInput} value={name}></input>
-                    </div>
-                    <div className="form-group">
-                      <input className="form-control mb-2" type="email" placeholder="Enter Your Email" name="email" id="email" onChange={handleInput} value={email}></input>
-                    </div>
-                    <div className="form-group">
-                      <textarea className="form-control mb-2" type="text" placeholder="Enter Your Name" name="message" id="message" onChange={handleInput} value={message} rows={15}></textarea>
-                    </div>
-                    <button className="btn btn-outline-success mb-2" onClick={getLocation} type="button">Contact Us <FaPlane></FaPlane></button>
-                  </div>
-              </div>
-              <div className="col-lg-5 col-md-6 col-sm-12 pe-1">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195551.47782872536!2d-105.5515105671875!3d40.01979699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bec2a2e179131%3A0xbd5654e9f8c405cd!2sFood%20Lab!5e0!3m2!1sen!2sca!4v1666908911565!5m2!1sen!2sca" allowFullScreen="" height={450} width={750} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-          </div>
-      </div>
+    <div className="wrapper-contact">
+
+    <div className="contact-form">
+      <h4>GET IN TOUCH</h4>
+      <h2 className="form-headline">Send us a message</h2>
+      <Alert show={hasResponse} variant={variant} onClose={handleCloseAlert} dismissible>{response}</Alert>
+      <form id="submit-form" action="">
+        <p>
+          <input name="name" id="name" className="form-input" type="text" placeholder="Your Name*" style={{width:"100%"}} value={name} onChange={handleInput}/>
+        </p>
+        <p>
+          <input name="email" id="email" className="form-input" type="email" placeholder="Your Email*" style={{width:"100%"}} value={email} onChange={handleInput}/>
+        </p>
+        <p className="full-width">
+          <textarea  minLength="20" name="message" id="message" cols="30" rows="7" placeholder="Your Message*" required value={message} onChange={handleInput}></textarea>
+        </p>
+        <p className="full-width">
+          <input type="checkbox" id="newsletter" name="newsletter" checked={getNewsletter} onChange={handleInput}/> Yes, I would like to receive communications by call / email about Company's services.
+        </p>
+        <p className="full-width">
+          <input type="submit" className="btn btn-outline-danger" value="Submit" onClick={getLocation}/>
+          <button className="btn btn-outline-danger" onClick={clear}>Reset</button>
+        </p>
+      </form>
     </div>
+
+    <div className="contacts contact-wrapper">
+      <ul>
+        <li>We've driven online revenues of over <span className="highlight-text-grey">$2
+            billion</span> for our clients. Ready to know
+          how we can help you?</li>
+        <span className="hightlight-contact-info text-center">
+          <li className="email-info mb-3"><i className="fa fa-envelope" aria-hidden="true"></i> info@demo.com</li>
+          <li className="mb-3"><i className="fa fa-phone" aria-hidden="true"></i> <span className="highlight-text">+91 11 1111 2900</span></li>
+        </span>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195551.47782872536!2d-105.5515105671875!3d40.01979699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bec2a2e179131%3A0xbd5654e9f8c405cd!2sFood%20Lab!5e0!3m2!1sen!2sca!4v1666908911565!5m2!1sen!2sca" allowFullScreen="" height={350} width={750} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+      </ul>
+    </div>
+  </div>
    
   );
 };

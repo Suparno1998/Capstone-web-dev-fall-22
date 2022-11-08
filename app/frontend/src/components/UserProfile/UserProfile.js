@@ -1,5 +1,6 @@
 
 import React, { Fragment, useEffect, useState } from "react";
+import { fetchData } from "../../utils/functions.js";
 import {useAuthContext} from '../../utils/AuthContext.js'
 import { Form, Button, Alert } from "react-bootstrap"
 import "./UserProfile.css";
@@ -14,12 +15,10 @@ function UserProfiles(props){
     const [error, setError] = useState("")
     const [hasError, setHasError] = useState(false)
     //const profileData = UserProfileModel.find("firstname":"demo");
-    
+    const {dispatch} = useAuthContext()
     const [userData, setUser] = useState([]);
-    const fetchData = async (id) => {
-       const response = await fetch(`/other/profile-data?id=${id}`)
-       const data = await response.json()
-       console.log(data)
+    const fetchUser = async (id) => {
+       const data = await fetchData('/api/profile-data')
        setFirstname(data.data.firstname)
        setLastname(data.data.lastname)
        setContactno(data.data.contactno)
@@ -27,7 +26,7 @@ function UserProfiles(props){
     useEffect(() => {
         console.log(user)
         if(user)
-            fetchData(user._id);
+            fetchUser(user._id);
       },user)
 
     
@@ -64,27 +63,25 @@ function UserProfiles(props){
         setError("")
         setHasError(false)
         const profileObject = {
-            user_id : user._id,
             firstname : firstName,
             lastname : lastName,
             contactno : contactNo
         }
         console.log(profileObject)
         if(profileObject){
-            /* const user = await UserProfileModel.create({ firstName, lastName, contactNo });
-            alert("Profile Updated"); */
-
-            const response = await fetch('/other/profile',{
-                method : "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body : JSON.stringify(profileObject)
-            })
-              const data = await response.json()
-              if(data.status){
-                alert("Updated successfully")
-              }else{
-                alert("Error")
-              }  
+                const data = await fetchData('/api/profile',{
+                    method : "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body : JSON.stringify(profileObject)
+                })
+                if(data.status){
+                    alert("Updated successfully")
+                    console.log(data.data)
+                    localStorage.setItem("user",JSON.stringify(data.data))
+                    dispatch({type : "LOGIN", payload : data.data})
+                }else{
+                    alert("Error")
+                }  
         }
 
         
@@ -104,7 +101,7 @@ function UserProfiles(props){
                 <div className="container-fluid d-flex align-items-center">
                     <div className="row name-container">
                         <div className="col-lg-7 col-md-10">
-                        <h1 className="display-2 text-white">Hello {user && user.email}, </h1>
+                        <h1 className="display-2 text-white">Hello {user && user.firstname}, </h1>
                         <p className="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
                         {/* <a href="#!" className="btn btn-info">Edit profile</a> */}
                     </div>
@@ -113,7 +110,7 @@ function UserProfiles(props){
             </div>
             <div className="details-container">
                 <div className="row">
-                    <p>Hello, {localStorage.getItem("email")}</p>
+                    <p>Hello, {user && user.firstname}</p>
                 </div>
                 <Form className="p-1">
                     <Alert variant="danger" show={hasError}>
@@ -131,7 +128,6 @@ function UserProfiles(props){
                         <Form.Label>Contact No</Form.Label>
                         <Form.Control type="text" placeholder="Enter contactno" value={contactNo} onChange={handleChange} name="contactNo" required/>
                     </Form.Group>
-                    
                     <Button className="edit-profile-btn" variant="primary" type="submit" onClick={handleEdit}>
                         Edit Profile
                     </Button>

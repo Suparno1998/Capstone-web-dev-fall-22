@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Button, Alert } from "react-bootstrap"
 import { useLogIn } from "../utils/useLogin";
 import PasswordInput from "./PasswordInput.jsx";
+import {useNavigate, useLocation} from 'react-router-dom'
 export default function Login(props){
     const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca")
     const [password, setPassword] = useState("testab101")
