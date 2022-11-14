@@ -1,11 +1,12 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../homepage/HomePage.jsx";
+import React, { useEffect } from "react";
 import "./Admin.css";
-
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard.jsx";
+import AdminSlide from "./components/AdminSlides/AdminSlide.jsx";
 import Sidebar from "./components/sidebar/Sidebar.jsx";
 
 const Admin = () => {
+  // const { recent, setRecent } = useEffect("dashboard");
+
   return (
     <div id="wrapper">
       <nav className="navbar-default navbar-static-side" role="navigation">
@@ -24,7 +25,7 @@ const Admin = () => {
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="#">
                 <i className="fa fa-home"></i>{" "}
                 <span className="nav-label">Dashboard</span>
               </a>
@@ -74,12 +75,13 @@ const Admin = () => {
       </nav>
       <div id="page-wrapper" className="gray-bg dashboard-1">
         <div className="container">
-          <a
+          {/* <a
             className="navbar-minimalize minimalize-styl-2 btn btn-primary "
             href="#"
           >
             <i class="fa fa-bars"></i>{" "}
-          </a>
+          </a> */}
+          {/* {recent == "Slides" ? <AdminSlide /> : <AdminDashboard />} */}
         </div>
       </div>
     </div>

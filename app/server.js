@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("./frontend/public"));
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
-app.use("/admin", adminRouter);
+//app.use("/admin", adminRouter);
 //insecure router handling all insecure requests
 app.use("/other", router);
 app.use("/api", passport.authenticate("jwt", { session: false }), secureRouter);
