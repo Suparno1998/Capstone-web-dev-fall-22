@@ -33,10 +33,12 @@ function Navbar(props) {
   };
 
   const openRegister = ()=>{
+    console.log('open register')
     setActiveTab("register")
   }
 
   const openLogin = () => {
+    console.log('open login')
     setActiveTab("login")
   }
   return (
@@ -115,11 +117,11 @@ function Navbar(props) {
       </div>
       <Modal show={isLoginModalOpen} onHide={handleClose}>
         <Modal.Body className="p-0">
-          <Tabs activeKey={activeTab} id="uncontrolled-tab-example" className="mb-3" fill>
+          <Tabs activeKey={activeTab} id="uncontrolled-tab-example" className="mb-3" fill onSelect={(k)=>setActiveTab(k)}>
             <Tab eventKey="login" title="Login">
               <Login handleClose={handleClose} openFunction={openRegister}></Login>
             </Tab>
-            <Tab eventKey="register" title="Register">
+            <Tab eventKey="register" title="Register" >
               <Register handleClose={handleClose} openFunction={openLogin}></Register>
             </Tab>
           </Tabs>
