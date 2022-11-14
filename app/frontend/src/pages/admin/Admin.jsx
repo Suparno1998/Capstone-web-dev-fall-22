@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
+import { Route, Routes } from "react-router";
 import "./Admin.css";
-import AdminDashboard from "./components/AdminDashboard/AdminDashboard.jsx";
-import AdminSlide from "./components/AdminSlides/AdminSlide.jsx";
+import AdminDashboard from "./adminPages/AdminDashboard/AdminDashboard.jsx";
+import AdminMealPlan from "./adminPages/AdminMealplan/AdminMealPlan.jsx";
+import AdminSlide from "./adminPages/AdminSlides/AdminSlide.jsx";
+import ContactMessages from "./adminPages/ContactMessages/ContactMessages.jsx";
+import ListOfUsers from "./adminPages/ListOfUsers/ListOfUsers.jsx";
 import Sidebar from "./components/sidebar/Sidebar.jsx";
 
 const Admin = () => {
@@ -9,79 +13,16 @@ const Admin = () => {
 
   return (
     <div id="wrapper">
-      <nav className="navbar-default navbar-static-side" role="navigation">
-        <div className="sidebar-collapse">
-          <ul className="nav metismenu" id="side-menu">
-            <li className="nav-header">
-              <a
-                className="nav-link pr-0 text-white"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <span className="block m-t-xs font-bold">Admin Name</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-home"></i>{" "}
-                <span className="nav-label">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-cog "></i>{" "}
-                <span className="nav-label">Slides</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-cog "></i>{" "}
-                <span className="nav-label">Our Meal Plan</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-blog "></i>{" "}
-                <span className="nav-label">List of Users</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-cog "></i>{" "}
-                <span className="nav-label">Newsletter Subscriber</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-blog "></i>{" "}
-                <span className="nav-label">Setting</span>
-              </a>
-            </li>
-            <li className="/nav-item">
-              <a
-                href="#"
-                onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                className="nav-label d-flex align-items-center"
-              >
-                <i className="fas fa-sign-out-alt"></i> &nbsp;&nbsp;
-                <span>Log Out</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Sidebar />
       <div id="page-wrapper" className="gray-bg dashboard-1">
         <div className="container">
-          {/* <a
-            className="navbar-minimalize minimalize-styl-2 btn btn-primary "
-            href="#"
-          >
-            <i class="fa fa-bars"></i>{" "}
-          </a> */}
-          {/* {recent == "Slides" ? <AdminSlide /> : <AdminDashboard />} */}
+          <Routes>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="slides" element={<AdminSlide />} />
+            <Route path="mealplan" element={<AdminMealPlan />} />
+            <Route path="listofusers" element={<ListOfUsers />} />
+            <Route path="contactmessages" element={<ContactMessages />} />
+          </Routes>
         </div>
       </div>
     </div>

@@ -39,6 +39,7 @@ export default function Login(props) {
       password: password,
     };
     let response = await login(email, password);
+    console.log("Login response" + response);
     if (!response.status) {
       setHasError(true);
       setVariant("danger");

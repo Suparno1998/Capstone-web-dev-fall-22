@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../Admin.css";
 
 const Sidebar = () => {
@@ -16,37 +16,45 @@ const Sidebar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <span className="block m-t-xs font-bold">Admin</span>
+              <span className="block m-t-xs font-bold">Admin Name</span>
             </a>
           </li>
           <li>
-            <NavLink to="/admin">
-              <a href="#">
-                <i className="fa fa-home"></i>{" "}
-                <span className="nav-label">Home</span>
-              </a>
-            </NavLink>
+            <Link to="/admin-home/dashboard">
+              <i className="fa fa-home"></i>{" "}
+              <span className="nav-label">Dashboard</span>
+            </Link>
           </li>
           <li>
-            <NavLink to="/mealplan">
-              <a href="#">
-                <i className="fa fa-home"></i>{" "}
-                <span className="nav-label">Meal Plan</span>
-              </a>
-            </NavLink>
+            <Link to="/admin-home/slides">
+              <i className="fa fa-cog "></i>{" "}
+              <span className="nav-label">Slides</span>
+            </Link>
           </li>
-
-          {/* <li className="/nav-item">
-            <a
-              href="#"
-              onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-              className="nav-label d-flex align-items-center"
-            >
-              <i className="fas fa-sign-out-alt"></i> &nbsp;&nbsp;
+          <li>
+            <Link to="/admin-home/mealplan">
+              <i className="fa fa-cog "></i>{" "}
+              <span className="nav-label">Our Meal Plan</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin-home/listofusers">
+              <i class="fa fa-blog "></i>{" "}
+              <span className="nav-label">List of Users</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin-home/contactmessages">
+              <i class="fa fa-blog "></i>{" "}
+              <span className="nav-label">Contact Messages</span>
+            </Link>
+          </li>
+          <li className="/nav-item">
+            <a href="#" className="nav-label d-flex align-items-center">
+              <i className="fas fa-sign-out-alt"></i>
               <span>Log Out</span>
             </a>
-            @include('forms.logout')
-          </li> */}
+          </li>
         </ul>
       </div>
     </nav>
