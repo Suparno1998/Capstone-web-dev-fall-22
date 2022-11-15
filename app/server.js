@@ -1,12 +1,12 @@
 const express = require("express");
-const logger = require("./utils/logger")('server.js');
-const path = require('path')
-const passport = require('passport');
+const logger = require("./utils/logger")("server.js");
+const path = require("path");
+const passport = require("passport");
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
-const { secureRouter } = require("./routes/secureRoutes")
+const { secureRouter } = require("./routes/secureRoutes");
 const { router } = require("./routes/unsecureRoutes");
-const {adminRouter} = require("./routes/adminRouter");
+const { adminRouter } = require("./routes/adminRouter");
 require("dotenv").config();
 const constants = require("./constants").getConstants(process.env.MODE);
 //logger.info(JSON.stringify(constants))

@@ -1,3 +1,85 @@
-.Admin-dashboard-header {
-    color: black;
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    /* margin-right: 1em; */
+}
+
+.first-top {
+    background-color: #321fdc;
+    display: block;
+    color: #fff;
+    padding: .2em;
+    width: 270px;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.second-top {
+    background-color: #3199ff;
+    display: block;
+    color: #fff;
+    padding: .2em;
+    width: 270px;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.third-top {
+    background-color: #f9b113;
+    display: block;
+    color: #fff;
+    padding: .2em;
+    width: 270px;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.fourth-top {
+    background-color: #e55251;
+    display: block;
+    color: #fff;
+    padding: .2em;
+    width: 270px;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.dashboard-top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.dashboard-top i {
+    color: #fff;
+    font-size: 40px;
+}
+
+.dashboard-top h3 {
+    font-weight: bold;
+    color: #fff;
+}
+
+.first-top h1 {
+    font-weight: bold;
+    padding-left: 1em;
+}
+
+.second-top h1 {
+    font-weight: bold;
+    padding-left: 1em;
+}
+
+.third-top h1 {
+    font-weight: bold;
+    padding-left: 1em;
+}
+
+.fourth-top h1 {
+    font-weight: bold;
+    padding-left: 1em;
 }
