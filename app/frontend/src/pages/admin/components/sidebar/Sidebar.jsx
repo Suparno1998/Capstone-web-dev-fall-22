@@ -16,7 +16,7 @@ const Sidebar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <span className="block m-t-xs font-bold">Admin Name</span>
+              <span className="block m-t-xs font-bold">Admin</span>
             </a>
           </li>
           <li>
@@ -26,9 +26,9 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/admin-home/slides">
+            <Link to="/admin-home/orders">
               <i className="fa fa-cog "></i>{" "}
-              <span className="nav-label">Slides</span>
+              <span className="nav-label">Orders</span>
             </Link>
           </li>
           <li>

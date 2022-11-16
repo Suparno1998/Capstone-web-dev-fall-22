@@ -2,6 +2,7 @@ const express = require("express");
 const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
+const { MessageModel } = require("../models/Message");
 const logger = require("../utils/logger")("/routes/secureRoutes.js");
 const secureRouter = express.Router();
 
@@ -62,4 +63,7 @@ secureRouter.get("/get/plans", async (req, res) => {
     res.json({ status: false, error: e });
   }
 });
+
+
+
 module.exports = { secureRouter };

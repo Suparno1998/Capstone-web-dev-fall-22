@@ -24,7 +24,7 @@ import ForgetPassword from "./pages/ForgetPassword.jsx";
 import NewsletterSubscribers from "./components/NewsletterSubscribers/NewsletterSubscribers.jsx";
 import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
 import AdminDashboard from "./pages/admin/adminPages/AdminDashboard/AdminDashboard.jsx";
-import AdminSlide from "./pages/admin/adminPages/AdminSlides/AdminSlide.jsx";
+import AdminSlide from "./pages/admin/adminPages/AdminOrders/AdminOrders.jsx";
 import ListOfUsers from "./pages/admin/adminPages/ListOfUsers/ListOfUsers.jsx";
 import ContactMessages from "./pages/admin/adminPages/ContactMessages/ContactMessages.jsx";
 export default function App() {
@@ -54,7 +54,7 @@ export default function App() {
             }
           >
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="slides" element={<AdminSlide />} />
+            <Route path="orders" element={<AdminSlide />} />
             <Route path="mealplan" element={<AdminMealPlan />} />
             <Route path="listofusers" element={<ListOfUsers />} />
             <Route path="contactmessages" element={<ContactMessages />} />

@@ -1,6 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
+import axios from "../../../../../../routes/axios";
 
 const ContactMessages = () => {
+  useEffect(() => {
+    const fetchmessage = async () => {
+      const message = await axios.get("/message/get");
+      console.log("messages >>>>>", message);
+    };
+    fetchmessage();
+  }, []);
+
   return (
     <div className="subscriber-list">
       <h1>Messages from the User</h1>

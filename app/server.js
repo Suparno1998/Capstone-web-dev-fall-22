@@ -40,11 +40,24 @@ app.get("/check", (req, res) => {
   }
 });
 
+// app.get("/messages", (req, res) => {
+//   MessageModel.find({}, (err, data) => {
+//     if (err) {
+//       res.status(500).send(err);
+//       console.log("This is error", err);
+//     } else {
+//       res.status(200).send(data);
+//       console.log("This is data", data);
+//     }
+//   });
+// });
+
 // app.use((req,res,next)=>{
 //   res.status(404)
 //   res.redirect('/')
 // })
 app.get("/*", function (req, res) {
+  console.log("In mess api");
   res.sendFile(path.join(__dirname, "./frontend/public/index.html"));
 });
 app.listen(PORT, async (req, res) => {
