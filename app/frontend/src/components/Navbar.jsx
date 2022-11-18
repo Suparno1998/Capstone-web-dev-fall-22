@@ -54,7 +54,8 @@ function Navbar(props) {
         <h3></h3>
         <nav ref={navRef}>
           {!user ? <a href="/">Home</a> : <></>}
-          {user ? <a href="/home">{user.firstname}'s Home</a> : <></>}
+          {user && user.firstname === "" ? <a href="/home">Home</a> : <></>}
+          {user && user.firstname ? <a href="/home">{user.firstname}'s Home</a> : <></>}
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
           ) : (

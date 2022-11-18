@@ -55,16 +55,16 @@ export default function Login(props){
                     <p>{error}</p>
                 </Alert>
             </div>
-            <div class="row form-group d-flex justify-content-center mb-3">
+            <div className="row form-group d-flex justify-content-center mb-3">
                 <div className="col-lg-8 col-md-11 col-sm-11">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input type="email" className="form-control" name="login-email" id="login-email" value={email} onChange = {handleChange} required></input>
                 </div>
             </div>
-            <div class="row form-group d-flex justify-content-center mb-3">
+            <div className="row form-group d-flex justify-content-center mb-3">
                 <div className="col-lg-8 col-md-11 col-sm-11">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <div class="input-group mb-3">
+                    <div className="input-group mb-3">
                         <PasswordInput className="form-control" name="login-password" id="login-password" value={password} onChange={handleChange}></PasswordInput>
                     </div>
                 </div>

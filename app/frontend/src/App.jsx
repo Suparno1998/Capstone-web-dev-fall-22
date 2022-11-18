@@ -23,6 +23,7 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import ForgetPassword from "./pages/ForgetPassword.jsx";
 import NewsletterSubscribers from "./components/NewsletterSubscribers/NewsletterSubscribers.jsx";
 import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
+
 export default function App(){
   const [bmiModal, setBMIModal] = useState(false)
   const {user} = useAuthContext();
@@ -45,7 +46,7 @@ export default function App(){
           <Route path="/resend" element={<ResendVerification/>}></Route>
           <Route path="/forget" element={<ForgetPassword/>}></Route>
           <Route path="/reset" element={<ResetPassword/>}></Route>
-          <Route path="/" element={<LandingPage/>}></Route>
+          <Route path="/" element={user ? <HomePage/> : <LandingPage/>}></Route>
           <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
           <Route path="/mealplan" element={<MealPlan />} />

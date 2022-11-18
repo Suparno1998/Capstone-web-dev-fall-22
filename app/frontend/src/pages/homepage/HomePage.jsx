@@ -1,37 +1,25 @@
 import React ,{useEffect, useState} from "react";
+import FullPageSpinner from "../../components/FullPageSpinner.jsx";
 import MealPlanCard from "../../components/MealPlanCard/MealPlanCard.jsx";
 
 const HomePage = () => {
-  const [userMealPlans, setUserMealPlans] = useState([
-    {
-      title: "Regular Meal Plan",
-      short_description:
-        "Ensure that every customer have a healthy life.",
-    },
-    {
-      title: "Less Calorie Meal",
-      short_description:
-        "less calorie in their meal.",
-    },
-    {
-      title: "High Calorie Meal Plan",
-      short_description:
-        "high calorie rich meal.",
-    },
-  ])
+  const [userMealPlans, setUserMealPlans] = useState([])
+  const [isLoading, setisLoading] = useState(false)
 
   useEffect(()=>{
     async function fetchData(){
-      const response = fetch('/api/get/plans',{
+      setisLoading(true)
+      const response = await fetch('/api/get/plans',{
         method : "GET"
       })
       const data = await response.json()
       if(data.status){
-        console.log(data.data)
+        setUserMealPlans(data.data)
       }
       else{
         console.log(data.error)
       }
+      setisLoading(false)
     }
 
     fetchData()
@@ -41,9 +29,9 @@ const HomePage = () => {
       <div className="row text-center mb-3">
         <h3>Subscribed Meal Plans</h3>
       </div>
-      <div className="row d-flex justify-content-center meal-plan-list">
+      {isLoading ? <FullPageSpinner variant="success"/> : <div className="row d-flex justify-content-start meal-plan-list px-3">
         {userMealPlans.map(v=>{v["isSubscribed"] = true; return <MealPlanCard plan={v}></MealPlanCard>})}
-      </div>
+      </div>}
     </div>
   );
 };
