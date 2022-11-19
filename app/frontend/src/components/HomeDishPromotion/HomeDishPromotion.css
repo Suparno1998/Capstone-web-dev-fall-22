@@ -6,14 +6,14 @@
 }
 .home-dish-promotion .product-image{
     max-width: 100%;
-    transition: all .3s ease-in-out;;
+    transition: all .3s ease-in-out;
 }
 .home-dish-promotion .product-image:hover{
     transform: scale(1.1);
 } 
 .home-dish-promotion .egg-image-tag{
     position: absolute;
-    right: 5%;
+    right: 10%;
     max-width: 100%;
     z-index: 1;
 }
