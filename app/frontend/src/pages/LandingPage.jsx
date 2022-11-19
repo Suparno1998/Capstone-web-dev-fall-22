@@ -8,6 +8,7 @@ import Footer from "../components/Footer.jsx";
 import Modal from "react-bootstrap/Modal";
 import MealPlan from "./MealPlan/Mealplan.jsx";
 import HomeTrialDay from "../components/HomeTrialDay/HomeTrialDay.jsx";
+import HomeDishPromotion from "../components/HomeDishPromotion/HomeDishPromotion.js";
 
 export default function LandingPage() {
   const message =
@@ -39,6 +40,7 @@ export default function LandingPage() {
                     <h1>Hello, {this.state.team.join(", ")}</h1> */}
       <HeroHomePage />
       <MealPlan />
+      <HomeDishPromotion />
       <HomeTrialDay />
       <Newsletter />
     </div>

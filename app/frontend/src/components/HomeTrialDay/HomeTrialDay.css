@@ -24,6 +24,7 @@
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 20px;
+    text-shadow: 5px 2px 2px #444;
 }
 .home-trial .extra-style{
     font-style: italic;
