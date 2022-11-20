@@ -75,19 +75,7 @@ router.post('/contact',async (req,res)=>{
     }
 })
 
-router.get("/users-list", async (req, res) => {
-  try {
-    console.log("$$$$$$$$$$$$$$")
-    const userList = await User.find({});
-    console.log(userList);
-    //await userprofile.save()
-    res.json({ status: true, data: userList });
-  } catch (e) {
-    console.log("@@@@@@@@@@@@@@@@@");
-    console.log(e);
-    res.json({ status: false, error: e });
-  }
-});
+
 
 
 
