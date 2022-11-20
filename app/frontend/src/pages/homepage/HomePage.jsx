@@ -1,6 +1,7 @@
 import React ,{useEffect, useState} from "react";
 import MealPlanCard from "../../components/MealPlanCard/MealPlanCard.jsx";
 
+
 const HomePage = () => {
   const [userMealPlans, setUserMealPlans] = useState([
     {

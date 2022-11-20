@@ -27,6 +27,10 @@ const UserSchema = mongoose.Schema({
         enum : ["admin","user"],
         default : "user"
     },
+    status :{
+        type : Number,
+        default : 1
+    }
 })
 
 UserSchema.pre('save', async function(next) {

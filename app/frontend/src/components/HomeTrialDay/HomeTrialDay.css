@@ -1,0 +1,42 @@
+.home-trial{
+    position: relative;
+    min-height: 500px;
+    background-image: url(./images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+}
+.home-trial .contents{
+    margin: 0;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.home-trial h1{
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 3.8rem;
+    line-height: 5.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 5px 2px 2px #444;
+}
+.home-trial .extra-style{
+    font-style: italic;
+}
+.home-trial .btn{
+    padding: 20px 30px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #d6111e;
+    border: none;
+}
+.home-trial .btn:hover{
+    background-color: #fff;
+    color: var(--secondaryColor);
+}
