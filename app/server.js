@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("./frontend/public"));
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
-//app.use("/admin", adminRouter);
+app.use("/admin", adminRouter);
 //insecure router handling all insecure requests
 app.use("/other", router);
 app.use("/api", passport.authenticate("jwt", { session: false }), secureRouter);
@@ -39,18 +39,6 @@ app.get("/check", (req, res) => {
     logger.error(err.message);
   }
 });
-
-// app.get("/messages", (req, res) => {
-//   MessageModel.find({}, (err, data) => {
-//     if (err) {
-//       res.status(500).send(err);
-//       console.log("This is error", err);
-//     } else {
-//       res.status(200).send(data);
-//       console.log("This is data", data);
-//     }
-//   });
-// });
 
 // app.use((req,res,next)=>{
 //   res.status(404)
