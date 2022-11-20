@@ -4,7 +4,18 @@ import { Form, Button, Alert } from "react-bootstrap"
 import "./RegisteredUsers.css";
 
 function RegisteredUsers(){
-    
+    const [userList, setUserList] = useState([]);
+
+    const fetchData = () => {
+        return fetch("/other/users-list")
+            .then((response) => response.json())
+            .then((data) => setUserList(data));
+    }
+
+    useEffect(() => {
+        fetchData();
+    },[])
+    console.log(JSON.stringify(userList));
     return(
         <div className="register-user-list">
             <h1>Registered Users</h1>
@@ -46,6 +57,15 @@ function RegisteredUsers(){
                     </tr>
                 </tbody>
             </table>
+            <div className="row d-flex">
+              <div className="list">
+              <ul>
+                {userList && userList.length > 0 && userList.map((userObj, index) => (
+                    <li key={userObj.id}>{userObj.email}</li>
+                ))}
+            </ul>
+              </div>
+            </div>
         </div>
     )
 }
