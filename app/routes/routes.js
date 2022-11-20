@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const logger = require("../utils/logger");
 const { SubscriberModel } = require("../models/Subscriber");
 const { UserProfileModel } = require("../models/UserProfile");
+const {User} = require("../models/User")
 const { MessageModel } = require("../models/Message");
 const { sendEmail } = require("../utils/utils");
 
@@ -54,6 +55,21 @@ router.get("/profile-data", async (req, res) => {
     res.json({ status: false, error: e });
   }
 });
+
+router.get("/users-list", async (req, res) => {
+  try {
+    console.log("$$$$$$$$$$$$$$")
+    const userList = await User.find({});
+    console.log(userList);
+    //await userprofile.save()
+    res.json({ status: true, data: userList });
+  } catch (e) {
+    console.log("@@@@@@@@@@@@@@@@@");
+    console.log(e);
+    res.json({ status: false, error: e });
+  }
+});
+
 
 router.post("/contact", async (req, res) => {
   try {

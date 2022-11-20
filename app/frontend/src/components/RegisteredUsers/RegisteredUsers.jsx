@@ -1,10 +1,32 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap"
+import { fetchData } from "../../utils/functions.js";
+import axios from "../../../../routes/axios"
 import "./RegisteredUsers.css";
 
 function RegisteredUsers(){
-    
+    const [userList, setUserList] = useState([]);
+
+    useEffect(() => {
+        const fetchusers = async () => {
+          const userlist = await axios.get("/admin/users-list");
+          console.log("messages >>>>>", message);
+          setUserList(userlist);
+        };
+        fetchusers();
+      }, []);
+
+    /* const fetchUsers = () => {
+        return fetchData("/other/users-list")
+            .then((response) => response.json())
+            .then((data) => setUserList(data));
+    }
+
+    useEffect(() => {
+        fetchUsers();
+    },[]) */
+    console.log(JSON.stringify(userList));
     return(
         <div className="register-user-list">
             <h1>Registered Users</h1>
@@ -46,6 +68,16 @@ function RegisteredUsers(){
                     </tr>
                 </tbody>
             </table>
+            <div className="row d-flex">
+              <div className="list">
+              <ul>
+                {userList.length}
+                {userList && userList.length > 0 && userList.map((userObj, index) => (
+                    <li key={userObj._id}>{userObj.email}</li>
+                ))}
+            </ul>
+              </div>
+            </div>
         </div>
     )
 }
