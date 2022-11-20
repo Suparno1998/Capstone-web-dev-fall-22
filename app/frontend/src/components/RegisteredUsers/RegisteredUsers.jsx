@@ -1,9 +1,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap"
-import { fetchData } from "../../utils/functions.js";
-import axios from "axios"
-//import {useAuthContext} from '../../utils/AuthContext.js'
+import axios from "../../../../routes/axios"
 import "./RegisteredUsers.css";
 
 function RegisteredUsers(){
@@ -11,22 +9,14 @@ function RegisteredUsers(){
 
     useEffect(() => {
         const fetchusers = async () => {
-          const userlist = await axios.get("/other/users-list");
-          console.log("messages >>>>>", message);
+          const userlist = await axios.get("/admin/users-list");
+          console.log("userlist >>>>>", userlist);
           setUserList(userlist);
         };
         fetchusers();
       }, []);
 
-    /* const fetchUsers = () => {
-        return fetch("/other/users-list")
-            .then((response) => response.json())
-            .then((data) => setUserList(data));
-    }
-
-    useEffect(() => {
-        fetchUsers();
-    },[]) */
+    
     console.log(JSON.stringify(userList));
     return(
         <div className="register-user-list">
@@ -71,12 +61,33 @@ function RegisteredUsers(){
             </table>
             <div className="row d-flex">
               <div className="list">
-              <ul>
-                {userList.length}
-                {userList && userList.length > 0 && userList.map((userObj, index) => (
-                    <li key={userObj._id}>{userObj.email}</li>
-                ))}
-            </ul>
+              <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userList &&
+            userList?.userList.map((user) => {
+              return (
+                <tr>
+                  <td>{user._id}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td>
+                    <a className="btn btn-danger" href="#">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
               </div>
             </div>
         </div>
