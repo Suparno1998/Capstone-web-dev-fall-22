@@ -1,0 +1,73 @@
+.mealplan-detail {
+    padding: 40px 0;
+}
+
+.mealplan-detail .row {
+    margin-bottom: 30px;
+}
+
+.mealplan-detail .product-image {
+    max-width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.mealplan-detail .product-image:hover {
+    transform: scale(1.1);
+}
+
+.mealplan-detail .egg-image-tag {
+    position: absolute;
+    right: 10%;
+    max-width: 100%;
+    z-index: 1;
+}
+
+.mealplan-detail .salmon-image-tag {
+    position: absolute;
+    max-width: 100%;
+    z-index: 1;
+}
+
+.mealplan-detail h1 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.mealplan-detail .bold {
+    font-weight: bold;
+}
+
+.mealplan-detail .green {
+    color: var(--secondaryColor);
+}
+
+.mealplan-detail .red {
+    color: #da2424;
+}
+
+.mealplan-detail .price {
+    font-size: 1.5rem;
+}
+
+.mealplan-detail .btn {
+    margin-right: 10px;
+    padding: 15px 30px;
+    border-radius: 20px;
+    border: none;
+}
+
+.mealplan-detail .btn-primary {
+    background-color: var(--secondaryColor);
+}
+
+.mealplan-detail .btn-primary:hover {
+    background-color: #da2424;
+    color: #fff;
+}
+
+.mealplan-detail .btn-danger:hover {
+    background-color: var(--secondaryColor);
+    color: #fff;
+}

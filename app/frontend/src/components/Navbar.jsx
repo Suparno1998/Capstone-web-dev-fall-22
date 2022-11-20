@@ -93,8 +93,9 @@ function Navbar(props) {
             <></>
           ) : (
             <a href="/aboutus">About Us</a>
-          )
-          }<a href="/cart">Cart</a>
+          )}
+          <a href="/cart">Cart</a>
+          <a href="/mealdetail">Meal Plan Detail</a>
 
           {user ? (
             <span>

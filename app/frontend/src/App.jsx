@@ -28,6 +28,7 @@ import AdminDashboard from "./pages/admin/adminPages/AdminDashboard/AdminDashboa
 import AdminSlide from "./pages/admin/adminPages/AdminOrders/AdminOrders.jsx";
 import ListOfUsers from "./pages/admin/adminPages/ListOfUsers/ListOfUsers.jsx";
 import ContactMessages from "./pages/admin/adminPages/ContactMessages/ContactMessages.jsx";
+import MealPlanDetail from "./pages/MealPlanDetail/MealPlanDetail.jsx";
 export default function App() {
   const [bmiModal, setBMIModal] = useState(false);
   const { user } = useAuthContext();
@@ -101,6 +102,7 @@ export default function App() {
           <Route path="/verify" exact element={<VerifyEmail />}></Route>
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/mealdetail" element={<MealPlanDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
