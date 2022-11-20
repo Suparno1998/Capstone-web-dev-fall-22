@@ -1,6 +1,7 @@
 const express = require("express");
 const adminRouter = express.Router();
 const { MessageModel } = require("../models/Message");
+const {UserModel} = require("../models/User")
 
 adminRouter.get("/messages", (req, res) => {
   MessageModel.find({}, (err, data) => {
@@ -17,7 +18,7 @@ adminRouter.get("/messages", (req, res) => {
 adminRouter.get("/users-list", async (req, res) => {
   try {
     console.log("$$$$$$$$$$$$$$")
-    const userList = await User.find({});
+    const userList = await UserModel.find();
     console.log(userList);
     //await userprofile.save()
     res.json({ status: true, data: userList });

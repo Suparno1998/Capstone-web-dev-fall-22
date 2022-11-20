@@ -3,6 +3,7 @@ const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
 const { MessageModel } = require("../models/Message");
+const {UserModel} = require("../models/User")
 const logger = require("../utils/logger")("/routes/secureRoutes.js");
 const secureRouter = express.Router();
 
@@ -67,7 +68,7 @@ secureRouter.get("/get/plans", async (req, res) => {
 secureRouter.get("/users-list", async (req, res) => {
   try {
     console.log("$$$$$$$$$$$$$$")
-    const userList = await User.find({});
+    const userList = await UserModel.find({});
     console.log(userList);
     //await userprofile.save()
     res.json({ status: true, data: userList });

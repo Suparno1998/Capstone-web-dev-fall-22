@@ -2,7 +2,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap"
 import { fetchData } from "../../utils/functions.js";
-import axios from "../../../../routes/axios"
+import axios from "axios"
+//import {useAuthContext} from '../../utils/AuthContext.js'
 import "./RegisteredUsers.css";
 
 function RegisteredUsers(){
@@ -10,7 +11,7 @@ function RegisteredUsers(){
 
     useEffect(() => {
         const fetchusers = async () => {
-          const userlist = await axios.get("/admin/users-list");
+          const userlist = await axios.get("/other/users-list");
           console.log("messages >>>>>", message);
           setUserList(userlist);
         };
@@ -18,7 +19,7 @@ function RegisteredUsers(){
       }, []);
 
     /* const fetchUsers = () => {
-        return fetchData("/other/users-list")
+        return fetch("/other/users-list")
             .then((response) => response.json())
             .then((data) => setUserList(data));
     }
