@@ -64,6 +64,4 @@ secureRouter.get("/get/plans", async (req, res) => {
   }
 });
 
-
-
 module.exports = { secureRouter };

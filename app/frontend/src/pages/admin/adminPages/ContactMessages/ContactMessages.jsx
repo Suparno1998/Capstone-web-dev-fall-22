@@ -1,12 +1,15 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import axios from "../../../../../../routes/axios";
 
 const ContactMessages = () => {
+  const [messages, setMessages] = useState("");
+
   useEffect(() => {
     const fetchmessage = async () => {
-      const message = await axios.get("/message/get");
+      const message = await axios.get("/admin/messages");
       console.log("messages >>>>>", message);
+      setMessages(message);
     };
     fetchmessage();
   }, []);
