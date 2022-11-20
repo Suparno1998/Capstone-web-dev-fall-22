@@ -7,6 +7,7 @@ import HomePage from "./pages/homepage/HomePage.jsx";
 import VerifyEmail from "./pages/verifyEmail.jsx";
 import MealPlan from "./pages/MealPlan/Mealplan.jsx";
 import AboutUs from "./pages/aboutus/AboutUs.jsx";
+import Cart from "./pages/cart/cart.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import UserProfile from "./pages/UserProfile/UserProfile.jsx";
 import Admin from "./pages/admin/Admin.jsx";
@@ -100,6 +101,7 @@ export default function App() {
           <Route path="/verify" exact element={<VerifyEmail />}></Route>
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/user-profile"
