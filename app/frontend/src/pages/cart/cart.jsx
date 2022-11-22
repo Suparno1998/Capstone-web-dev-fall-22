@@ -1,5 +1,6 @@
 import React from "react";
 import './cart.css'
+
 import Navbar from "../../components/Navbar.jsx";
 
 const Cart = () => {
@@ -19,13 +20,16 @@ const Cart = () => {
     <label class="product-line-price">Total</label>
   </div>
 
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg"/>
+  <div class="productc">
+    <div class="productc-image">
+      <img src="https://joyfoodsunshine.com/wp-content/uploads/2018/04/balsamic-roasted-vegetables-recipe-2.jpg"/>
     </div>
     <div class="product-details">
-      <div class="product-title">Dingo Dog Bones</div>
-      <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+      <div class="product-title">Salmon With Vegetables</div>
+      <p class="product-description"> Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo.</p>
     </div>
     <div class="product-price">12.99</div>
     <div class="product-quantity">
@@ -39,13 +43,13 @@ const Cart = () => {
     <div class="product-line-price">25.98</div>
   </div>
 
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png"/>
+  <div class="productc">
+    <div class="productc-image">
+      <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/10/Deviled-Eggs-Recipe.jpg"/>
     </div>
     <div class="product-details">
-      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
+      <div class="product-title">Eggs With Bacon</div>
+      <p class="product-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
     <div class="product-price">45.99</div>
     <div class="product-quantity">
