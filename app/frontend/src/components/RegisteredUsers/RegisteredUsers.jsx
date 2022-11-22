@@ -17,16 +17,25 @@ function RegisteredUsers() {
 
   const handleClick = async (e,id,status)=>{
     e.preventDefault()
-    alert("clicked ID  "+id+" Status is "+status)
+    //alert("clicked ID  "+id+" Status is "+status)
     const userObject = {
         id : id,
         status : status
     }
     console.log(userObject)
     if(userObject){
-        alert(userObject)
+        //alert(userObject)
             const data = await axios.get(`/admin/update-user-status?id=${id}&status=${status}`)
-            setUserList(data);
+
+            if(data){
+                alert("User details updated");
+                setUserList( data);
+                
+            }
+            else{
+                alert("not")
+            }
+            
         }
     else{
         alert("no data");
