@@ -40,7 +40,7 @@ const Sidebar = () => {
           <li>
             <Link to="/admin-home/listofusers">
               <i class="fa fa-blog "></i>{" "}
-              <span className="nav-label">List of Users</span>
+              <span className="nav-label">Users</span>
             </Link>
           </li>
           <li>
