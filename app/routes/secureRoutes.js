@@ -3,7 +3,7 @@ const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
 const { MessageModel } = require("../models/Message");
-const {UserModel} = require("../models/User")
+const { UserModel } = require("../models/User");
 const logger = require("../utils/logger")("/routes/secureRoutes.js");
 const secureRouter = express.Router();
 
