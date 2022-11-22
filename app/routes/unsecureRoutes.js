@@ -75,24 +75,4 @@ router.post('/contact',async (req,res)=>{
         res.json({status : false, error : err})
     }
 })
-
-router.get("/users-list", async (req, res) => {
-  try {
-    console.log("$$$$$$$$$$$$$$")
-    const userList = await UserModel.find({});
-    console.log(userList);
-    //await userprofile.save()
-    res.json({ status: true, data: userList });
-  } catch (e) {
-    console.log("@@@@@@@@@@@@@@@@@");
-    console.log(e);
-    res.json({ status: false, error: e });
-  }
-});
-
-
-
-
-
-
 module.exports = {router}
