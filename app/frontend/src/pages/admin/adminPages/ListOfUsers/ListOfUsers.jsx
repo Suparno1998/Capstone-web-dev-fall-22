@@ -32,10 +32,13 @@ const ListOfUsers = () => {
                 <tr>
                   <td>{listofuser._id}</td>
                   <td>{listofuser.email}</td>
-                  <td>{listofuser.name}</td>
+                  <td>{listofuser.role}</td>
                   <td>
-                    <a className="btn btn-danger" href="#">
+                    <a className="btn btn-danger mx-2" href="#">
                       Delete
+                    </a>
+                    <a className="btn btn-primary mx-2" href="#">
+                      Edit User
                     </a>
                   </td>
                 </tr>
