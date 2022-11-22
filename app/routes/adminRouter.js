@@ -15,20 +15,9 @@ adminRouter.get("/messages", (req, res) => {
   });
 });
 
-adminRouter.get("/orders", (req, res) => {
-  UserModel.find({}, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-      console.log("This is error", err);
-    } else {
-      res.status(200).send(data);
-      console.log("This is data", data);
-    }
-  })
-});
 adminRouter.get("/users-list", async (req, res) => {
   try {
-    console.log("$$$$$$$$$$$$$$")
+    console.log("$$$$$$$$$$$$$$");
     const userList = await UserModel.find();
     console.log(userList);
     //await userprofile.save()
@@ -40,4 +29,4 @@ adminRouter.get("/users-list", async (req, res) => {
   }
 });
 
-module.exports =  {adminRouter} 
+module.exports = { adminRouter };
