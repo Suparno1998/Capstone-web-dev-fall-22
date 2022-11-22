@@ -15,18 +15,16 @@ adminRouter.get("/messages", (req, res) => {
   });
 });
 
-adminRouter.get("/users-list", async (req, res) => {
-  try {
-    console.log("$$$$$$$$$$$$$$");
-    const userList = await UserModel.find();
-    console.log(userList);
-    //await userprofile.save()
-    res.json({ status: true, data: userList });
-  } catch (e) {
-    console.log("@@@@@@@@@@@@@@@@@");
-    console.log(e);
-    res.json({ status: false, error: e });
-  }
+adminRouter.get("/users-list", (req, res) => {
+  UserModel.find({}, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log("This is error", err);
+    } else {
+      res.status(200).send(data);
+      console.log("This is data", data);
+    }
+  });
 });
 
 module.exports = { adminRouter };
