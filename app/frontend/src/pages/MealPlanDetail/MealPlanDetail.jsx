@@ -46,11 +46,128 @@ const MealPlanDetail = () => {
             </button>
           </div>
         </div>
-        <div className="mealplan-by-days">
-            <h2>Meal Plan Description By Days</h2>
-            <div className="mealplanday-card">
-                
+        <h2 className="bold mb-4">Meal Plan Description</h2>
+        <div className="mealplan_card">
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={200}
+            />
+            <div class="card-body">
+              <h5 class="card-title bold">
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+              <button class="btn btn-danger">Day1</button>
             </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+
+              <button class="btn btn-danger">Day 2</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+
+              <button class="btn btn-danger">Day 3</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+
+              <button class="btn btn-danger">Day 4</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+
+              <button class="btn btn-danger">Day 5</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+
+              <button class="btn btn-danger">Day 6</button>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="./images/day1.jpg"
+              alt="Card image cap"
+              width={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {" "}
+                butter chicken/ Omlet/ Roasted Chicken/ Tandoori Murga Full/
+                Chinese Salad
+              </h5>
+              {/* <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p> */}
+              <button class="btn btn-danger">Day 7</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

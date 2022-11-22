@@ -15,7 +15,7 @@ const Admin = () => {
     <div id="wrapper">
       <Sidebar />
       <div id="page-wrapper" className="gray-bg dashboard-1">
-        <div className="container">
+        <div className="container-fluid">
           <Routes>
             <Route path="dashboard" element={<AdminDashboard />} />
             <Route path="orders" element={<AdminSlide />} />
