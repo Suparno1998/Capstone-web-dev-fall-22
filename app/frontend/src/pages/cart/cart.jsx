@@ -5,88 +5,75 @@ import Navbar from "../../components/Navbar.jsx";
 
 const Cart = () => {
   return (
-    
-        <section id="cart">
-            <h1>Shopping Cart</h1>
-
-<div class="shopping-cart">
-
-  <div class="column-labels">
-    <label class="product-image">Image</label>
-    <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
-    <label class="product-quantity">Quantity</label>
-    <label class="product-removal">Remove</label>
-    <label class="product-line-price">Total</label>
-  </div>
-
-  <div class="productc">
-    <div class="productc-image">
-      <img src="https://joyfoodsunshine.com/wp-content/uploads/2018/04/balsamic-roasted-vegetables-recipe-2.jpg"/>
+    <div className="cart cart-page">
+        <div className="row">
+                <div className="col-md-8 cart">
+                    <div className="title">
+                        <div className="row">
+                            <div className="col"><h4><b>Shopping Cart</b></h4></div>
+                            <div className="col align-self-center text-right text-muted">3 items</div>
+                        </div>
+                    </div>    
+                    <div className="row border-top border-bottom">
+                        <div className="row main align-items-center">
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"/></div>
+                            <div className="col">
+                                <div className="row text-muted">Regular Meal</div>
+                                <div className="row">Regular Meal Plan</div>
+                            </div>
+                            <div className="col">
+                                <a href="#">-</a><a href="#" className="border">1</a><a href="#">+</a>
+                            </div>
+                            <div className="col">$ 44.00 </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="row main align-items-center">
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"/></div>
+                            <div className="col">
+                                <div className="row text-muted">Diet Meal</div>
+                                <div className="row">Diet Meal Plan</div>
+                            </div>
+                            <div className="col">
+                                <a href="#">-</a><a href="#" className="border">1</a><a href="#">+</a>
+                            </div>
+                            <div className="col">$ 44.00 </div>
+                        </div>
+                    </div>
+                    <div className="row border-top border-bottom">
+                        <div className="row main align-items-center">
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"/></div>
+                            <div className="col">
+                                <div className="row text-muted">High Calories</div>
+                                <div className="row">High Calories Meal Plan</div>
+                            </div>
+                            <div className="col">
+                                <a href="#">-</a><a href="#" className="border">1</a><a href="#">+</a>
+                            </div>
+                            <div className="col">$ 44.00 </div>
+                        </div>
+                    </div>
+                    <div className="back-to-shop"><span className="text-muted">Back to shop</span></div>
+                </div>
+                <div className="col-md-4 summary">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr/>
+                    <div className="row">
+                        <div className="col">ITEMS 3</div>
+                        <div className="col text-right">$ 132.00</div>
+                    </div>
+                    <form>
+                        <p>COUPON CODE</p>
+                        <input id="code" placeholder="Enter your code"/>
+                    </form>
+                    <div className="row" >
+                        <div className="col">TOTAL PRICE</div>
+                        <div className="col text-right">$ 132.00</div>
+                    </div>
+                    <button className="btn">CHECKOUT</button>
+                </div>
+            </div>
     </div>
-    <div class="product-details">
-      <div class="product-title">Salmon With Vegetables</div>
-      <p class="product-description"> Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae ab illo inventore veritatis et quasi architecto beatae vitae
-              dicta sunt explicabo.</p>
-    </div>
-    <div class="product-price">12.99</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1"/>
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
-  <div class="productc">
-    <div class="productc-image">
-      <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/10/Deviled-Eggs-Recipe.jpg"/>
-    </div>
-    <div class="product-details">
-      <div class="product-title">Eggs With Bacon</div>
-      <p class="product-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-    <div class="product-price">45.99</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1"/>
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">45.99</div>
-  </div>
-
-  <div class="totals">
-    <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
-    </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div>
-      
-      <button class="checkout">Checkout</button>
-
-</div>
-        </section>
-    
   );
 };
 
