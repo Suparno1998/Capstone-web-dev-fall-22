@@ -16,7 +16,7 @@ const Cart = () => {
                     </div>    
                     <div className="row border-top border-bottom">
                         <div className="row main align-items-center">
-                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"/></div>
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" alt="Regular meal plan"/></div>
                             <div className="col">
                                 <div className="row text-muted">Regular Meal</div>
                                 <div className="row">Regular Meal Plan</div>
@@ -29,7 +29,7 @@ const Cart = () => {
                     </div>
                     <div className="row">
                         <div className="row main align-items-center">
-                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"/></div>
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg" alt="Diet meal plan"/></div>
                             <div className="col">
                                 <div className="row text-muted">Diet Meal</div>
                                 <div className="row">Diet Meal Plan</div>
@@ -42,7 +42,7 @@ const Cart = () => {
                     </div>
                     <div className="row border-top border-bottom">
                         <div className="row main align-items-center">
-                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"/></div>
+                            <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg" alt="High calories meal plan"/></div>
                             <div className="col">
                                 <div className="row text-muted">High Calories</div>
                                 <div className="row">High Calories Meal Plan</div>
