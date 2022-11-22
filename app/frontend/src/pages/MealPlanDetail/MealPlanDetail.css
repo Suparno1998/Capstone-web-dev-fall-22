@@ -71,3 +71,15 @@
     background-color: var(--secondaryColor);
     color: #fff;
 }
+
+.mealplan_card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: 400px;
+    height: 450px;
+}
