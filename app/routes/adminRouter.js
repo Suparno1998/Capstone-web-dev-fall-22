@@ -96,4 +96,94 @@ adminRouter.get("/update-user-status", (req, res) => {
   }
 });
 
+
+//CREATE
+
+adminRouter.post("/", isAdmin, async (req, res) => {
+  const { name, desc, price, image } = req.body;
+
+  try {
+    if (image) {
+      const uploadedResponse = await cloudinary.uploader.upload(image, {
+        upload_preset: "Meal Plan",
+      });
+
+      if (uploadedResponse) {
+        const meal = new mealPlan({
+          name,
+          desc,
+          price,
+          image: uploadedResponse,
+        });
+
+        const savedmealPlan = await meal.save();
+        res.status(200).send(savedmealPlan);
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+});
+
+//DELETE
+
+adminRouter.delete("/:id", isAdmin, async (req, res) => {
+  try {
+    await mealPlan.findByIdAndDelete(req.params.id);
+    res.status(200).send("MealPlan has been deleted...");
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//GET ALL mealPlanS
+
+adminRouter.get("/", async (req, res) => {
+  const mealplan = req.query.brand;
+  try {
+    let meals;
+
+    if (mealplan) {
+      meals = await mealPlan.find({
+        title: mealplan,
+      });
+    } else {
+      meals = await mealPlan.find();
+    }
+
+    res.status(200).send(meals);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//GET mealPlan
+
+adminRouter.get("/find/:id", async (req, res) => {
+  try {
+    const meal = await mealPlan.findById(req.params.id);
+    res.status(200).send(meal);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//UPDATE
+
+adminRouter.put("/:id", isAdmin, async (req, res) => {
+  try {
+    const updatedmealPlan = await mealPlan.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).send(updatedmealPlan);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = { adminRouter };
