@@ -28,7 +28,7 @@ const MealPlan = () => {
         ) : (
           <>
             <div className="row text-center">
-              <h1>Our Meal Plans</h1>
+              <h1 className="bold mt-4">Our Meal Plans</h1>
             </div>
             <div className="row d-flex">
               <div className="meal-plan-list">
