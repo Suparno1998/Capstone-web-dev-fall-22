@@ -54,7 +54,13 @@ export default function App() {
             element={
               user && user.role === "admin" ? <Admin /> : <IncorrectAccess />
             }
-          />
+          >
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="orders" element={<AdminSlide />} />
+            <Route path="mealplan" element={<AdminMealPlan />} />
+            <Route path="listofusers" element={<ListOfUsers />} />
+            <Route path="contactmessages" element={<ContactMessages />} />
+          </Route>
           <Route
             path="/admin-mealplan"
             element={
@@ -63,6 +69,12 @@ export default function App() {
               ) : (
                 <IncorrectAccess />
               )
+            }
+          />
+          <Route
+            path="/registeredusers"
+            element={
+              user && user.role === "admin" ? <RegisteredUsers /> : <></>
             }
           />
           <Route
