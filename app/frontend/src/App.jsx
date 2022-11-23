@@ -45,58 +45,20 @@ export default function App() {
   };
   return (
     <div>
-      <Navbar />
+      <Navbar></Navbar>
 
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/admin-home"
-            element={
-              user && user.role === "admin" ? <Admin /> : <IncorrectAccess />
-            }
-          />
-          <Route
-            path="/admin-mealplan"
-            element={
-              user && user.role === "admin" ? (
-                <AdminMealPlan />
-              ) : (
-                <IncorrectAccess />
-              )
-            }
-          />
-          <Route
-            path="/registered-users"
-            element={
-              user && user.role === "admin" ? (
-                <RegisteredUsers />
-              ) : (
-                <IncorrectAccess />
-              )
-            }
-          />
-          <Route
-            path="/subscribers"
-            element={
-              user && user.role === "admin" ? (
-                <NewsletterSubscribers />
-              ) : (
-                <IncorrectAccess />
-              )
-            }
-          />
-          <Route path="/resend" element={<ResendVerification />}></Route>
-          <Route path="/forget" element={<ForgetPassword />}></Route>
-          <Route path="/reset" element={<ResetPassword />}></Route>
-          <Route
-            path="/"
-            element={user ? <HomePage /> : <LandingPage />}
-          ></Route>
-          <Route
-            path="/home"
-            element={user ? <HomePage /> : <IncorrectAccess />}
-          ></Route>
-          <Route path="/verify" exact element={<VerifyEmail />}></Route>
+          <Route path="/admin-home/*" element={user && user.role === "admin" ? <Admin/> : <IncorrectAccess/>} />
+          <Route path="/admin-mealplan" element={user && user.role === "admin" ? <AdminMealPlan /> : <IncorrectAccess/>} />
+          <Route path="/registered-users" element={user && user.role === "admin" ? <RegisteredUsers /> : <IncorrectAccess/>} />
+          <Route path="/subscribers" element={user && user.role === "admin" ? <NewsletterSubscribers /> : <IncorrectAccess/>} />
+          <Route path="/resend" element={<ResendVerification/>}></Route>
+          <Route path="/forget" element={<ForgetPassword/>}></Route>
+          <Route path="/reset" element={<ResetPassword/>}></Route>
+          <Route path="/" element={user ? <HomePage/> : <LandingPage/>}></Route>
+          <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
+          <Route path="/verify" exact element={<VerifyEmail/>}></Route>
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/mealdetail" element={<MealPlanDetail />} />
@@ -122,7 +84,7 @@ export default function App() {
       </Modal>
       {user && user.role === "admin" ? <></> : <Footer></Footer>}
     </div>
-  );
+  )
 }
 
 const element = document.getElementById("app");

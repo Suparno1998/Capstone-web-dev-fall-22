@@ -17,16 +17,15 @@ const Admin = () => {
       <div id="page-wrapper" className="gray-bg dashboard-1">
         <div className="container-fluid">
           <Routes>
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="orders" element={<AdminSlide />} />
-            <Route path="mealplan" element={<AdminMealPlan />} />
-            <Route path="listofusers" element={<ListOfUsers />} />
-            <Route path="contactmessages" element={<ContactMessages />} />
+            <Route path="/dashboard" element={<AdminDashboard />} />
+            <Route path="/orders" element={<AdminSlide />} />
+            <Route path="/mealplan" element={<AdminMealPlan />} />
+            <Route path="/listofusers" element={<ListOfUsers />} />
+            <Route path="/contactmessages" element={<ContactMessages />} />
           </Routes>
         </div>
       </div>
     </div>
   );
-};
-
+}
 export default Admin;

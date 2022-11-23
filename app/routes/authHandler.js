@@ -107,10 +107,10 @@ authHandler.post("/reset", async (req, res) => {
       let newHashedPassword = await bcrypt.hash(password, 10);
       await UserModel.updateOne(
         { email: email },
-        { password: bcrypt.hash(newHashedPassword, 10) }
+        { password: newHashedPassword }
       );
     }
-    res.send({ status: true, message: "Passowrd reset successfully" });
+    res.send({ status: true, message: "Password reset successfully" });
   } catch (err) {
     logger.info(err);
     res.json({
