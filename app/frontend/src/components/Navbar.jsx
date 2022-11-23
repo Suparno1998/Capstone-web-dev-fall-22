@@ -13,7 +13,7 @@ import "../styles/main.css";
 
 function Navbar(props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("login")
+  const [activeTab, setActiveTab] = useState("login");
   const navRef = useRef();
   const { user } = useAuthContext();
   const showNavbar = () => {
@@ -32,15 +32,15 @@ function Navbar(props) {
     logout();
   };
 
-  const openRegister = ()=>{
-    console.log('open register')
-    setActiveTab("register")
-  }
+  const openRegister = () => {
+    console.log("open register");
+    setActiveTab("register");
+  };
 
   const openLogin = () => {
-    console.log('open login')
-    setActiveTab("login")
-  }
+    console.log("open login");
+    setActiveTab("login");
+  };
   return (
     <header>
       <div className="container topbar">
@@ -67,11 +67,11 @@ function Navbar(props) {
             <a href="/mealplan">Meal Plans</a>
           )} */}
 
-          {user && user.role === "admin" ? (
+          {/* {user && user.role === "admin" ? (
             <a href="/admin-mealplan">Admin Meal Plan</a>
           ) : (
             <></>
-          )}
+          )} */}
           {user && user.role === "admin" ? (
             <a href="/registered-users">Users</a>
           ) : (
@@ -118,12 +118,24 @@ function Navbar(props) {
       </div>
       <Modal show={isLoginModalOpen} onHide={handleClose}>
         <Modal.Body className="p-0">
-          <Tabs activeKey={activeTab} id="uncontrolled-tab-example" className="mb-3" fill onSelect={(k)=>setActiveTab(k)}>
+          <Tabs
+            activeKey={activeTab}
+            id="uncontrolled-tab-example"
+            className="mb-3"
+            fill
+            onSelect={(k) => setActiveTab(k)}
+          >
             <Tab eventKey="login" title="Login">
-              <Login handleClose={handleClose} openFunction={openRegister}></Login>
+              <Login
+                handleClose={handleClose}
+                openFunction={openRegister}
+              ></Login>
             </Tab>
-            <Tab eventKey="register" title="Register" >
-              <Register handleClose={handleClose} openFunction={openLogin}></Register>
+            <Tab eventKey="register" title="Register">
+              <Register
+                handleClose={handleClose}
+                openFunction={openLogin}
+              ></Register>
             </Tab>
           </Tabs>
         </Modal.Body>

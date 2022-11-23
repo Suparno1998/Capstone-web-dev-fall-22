@@ -1,12 +1,12 @@
 const express = require("express");
-const logger = require("./utils/logger")('server.js');
-const path = require('path')
-const passport = require('passport');
+const logger = require("./utils/logger")("server.js");
+const path = require("path");
+const passport = require("passport");
 const { connectToDB } = require("./utils/dbHandler");
 const { authHandler } = require("./routes/authHandler");
-const { secureRouter } = require("./routes/secureRoutes")
+const { secureRouter } = require("./routes/secureRoutes");
 const { router } = require("./routes/unsecureRoutes");
-const {adminRouter} = require("./routes/adminRouter");
+const { adminRouter } = require("./routes/adminRouter");
 require("dotenv").config();
 const constants = require("./constants").getConstants(process.env.MODE);
 //logger.info(JSON.stringify(constants))
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("./frontend/public"));
 //auth handler handling all authentication requests
 app.use("/auth", authHandler);
-app.use("/admin", adminRouter);
+//app.use("/admin", adminRouter);
 //insecure router handling all insecure requests
 app.use("/other", router);
 app.use("/api", passport.authenticate("jwt", { session: false }), secureRouter);
@@ -40,11 +40,24 @@ app.get("/check", (req, res) => {
   }
 });
 
+// app.get("/messages", (req, res) => {
+//   MessageModel.find({}, (err, data) => {
+//     if (err) {
+//       res.status(500).send(err);
+//       console.log("This is error", err);
+//     } else {
+//       res.status(200).send(data);
+//       console.log("This is data", data);
+//     }
+//   });
+// });
+
 // app.use((req,res,next)=>{
 //   res.status(404)
 //   res.redirect('/')
 // })
 app.get("/*", function (req, res) {
+  console.log("In mess api");
   res.sendFile(path.join(__dirname, "./frontend/public/index.html"));
 });
 app.listen(PORT, async (req, res) => {

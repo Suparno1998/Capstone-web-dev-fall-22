@@ -1,21 +1,23 @@
-.span{
-    
-}
-.wrapper-bmi{
-    padding-left:520px;
-    width:100%;
-    border-radius:5px;
+.span {}
+
+.wrapper-bmi {
+    padding-left: 520px;
+    width: 100%;
+    border-radius: 5px;
     box-shadow: rgb(171, 255, 180) 0px 20px 30px -10px;
 }
-.card{
-    width:50%;
+
+.card {
+    width: 50%;
 }
-.input{
+
+.input {
     outline: none;
     padding: 10px;
-    color:#00400f;
+    color: #00400f;
 }
-.button{
+
+.button {
     color: white;
     padding: 10px;
     border: 2px solid white;

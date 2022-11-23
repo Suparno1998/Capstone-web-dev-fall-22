@@ -6,34 +6,38 @@ const { MealPlanModel } = require('../models/Mealplan')
 const logger = require('../utils/logger')('/routes/secureRoutes.js')
 const secureRouter = express.Router()
 
-secureRouter.post('/profile',async (req,res)=>{
-    try{
-        var data = req.body
-        let doc = await UserProfileModel.findOneAndUpdate({user_id : req.user.user_id},{...data},{
-            new: true
-        })
-        logger.info(JSON.stringify(doc))
-        res.json({"status" : true, data : doc})
-    }
-    catch(e){
-        logger.error(e)
-        res.json({"status": false, error : e})
-    }
-})
+secureRouter.post("/profile", async (req, res) => {
+  try {
+    var data = req.body;
+    let doc = await UserProfileModel.findOneAndUpdate(
+      { user_id: req.user.user_id },
+      { ...data },
+      {
+        new: true,
+      }
+    );
+    logger.info(JSON.stringify(doc));
+    res.json({ status: true, data: doc });
+  } catch (e) {
+    logger.error(e);
+    res.json({ status: false, error: e });
+  }
+});
 
-secureRouter.get('/profile-data',async (req,res)=>{
-    try{
-        logger.info(req.isExpired)
-        const profiledata = await UserProfileModel.findOne({user_id : req.user.user_id})
-        logger.info(profiledata)
-        //await userprofile.save()
-        res.json({"status" : true, "data": profiledata})
-    }
-    catch(e){
-        logger.error(e)
-        res.json({"status": false, error : e})
-    }
-})
+secureRouter.get("/profile-data", async (req, res) => {
+  try {
+    logger.info(req.isExpired);
+    const profiledata = await UserProfileModel.findOne({
+      user_id: req.user.user_id,
+    });
+    logger.info(profiledata);
+    //await userprofile.save()
+    res.json({ status: true, data: profiledata });
+  } catch (e) {
+    logger.error(e);
+    res.json({ status: false, error: e });
+  }
+});
 
 secureRouter.get('/get/plans',async (req,res)=>{
     try{
@@ -66,4 +70,5 @@ secureRouter.get('/get/plans',async (req,res)=>{
 })
 
 
-module.exports = { secureRouter }
+
+module.exports = { secureRouter };

@@ -1,53 +1,39 @@
-import React, { useState } from "react"
-import { Button, Alert } from "react-bootstrap"
+import React, { useState } from "react";
+import { Button, Alert } from "react-bootstrap";
 import { useLogIn } from "../utils/useLogin";
 import PasswordInput from "./PasswordInput.jsx";
-import {useNavigate, useLocation} from 'react-router-dom'
-export default function Login(props){
-    const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca")
-    const [password, setPassword] = useState("testab101")
-    const [variant, setVariant] = useState("danger")
-    const [hasError, setHasError] = useState(false)
-    const {login, error, isLoading} = useLogIn()
+import { useNavigate, useLocation } from "react-router-dom";
+export default function Login(props) {
+  const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca");
+  const [password, setPassword] = useState("testab101");
+  const [variant, setVariant] = useState("danger");
+  const [hasError, setHasError] = useState(false);
+  const { login, error, isLoading } = useLogIn();
 
-    const openRegister = (e) =>{
-        e.preventDefault()
-        props.openFunction()
+  const openRegister = (e) => {
+    e.preventDefault();
+    props.openFunction();
+  };
+  const handleChange = (evt) => {
+    if (evt.target.name === "login-email") {
+      setEmail(evt.target.value);
+    } else if (evt.target.name === "login-password") {
+      setPassword(evt.target.value);
     }
-    const handleChange = (evt)=>{
-        if(evt.target.name === "login-email"){
-            setEmail(evt.target.value)
-        }
-        else if(evt.target.name === "login-password"){
-            setPassword(evt.target.value)
-        }
+  };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      setError("Email is required");
+      setHasError(true);
+      return;
     }
-    const handleLogin = async (e)=>{
-        e.preventDefault()
-        if(email === ""){
-            setError("Email is required")
-            setHasError(true)
-            return
-        }
-        if(password === ""){
-            setError("Password is required")
-            setHasError(true)
-            return
-        }
-        setHasError(false)
-        const loginObject = {
-            email : email,
-            password : password
-        }
-        let response = await login(email, password)
-        if(!response.status){
-            setHasError(true)
-            setVariant("danger")
-        }else{
-            window.location.href="/home"
-        }
-        
+    if (password === "") {
+      setError("Password is required");
+      setHasError(true);
+      return;
     }
+  }
     return (
 		<div className="form">
             <div className="row">
@@ -89,6 +75,6 @@ export default function Login(props){
                     <a href="#" className="small" onClick={openRegister}>Don't have an account? Sign Up!</a>
                 </div>
            </div>
-        </div>
-    )
+      </div>
+  );
 }
