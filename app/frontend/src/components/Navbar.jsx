@@ -10,6 +10,7 @@ import Login from "./Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "../components/Register.jsx";
 import "../styles/main.css";
+import RegisteredUsers from "./RegisteredUsers/RegisteredUsers.jsx";
 
 function Navbar(props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -55,9 +56,18 @@ function Navbar(props) {
         <nav ref={navRef}>
           {!user ? <a href="/">Home</a> : <></>}
           {user && user.firstname === "" ? <a href="/home">Home</a> : <></>}
-          {user && user.firstname ? <a href="/home">{user.firstname}'s Home</a> : <></>}
+          {user && user.firstname ? (
+            <a href="/home">{user.firstname}'s Home</a>
+          ) : (
+            <></>
+          )}
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "admin" ? (
+            <a href="/registeredusers"> Users</a>
           ) : (
             <></>
           )}

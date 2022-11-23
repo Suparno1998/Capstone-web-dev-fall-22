@@ -45,7 +45,7 @@ export default function App() {
   };
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
 
       <BrowserRouter>
         <Routes>
@@ -84,7 +84,7 @@ export default function App() {
       </Modal>
       {user && user.role === "admin" ? <></> : <Footer></Footer>}
     </div>
-  )
+  );
 }
 
 const element = document.getElementById("app");
