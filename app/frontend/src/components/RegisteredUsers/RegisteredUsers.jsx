@@ -33,7 +33,7 @@ function RegisteredUsers() {
                 
             }
             else{
-                alert("not")
+                alert("Not updated")
             }
             
         }
