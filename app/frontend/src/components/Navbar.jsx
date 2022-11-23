@@ -6,7 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Modal from "react-bootstrap/Modal";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Login from "../components/Login.jsx";
+import Login from "./Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "../components/Register.jsx";
 import "../styles/main.css";
@@ -92,8 +92,6 @@ function Navbar(props) {
             <a href="/aboutus">About Us</a>
           )}
           <a href="/cart">Cart</a>
-          <a href="/mealdetail">Meal Plan Detail</a>
-
           {user ? (
             <span>
               <a href="user-profile">Profile</a>

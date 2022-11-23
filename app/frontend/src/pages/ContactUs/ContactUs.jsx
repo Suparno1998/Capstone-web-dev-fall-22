@@ -132,14 +132,12 @@ const ContactUs = () => {
       </form>
     </div>
 
-    <div className="contacts contact-wrapper">
+    <div className="contacts contact-wrapper text-center">
       <ul>
-        <li>We've driven online revenues of over <span className="highlight-text-grey">$2
-            billion</span> for our clients. Ready to know
-          how we can help you?</li>
+        <li>We've helped <span className="highlight-text-grey ">3000</span> people maintain a healthy diet. Ready to know how ?</li>
         <span className="hightlight-contact-info text-center">
           <li className="email-info mb-3"><i className="fa fa-envelope" aria-hidden="true"></i> info@demo.com</li>
-          <li className="mb-3"><i className="fa fa-phone" aria-hidden="true"></i> <span className="highlight-text">+91 11 1111 2900</span></li>
+          <li className="mb-3"><i className="fa fa-phone" aria-hidden="true"></i> <span className="highlight-text">+1 111 111 2900</span></li>
         </span>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195551.47782872536!2d-105.5515105671875!3d40.01979699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bec2a2e179131%3A0xbd5654e9f8c405cd!2sFood%20Lab!5e0!3m2!1sen!2sca!4v1666908911565!5m2!1sen!2sca" allowFullScreen="" height={350} width={750} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       </ul>

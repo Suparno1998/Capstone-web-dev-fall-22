@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require('mongoose')
 const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
@@ -39,6 +40,23 @@ secureRouter.get("/profile-data", async (req, res) => {
     res.json({ status: false, error: e });
   }
 });
+
+secureRouter.post('/subscribe', async (req,res)=>{
+  try{
+    //console.log(req.body)
+    const startDate = new Date(req.body.startDate)
+    const end_date = new Date(startDate.setMonth(startDate.getMonth()+parseInt(req.body.duration.replace("m",""))));
+    const startFinal = new Date(req.body.startDate)
+    //console.log(startFinal, endDate)
+    const subscribeObj = {...req.body,end_date}
+    console.log(subscribeObj)
+    await SubscriptionModel.create(subscribeObj)
+    res.json({status: true})
+  }catch(err){
+    logger.error(err)
+    res.json({"status" : false, "error" : err})
+  }
+})
 
 secureRouter.get('/get/plans',async (req,res)=>{
     try{

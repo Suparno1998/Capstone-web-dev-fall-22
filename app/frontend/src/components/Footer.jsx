@@ -52,22 +52,22 @@ function Footer() {
             <ul>
               <li>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span class="fa fa-youtube"></span>
+                  <span className="fa fa-youtube"></span>
                 </a>
               </li>
               <li>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span class="fa fa-instagram"></span>
+                  <span className="fa fa-instagram"></span>
                 </a>
               </li>
               <li>
                 <a href="https://www.facebook.com/profile.php?id=100086862995354" target="_blank" rel="noopener noreferrer">
-                  <span class="fa fa-facebook-f"></span>
+                  <span className="fa fa-facebook-f"></span>
                 </a>
               </li>
               <li>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <span class="fa fa-twitter"></span>
+                  <span className="fa fa-twitter"></span>
                 </a>
               </li>
             </ul>

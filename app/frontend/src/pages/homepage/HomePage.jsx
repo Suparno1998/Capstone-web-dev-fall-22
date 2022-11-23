@@ -15,6 +15,7 @@ const HomePage = () => {
       })
       const data = await response.json()
       if(data.status){
+        console.log(data.data)
         setUserMealPlans(data.data)
       }
       else{
@@ -31,7 +32,7 @@ const HomePage = () => {
         <h3>Subscribed Meal Plans</h3>
       </div>
       {isLoading ? <FullPageSpinner variant="success"/> : <div className="row d-flex justify-content-start meal-plan-list px-3">
-        {userMealPlans.map(v=>{v["isSubscribed"] = true; return <MealPlanCard plan={v}></MealPlanCard>})}
+        {userMealPlans.map(v=>{v.meal_plan.isSubscribed = true; return <MealPlanCard plan={v.meal_plan}></MealPlanCard>})}
       </div>}
     </div>
   );

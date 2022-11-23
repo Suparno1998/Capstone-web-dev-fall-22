@@ -33,7 +33,7 @@ const MealPlan = () => {
             <div className="row d-flex">
               <div className="meal-plan-list">
                 {meals.map((meal) => (
-                  <Mealplancard plan={meal} />
+                  <Mealplancard plan={meal} key={meal._id}/>
                 ))}
               </div>
             </div>

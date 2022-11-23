@@ -1,7 +1,9 @@
 import React from "react";
 import "../MealPlanDetail/MealPlanDetail.css";
-
+import { useParams } from "react-router";
 const MealPlanDetail = () => {
+  const {id} = useParams()
+  console.log(id)
   return (
     <section className="mealplan-detail">
       <div className="container">
@@ -26,7 +28,7 @@ const MealPlanDetail = () => {
               dicta sunt explicabo.
             </p>
             <p className="bold">
-              Energy: <span class="red">498 kkal</span>
+              Energy: <span class="red">498 kcal</span>
             </p>
             <p className="bold">
               Protein: <span class="green">26 g</span>

@@ -20,7 +20,7 @@ const SubscriptionSchema = mongoose.Schema({
         type : String,
         required : true 
     }
-},{timestamps: true })
+})
 
 
 const SubscriptionModel = mongoose.model('subscriptions', SubscriptionSchema)
