@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const logger = require("../utils/logger");
 const { SubscriberModel } = require("../models/Subscriber");
 const { UserProfileModel } = require("../models/UserProfile");
+const { User } = require("../models/User");
 const { MessageModel } = require("../models/Message");
 const { sendEmail } = require("../utils/utils");
 
@@ -66,7 +67,5 @@ router.post("/contact", async (req, res) => {
     res.json({ status: false, error: err });
   }
 });
-
-
 
 module.exports = { router };

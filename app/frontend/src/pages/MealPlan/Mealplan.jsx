@@ -5,40 +5,40 @@ import "./mealplan.css";
 
 const MealPlan = () => {
   const [meals, setMeals] = useState([]);
-  const [isLoading, setisLoading] = useState([])
-  useEffect(()=>{
-    async function fetchData(){
-      setisLoading(true)
-      const response = await fetch('/other/plans',{
-        method : "GET"
-      })
-      const data = await response.json()
-      setMeals(data.data)
-      setTimeout(()=>{
-        setisLoading(false)
-      },1000)
-      
+  const [isLoading, setisLoading] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      setisLoading(true);
+      const response = await fetch("/other/plans", {
+        method: "GET",
+      });
+      const data = await response.json();
+      setMeals(data.data);
+      setTimeout(() => {
+        setisLoading(false);
+      }, 1000);
     }
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
   return (
     <div className="meal-plan-section">
       <div className="container-fluid">
-        {isLoading ? 
-          <FullPageSpinner variant="success"/> : 
+        {isLoading ? (
+          <FullPageSpinner variant="success" />
+        ) : (
           <>
             <div className="row text-center">
-              <h1>Our Meal Plans</h1>
+              <h1 className="bold mt-4">Our Meal Plans</h1>
             </div>
             <div className="row d-flex">
               <div className="meal-plan-list">
                 {meals.map((meal) => (
-                  <Mealplancard plan = {meal}/>
+                  <Mealplancard plan={meal} />
                 ))}
               </div>
             </div>
           </>
-        }
+        )}
       </div>
     </div>
   );

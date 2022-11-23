@@ -3,32 +3,54 @@ import "../AdminOrders/AdminOrders.css";
 
 const AdminOrders = () => {
   return (
-    <div className="admin-order">
-      <h1>List of Orders</h1>
-      <table class="table table-hover">
+    <div className="subscriber-list">
+      <h1>Customer's Orders</h1>
+      <table className="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>ORDER ID</th>
+            <th scope="col">DATE</th>
+            <th scope="col">TOTAL</th>
+            <th scope="col">PAID</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>3678726386854</td>
+            <td>2022/12/11</td>
+            <td>3455</td>
+            <td>True</td>
+            <td>
+              <a className="btn btn-primary" href="#">
+                Detail
+              </a>
+            </td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>47097490fj34ur89</td>
+            <td>2022/11/11</td>
+            <td>3434</td>
+            <td>False</td>
+            <td>
+              <a className="btn btn-primary" href="#">
+                Detail
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>jksdhf82yy4382hiir2</td>
+            <td>2022/11/01</td>
+            <td>600</td>
+            <td>True</td>
+            <td>
+              <a className="btn btn-primary" href="#">
+                Detail
+              </a>
+            </td>
           </tr>
         </tbody>
-      </table>{" "}
+      </table>
     </div>
   );
 };

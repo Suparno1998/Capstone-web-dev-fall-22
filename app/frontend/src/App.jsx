@@ -7,6 +7,7 @@ import HomePage from "./pages/homepage/HomePage.jsx";
 import VerifyEmail from "./pages/verifyEmail.jsx";
 import MealPlan from "./pages/MealPlan/Mealplan.jsx";
 import AboutUs from "./pages/aboutus/AboutUs.jsx";
+import Cart from "./pages/cart/cart.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import UserProfile from "./pages/UserProfile/UserProfile.jsx";
 import Admin from "./pages/admin/Admin.jsx";
@@ -23,19 +24,27 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import ForgetPassword from "./pages/ForgetPassword.jsx";
 import NewsletterSubscribers from "./components/NewsletterSubscribers/NewsletterSubscribers.jsx";
 import RegisteredUsers from "./components/RegisteredUsers/RegisteredUsers.jsx";
-
-export default function App(){
-  const [bmiModal, setBMIModal] = useState(false)
-  const {user} = useAuthContext();
-  console.log(user)
-  const handleOpen = ()=>{
-    setBMIModal(true)
-  }
-  const handleClose = ()=>{
-    setBMIModal(false)
-  }
-  const tempfunc = ()=>{console.log("state : ",user); return user ? <HomePage/> : <IncorrectAccess/>}
-  return <div>
+import AdminDashboard from "./pages/admin/adminPages/AdminDashboard/AdminDashboard.jsx";
+import AdminSlide from "./pages/admin/adminPages/AdminOrders/AdminOrders.jsx";
+import ListOfUsers from "./pages/admin/adminPages/ListOfUsers/ListOfUsers.jsx";
+import ContactMessages from "./pages/admin/adminPages/ContactMessages/ContactMessages.jsx";
+import MealPlanDetail from "./pages/MealPlanDetail/MealPlanDetail.jsx";
+export default function App() {
+  const [bmiModal, setBMIModal] = useState(false);
+  const { user } = useAuthContext();
+  console.log(user);
+  const handleOpen = () => {
+    setBMIModal(true);
+  };
+  const handleClose = () => {
+    setBMIModal(false);
+  };
+  const tempfunc = () => {
+    console.log("state : ", user);
+    return user ? <HomePage /> : <IncorrectAccess />;
+  };
+  return (
+    <div>
       <Navbar></Navbar>
 
       <BrowserRouter>
@@ -52,6 +61,8 @@ export default function App(){
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/mealdetail" element={<MealPlanDetail />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/user-profile"
@@ -73,6 +84,7 @@ export default function App(){
       </Modal>
       {user && user.role === "admin" ? <></> : <Footer></Footer>}
     </div>
+  )
 }
 
 const element = document.getElementById("app");

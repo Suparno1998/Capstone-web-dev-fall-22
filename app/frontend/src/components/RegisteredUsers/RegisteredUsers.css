@@ -23,3 +23,11 @@
 .register-user-list .btn-primary:hover{
     background-color: #025428;
 }
+.register-user-list .activate{
+    border: 1px solid #025428;
+    color: #025428
+}
+.register-user-list .activate:hover{
+    background-color: #025428;
+    color: #fff;
+}
