@@ -2,6 +2,7 @@ const express = require("express");
 const adminRouter = express.Router();
 const { MessageModel } = require("../models/Message");
 const { UserModel } = require("../models/User");
+const { MealPlan } = require("../models/Mealplan");
 
 adminRouter.get("/messages", (req, res) => {
   MessageModel.find({}, (err, data) => {
@@ -23,6 +24,28 @@ adminRouter.delete("/message/delete/:id", (req, res) => {
       res.status(200).json({
         msg: data,
       });
+    }
+  });
+});
+
+adminRouter.get("/allmealplans", (req, res) => {
+  MealPlan.find({}, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log("This is error", err);
+    } else {
+      res.status(200).send(data);
+      console.log("This is data", data);
+    }
+  });
+});
+
+adminRouter.post("/add-mealplan", (req, res, next) => {
+  MealPlan.create(req.body, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
     }
   });
 });
@@ -95,6 +118,5 @@ adminRouter.get("/update-user-status", (req, res) => {
     }
   }
 });
-
 
 module.exports = { adminRouter };

@@ -39,11 +39,6 @@ const AdminMealPlan =()=>{
         );
       };
 
-
-
-
-
-
 return(
 <div>
       <form onSubmit={handleSubmit}>
