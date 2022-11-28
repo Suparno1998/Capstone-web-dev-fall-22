@@ -1,0 +1,34 @@
+.form-item {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.add-mealplan-heading {
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+.add-mealplan-button {
+    margin-top: 1em;
+}
+
+.form-item label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.title_input {
+    margin-left: 10em;
+}
+
+.short_description_input {
+    margin-left: 2.5em;
+}
+
+.description_input {
+    margin-left: 6em;
+}
+
+.price_input {
+    margin-left: 9.5em;
+}

@@ -1,91 +1,79 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import axios from "../../../../../src/utils/axios";
+import AddNewMealPlan from "./AddNewMealPlan/AddNewMealPlan.jsx";
 
-const AdminMealPlan =()=>{
-    const [productImg, setProductImg] = useState("");
-    const [createStatus, setCreateStatus] = useState(false)
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [desc, setDesc] = useState("");
-   
-    const handleProductImageUpload = (e) => {
-        const file = e.target.files[0];
-    
-        TransformFileData(file);
-      };
-    
-      const TransformFileData = (file) => {
-        const reader = new FileReader();
-    
-        if (file) {
-          reader.readAsDataURL(file);
-          reader.onloadend = () => {
-            setProductImg(reader.result);
-          };
-        } else {
-          setProductImg("");
-        }
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        dispatch(
-          productsCreate({
-            name,
-            price,
-            desc,
-            image: productImg,
-          })
-        );
-      };
+const AdminMealPlan = () => {
+  const [mealplans, setMealPlans] = useState("");
 
-return(
-<div>
-      <form onSubmit={handleSubmit}>
-        <h3>Create a Meal Plan</h3>
-        <input
-          id="imgUpload"
-          accept="image/*"
-          type="file"
-          onChange={handleProductImageUpload}
-          required
-        />
-        
-        <input
-          type="text"
-          placeholder="Meal Name"
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Short Description"
-          onChange={(e) => setDesc(e.target.value)}
-          required
-        />
+  useEffect(() => {
+    fetchmealplans();
+  }, []);
 
-        <button type="submit">
-          {createStatus === "pending" ? "Submitting" : "Submit"}
-        </button>
-      </form>
-      <div>
-        {productImg ? (
-          <>
-            <img src={productImg} alt="error!" />
-          </>
-        ) : (
-          <p>Product image upload preview will appear here!</p>
-        )}
-      </div>
+  const fetchmealplans = async () => {
+    const data = await axios.get("/admin/mealplans");
+    console.log("mealplans >>>>>", data);
+    setMealPlans(data);
+  };
+
+  const deletemealplan = async (id) => {
+    const result = await axios
+      .delete("/admin/mealplan/delete/" + id)
+      .then((result) => {
+        fetchmealplans();
+      })
+      .catch(() => {
+        alert("Could not delete this meal plan");
+      });
+  };
+
+  return (
+    <div className="subscriber-list">
+      <h1>List of MealPlans</h1>
+      <Link to="/admin-home/add/mealplan" className="btn btn-success">
+        Add New Meal
+      </Link>
+
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">short_description</th>
+            <th scope="col">description</th>
+            <th scope="col">price</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mealplans &&
+            mealplans?.data.map((mealplan) => {
+              return (
+                <tr>
+                  <td>{mealplan._id}</td>
+                  <td>{mealplan.title}</td>
+                  <td>{mealplan.short_description}</td>
+                  <td>{mealplan.description}</td>
+                  <td>{mealplan.price}</td>
+
+                  <td>
+                    <Link
+                      className="btn btn-danger"
+                      to=""
+                      onClick={() => deletemealplan(mealplan._id)}
+                    >
+                      Delete
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
-
-}
+};
 
 export default AdminMealPlan;

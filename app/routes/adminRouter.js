@@ -2,7 +2,8 @@ const express = require("express");
 const adminRouter = express.Router();
 const { MessageModel } = require("../models/Message");
 const { UserModel } = require("../models/User");
-const { MealPlan } = require("../models/Mealplan");
+const { MealPlanModel } = require("../models/Mealplan");
+const Cart = require("../models/Cart");
 
 adminRouter.get("/messages", (req, res) => {
   MessageModel.find({}, (err, data) => {
@@ -28,8 +29,8 @@ adminRouter.delete("/message/delete/:id", (req, res) => {
   });
 });
 
-adminRouter.get("/allmealplans", (req, res) => {
-  MealPlan.find({}, (err, data) => {
+adminRouter.get("/mealplans", (req, res) => {
+  MealPlanModel.find({}, (err, data) => {
     if (err) {
       res.status(500).send(err);
       console.log("This is error", err);
@@ -40,14 +41,29 @@ adminRouter.get("/allmealplans", (req, res) => {
   });
 });
 
-adminRouter.post("/add-mealplan", (req, res, next) => {
-  MealPlan.create(req.body, (error, data) => {
+adminRouter.delete("/mealplan/delete/:id", (req, res) => {
+  MealPlanModel.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
-      res.json(data);
+      res.status(200).json({
+        msg: data,
+      });
     }
   });
+});
+
+adminRouter.post("/add/mealplan", (req, res, next) => {
+  const newmealplan = new MealPlanModel({
+    title: req.body.title,
+    short_description: req.body.short_description,
+    description: req.body.description,
+    price: req.body.price,
+  });
+  newmealplan
+    .save()
+    .then(() => res.json("New Meal Plan Added Successfully!"))
+    .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
 adminRouter.get("/users-list", (req, res) => {
