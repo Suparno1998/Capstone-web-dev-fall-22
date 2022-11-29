@@ -64,7 +64,13 @@ const AdminMealPlan = () => {
                       alt="Meal Plan Image"
                     />
                   </td>
-                  <td>
+                  <td style={{ display: "flex" }}>
+                    <Link
+                      className="btn btn-success"
+                      style={{ "margin-right": ".5em" }}
+                    >
+                      Edit
+                    </Link>
                     <Link
                       className="btn btn-danger"
                       to=""
