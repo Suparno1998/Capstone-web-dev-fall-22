@@ -21,7 +21,7 @@ const MealPlanCard = (props) => {
       ></SubscribeModal>
       <div className="card meal-plan-card" style={{ width: "385px" }}>
         <div className="card-img-top meal-plan-image ">
-          <img src="/images/diet.jpg" alt="Meal Plan" />
+          <img src={`/uploads/${props.plan.mealplanImage}`} alt="Meal Plan" />
         </div>
         <div className="meal-plan-detail">
           <h4 className="meal-plan-title">{props.plan.title}</h4>
