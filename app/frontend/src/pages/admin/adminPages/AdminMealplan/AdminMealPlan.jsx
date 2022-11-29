@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import axios from "../../../../../src/utils/axios";
 import AddNewMealPlan from "./AddNewMealPlan/AddNewMealPlan.jsx";
+import "../AdminMealplan/AdminMealPlan.css";
 
 const AdminMealPlan = () => {
   const [mealplans, setMealPlans] = useState("");
@@ -43,7 +44,7 @@ const AdminMealPlan = () => {
             <th scope="col">short_description</th>
             <th scope="col">description</th>
             <th scope="col">price</th>
-
+            <th scope="col">Image</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -57,7 +58,12 @@ const AdminMealPlan = () => {
                   <td>{mealplan.short_description}</td>
                   <td>{mealplan.description}</td>
                   <td>{mealplan.price}</td>
-
+                  <td className="mealplan-img">
+                    <img
+                      src={`/uploads/${mealplan.mealplanImage}`}
+                      alt="Meal Plan Image"
+                    />
+                  </td>
                   <td>
                     <Link
                       className="btn btn-danger"

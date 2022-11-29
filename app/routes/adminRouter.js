@@ -4,6 +4,18 @@ const { MessageModel } = require("../models/Message");
 const { UserModel } = require("../models/User");
 const { MealPlanModel } = require("../models/Mealplan");
 const Cart = require("../models/Cart");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./frontend/public/uploads/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 adminRouter.get("/messages", (req, res) => {
   MessageModel.find({}, (err, data) => {
@@ -36,7 +48,7 @@ adminRouter.get("/mealplans", (req, res) => {
       console.log("This is error", err);
     } else {
       res.status(200).send(data);
-      console.log("This is data", data);
+      // console.log("This is data", data);
     }
   });
 });
@@ -53,18 +65,24 @@ adminRouter.delete("/mealplan/delete/:id", (req, res) => {
   });
 });
 
-adminRouter.post("/add/mealplan", (req, res, next) => {
-  const newmealplan = new MealPlanModel({
-    title: req.body.title,
-    short_description: req.body.short_description,
-    description: req.body.description,
-    price: req.body.price,
-  });
-  newmealplan
-    .save()
-    .then(() => res.json("New Meal Plan Added Successfully!"))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
-});
+adminRouter.post(
+  "/add/mealplan",
+  upload.single("mealplanImage"),
+  (req, res, next) => {
+    console.log("This is request dot file", req.file);
+    const newmealplan = new MealPlanModel({
+      title: req.body.title,
+      short_description: req.body.short_description,
+      description: req.body.description,
+      price: req.body.price,
+      mealplanImage: req.file.filename,
+    });
+    newmealplan
+      .save()
+      .then(() => res.json("New Meal Plan Added Successfully!"))
+      .catch((err) => res.status(400).json(`Error: ${err}`));
+  }
+);
 
 adminRouter.get("/users-list", (req, res) => {
   UserModel.find({}, (err, data) => {

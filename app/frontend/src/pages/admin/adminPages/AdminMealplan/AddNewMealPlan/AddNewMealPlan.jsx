@@ -10,26 +10,38 @@ const AddNewMealPlan = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [message, setMessage] = useState("");
+  const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
+
+  const onChangeFile = (e) => {
+    setFileName(e.target.files[0]);
+  };
 
   const changeOnClick = (e) => {
     e.preventDefault();
-    console.log(title);
 
-    const mealplans = {
-      title: title,
-      short_description: short_description,
-      description: description,
-      price: price,
-    };
-    console.log("add meal plan", mealplans);
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("price", price);
+    formData.append("short_description", short_description);
+    formData.append("description", description);
+    formData.append("mealplanImage", fileName);
+
+    // const mealplans = {
+    //   title: title,
+    //   short_description: short_description,
+    //   description: description,
+    //   price: price,
+    // };
+    // console.log("add meal plan", mealplans);
     // setTitle("");
     // setShortDescription("");
     // setDescription("");
     // setPrice("");
 
     axios
-      .post("/admin/add/mealplan", mealplans)
+      .post("/admin/add/mealplan", formData)
       .then((res) => {
         // setMessage(res.data);
         alert("Meal Plan added successfully");
@@ -51,7 +63,7 @@ const AddNewMealPlan = () => {
     >
       <h2 className="add-mealplan-heading">Add Meal Plan</h2>
       <div className="mealplan-form">
-        <form onSubmit={changeOnClick}>
+        <form onSubmit={changeOnClick} encType="multipart/form-data">
           <div className="form-item">
             <label htmlFor="title" className="title">
               Title:
@@ -98,7 +110,15 @@ const AddNewMealPlan = () => {
               required
             />
           </div>
-
+          <div className="form-item">
+            <label htmlFor="file"> Choose Mealplan Image</label>
+            <input
+              type="file"
+              fileName="mealplanImage"
+              className="form-control-file"
+              onChange={onChangeFile}
+            />
+          </div>
           <div className="form-item">
             <button type="submit" className="btn btn-success">
               {" "}
