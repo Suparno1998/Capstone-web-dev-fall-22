@@ -105,7 +105,7 @@ export default function App() {
       </Modal>
       {user && user.role === "admin" ? <></> : <Footer></Footer>}
       {
-        
+        warning && <div className="warning">Already in cart</div>
       }
     </div>
   );
