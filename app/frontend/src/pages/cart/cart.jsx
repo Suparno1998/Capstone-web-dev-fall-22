@@ -1,9 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import './cart.css'
 
-import Navbar from "../../components/Navbar.jsx";
-
-const Cart = () => {
+const Cart = (props) => {
   return (
     <div className="cart cart-page">
         <div className="row">
@@ -11,7 +9,7 @@ const Cart = () => {
                     <div className="title">
                         <div className="row">
                             <div className="col"><h4><b>Shopping Cart</b></h4></div>
-                            <div className="col align-self-center text-right text-muted">3 items</div>
+                            <div className="col align-self-center text-right text-muted">{props.cart.length} {props.demo}</div>
                         </div>
                     </div>    
                     <div className="row border-top border-bottom">
