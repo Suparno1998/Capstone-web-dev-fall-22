@@ -295,4 +295,8 @@ footer .footer-info-media li a:hover{
 	border-radius: 50% !important;
 }
 
+label{
+    font-family: 'Fira Sans', sans-serif;
+}
+
 @media only screen and (min-width: 800px) {}

@@ -6,10 +6,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Modal from "react-bootstrap/Modal";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Login from "../components/Login.jsx";
+import Login from "./Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "../components/Register.jsx";
 import "../styles/main.css";
+import RegisteredUsers from "./RegisteredUsers/RegisteredUsers.jsx";
 
 function Navbar(props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -54,9 +55,19 @@ function Navbar(props) {
         <h3></h3>
         <nav ref={navRef}>
           {!user ? <a href="/">Home</a> : <></>}
-          {user ? <a href="/home">{user.firstname}'s Home</a> : <></>}
+          {user && user.firstname === "" ? <a href="/home">Home</a> : <></>}
+          {user && user.firstname ? (
+            <a href="/home">{user.firstname}'s Home</a>
+          ) : (
+            <></>
+          )}
           {user && user.role === "admin" ? (
             <a href="/admin-home">Admin Panel</a>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "admin" ? (
+            <a href="/registeredusers"> Users</a>
           ) : (
             <></>
           )}
@@ -90,9 +101,13 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
+<<<<<<< HEAD
           <a href="/cart">Cart({props.cartItems})</a>
           <a href="/mealdetail">Meal Plan Detail</a>
 
+=======
+          {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}
+>>>>>>> 7c8224c51ec421a2f72de0331375e1c19fb33ee1
           {user ? (
             <span>
               <a href="user-profile">Profile</a>

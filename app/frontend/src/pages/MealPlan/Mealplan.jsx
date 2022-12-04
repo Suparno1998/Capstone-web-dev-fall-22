@@ -28,12 +28,16 @@ const MealPlan = ({handleAddToCart}) => {
         ) : (
           <>
             <div className="row text-center">
-              <h1>Our Meal Plans</h1>
+              <h1 className="bold mt-4">Our Meal Plans</h1>
             </div>
             <div className="row d-flex">
               <div className="meal-plan-list">
                 {meals.map((meal) => (
+<<<<<<< HEAD
                   <Mealplancard plan={meal} handleAddToCart={handleAddToCart}/>
+=======
+                  <Mealplancard plan={meal} key={meal._id}/>
+>>>>>>> 7c8224c51ec421a2f72de0331375e1c19fb33ee1
                 ))}
               </div>
             </div>

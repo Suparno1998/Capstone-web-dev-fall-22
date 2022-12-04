@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 import { useLogIn } from "../utils/useLogin";
 import PasswordInput from "./PasswordInput.jsx";
+
 import { useNavigate, useLocation } from "react-router-dom";
 export default function Login(props) {
   const [email, setEmail] = useState("skarmakar7302@conestogac.on.ca");
@@ -48,7 +49,7 @@ export default function Login(props) {
     }
   };
   return (
-    <div className="form">
+    <div className="formg">
       <div className="row">
         <Alert variant={variant} show={hasError} dismissible>
           <p>{error}</p>
@@ -56,7 +57,7 @@ export default function Login(props) {
       </div>
       <div class="row form-group d-flex justify-content-center mb-3">
         <div className="col-lg-8 col-md-11 col-sm-11">
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="form-label" >
             Email
           </label>
           <input
@@ -89,7 +90,7 @@ export default function Login(props) {
       <div className="row d-flex justify-content-center mb-3">
         <div className="col-md-4 text-center">
           <Button
-            variant="primary"
+            variant="dark"
             type="submit"
             onClick={handleLogin}
             disabled={isLoading}
@@ -101,21 +102,21 @@ export default function Login(props) {
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6 text-center">
-          <a href="/forget" className="small">
+          <a href="/forget" className="link-dark">
             Forgot your password ?
           </a>
         </div>
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6 text-center">
-          <a href="/resend" className="small">
+          <a href="/resend" className="link-dark">
             Didn't receive verification email ?
           </a>
         </div>
       </div>
       <div className="row d-flex justify-content-center mb-3">
         <div className="col-md-6 text-center">
-          <a href="#" className="small" onClick={openRegister}>
+          <a href="#" className="link-dark" onClick={openRegister}>
             Don't have an account? Sign Up!
           </a>
         </div>

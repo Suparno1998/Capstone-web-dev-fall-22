@@ -63,40 +63,42 @@ export default function Register(props){
         }
     }
     return (
-		<div className="form">
+        <div className="form">
+		<div className="formg" >
             <div className="row">
                 <Alert variant={variant} show={hasError} dismissible>
                     <p>{message}</p>
                 </Alert>
             </div>
             <div class="row form-group d-flex justify-content-center mb-3">
-                <div className="col-lg-8 col-md-11 col-sm-11">
+                <div className="col-lg-8 col-md-11 col-md-11">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input type="email" className="form-control" name="register-email" id="register-email" value={email} onChange = {handleChange} required></input>
                 </div>
             </div>
             <div class="row form-group d-flex justify-content-center mb-3">
-                <div className="col-lg-8 col-md-11 col-sm-11">
+                <div className="col-lg-8 col-md-11 col-md-11">
                     <label htmlFor="password" className="form-label">Password</label>
                     <PasswordInput className="form-control" name="register-password" id="register-password" value={password} onChange={handleChange}></PasswordInput> 
                 </div>
             </div>
             <div class="row form-group d-flex justify-content-center mb-3">
-                <div className="col-lg-8 col-md-11 col-sm-11">
+                <div className="col-lg-8 col-md-11 col-md-11">
                     <label htmlFor="password" className="form-label">Re-enter Password</label>
                     <PasswordInput className="form-control" name="register-re-password" id="register-re-password" value={verifyPassword} onChange={handleChange}></PasswordInput>
                 </div>
             </div>
-            <div className="row d-flex justify-content-center mb-3">
+            <div className="row form-group d-flex justify-content-center mb-3">
                 <div className="col-md-4 text-center">
-                    <Button variant="primary" type="submit" onClick={handleRegister} disabled={isLoading}>Sign Up {isLoading ? <i className="fas fa-spinner fa-spin"></i> : ""}</Button>
+                    <Button variant="btn btn-dark" type="submit" onClick={handleRegister} disabled={isLoading}>Sign Up {isLoading ? <i className="fas fa-spinner fa-spin"></i> : ""}</Button>
                 </div>
            </div>
            <div className="row d-flex justify-content-center mb-3">
                 <div className="col-md-6 text-center">
-                    <a href="#" className="small" onClick={openLogin}>Already have an account? Sign In!</a>
+                    <a href="#" className="link-dark" onClick={openLogin}>Already have an account? Sign In!</a>
                 </div>
            </div>
         </div>
+    </div>        
     )
 }

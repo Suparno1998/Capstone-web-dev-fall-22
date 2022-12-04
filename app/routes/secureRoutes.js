@@ -1,9 +1,11 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
 const { MessageModel } = require("../models/Message");
 const { UserModel } = require("../models/User");
+const Cart = require("../models/Cart");
 const logger = require("../utils/logger")("/routes/secureRoutes.js");
 const secureRouter = express.Router();
 
@@ -40,6 +42,27 @@ secureRouter.get("/profile-data", async (req, res) => {
   }
 });
 
+secureRouter.post("/subscribe", async (req, res) => {
+  try {
+    //console.log(req.body)
+    const startDate = new Date(req.body.startDate);
+    const end_date = new Date(
+      startDate.setMonth(
+        startDate.getMonth() + parseInt(req.body.duration.replace("m", ""))
+      )
+    );
+    const startFinal = new Date(req.body.startDate);
+    //console.log(startFinal, endDate)
+    const subscribeObj = { ...req.body, end_date };
+    console.log(subscribeObj);
+    await SubscriptionModel.create(subscribeObj);
+    res.json({ status: true });
+  } catch (err) {
+    logger.error(err);
+    res.json({ status: false, error: err });
+  }
+});
+
 secureRouter.get("/get/plans", async (req, res) => {
   try {
     logger.info("test");
@@ -51,17 +74,37 @@ secureRouter.get("/get/plans", async (req, res) => {
           from: "mealplans",
           foreignField: "_id",
           localField: "meal_plan_id",
-          as: "meal_plans",
+          as: "meal_plan",
         },
       },
-      { $match: { user_id: user.user_id } },
+      {
+        $unwind: "$meal_plan",
+      },
+      {
+        $match: { user_id: mongoose.Types.ObjectId(user.user_id) },
+      },
     ]);
-    logger.info(subscribedMealPlans);
+    logger.info(JSON.stringify(subscribedMealPlans));
     //logger.info(JSON.stringify(subscribedMealPlans))
     res.json({ status: true, data: subscribedMealPlans });
   } catch (err) {
-    logger.error(e);
-    res.json({ status: false, error: e });
+    logger.error(err);
+    res.json({ status: false, error: err });
   }
 });
+
+secureRouter.post("/cart/addtocart", async (req, res) => {
+  const cart = new Cart({
+    user: req.user._id,
+    cartItems: req.body.cartItems,
+  });
+
+  cart.save((error, cart) => {
+    if (error) return res.status(400).json({ error });
+    if (cart) {
+      return res.status(201).json({ cart });
+    }
+  });
+});
+
 module.exports = { secureRouter };

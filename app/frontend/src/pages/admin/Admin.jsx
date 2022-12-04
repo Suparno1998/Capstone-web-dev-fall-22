@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
 import "./Admin.css";
 import AdminDashboard from "./adminPages/AdminDashboard/AdminDashboard.jsx";
+import AddNewMealPlan from "./adminPages/AdminMealplan/AddNewMealPlan/AddNewMealPlan.jsx";
 import AdminMealPlan from "./adminPages/AdminMealplan/AdminMealPlan.jsx";
 import AdminSlide from "./adminPages/AdminOrders/AdminOrders.jsx";
 import ContactMessages from "./adminPages/ContactMessages/ContactMessages.jsx";
@@ -17,16 +18,16 @@ const Admin = () => {
       <div id="page-wrapper" className="gray-bg dashboard-1">
         <div className="container-fluid">
           <Routes>
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="orders" element={<AdminSlide />} />
-            <Route path="mealplan" element={<AdminMealPlan />} />
-            <Route path="listofusers" element={<ListOfUsers />} />
-            <Route path="contactmessages" element={<ContactMessages />} />
+            <Route path="/dashboard" element={<AdminDashboard />} />
+            <Route path="/orders" element={<AdminSlide />} />
+            <Route path="/mealplan" element={<AdminMealPlan />} />
+            <Route path="/listofusers" element={<ListOfUsers />} />
+            <Route path="/contactmessages" element={<ContactMessages />} />
+            <Route path="/add/mealplan" element={<AddNewMealPlan />} />
           </Routes>
         </div>
       </div>
     </div>
   );
 };
-
 export default Admin;

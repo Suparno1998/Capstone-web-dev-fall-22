@@ -37,12 +37,13 @@ export default function ResetPassword(){
     }
     const showAlert = (message,variant)=>{
         setVariant(variant)
+        console.log(message)
         setMessage(message)
         setMessageFlag(true)
     }
     const handleReset = async ()=>{
         try{
-            isLoading(true)
+            setIsLoading(true)
             if(password === ""){
                 showAlert("Password field cannot be empty","warning")
                 return
@@ -82,7 +83,7 @@ export default function ResetPassword(){
             }
         }catch(e){
             console.log(e)
-            showAlert(e,danger)
+            showAlert(e,"danger")
         }finally{
             setIsLoading(false)
         }

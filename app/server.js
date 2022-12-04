@@ -7,6 +7,7 @@ const { authHandler } = require("./routes/authHandler");
 const { secureRouter } = require("./routes/secureRoutes");
 const { router } = require("./routes/unsecureRoutes");
 const { adminRouter } = require("./routes/adminRouter");
+const { cartRoute } = require("./utils/cart");
 require("dotenv").config();
 const constants = require("./constants").getConstants(process.env.MODE);
 //logger.info(JSON.stringify(constants))

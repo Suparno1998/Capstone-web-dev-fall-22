@@ -1,18 +1,31 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import axios from "../../../../../../routes/axios";
+import { Link } from "react-router-dom";
+import axios from "../../../../utils/axios";
 
 const ContactMessages = () => {
   const [messages, setMessages] = useState("");
 
   useEffect(() => {
-    const fetchmessage = async () => {
-      const data = await axios.get("/admin/messages");
-      console.log("messages >>>>>", data);
-      setMessages(data);
-    };
     fetchmessage();
   }, []);
+
+  const fetchmessage = async () => {
+    const data = await axios.get("/admin/messages");
+    console.log("messages >>>>>", data);
+    setMessages(data);
+  };
+
+  const deletemessage = async (id) => {
+    const result = await axios
+      .delete("/admin/message/delete/" + id)
+      .then((result) => {
+        fetchmessage();
+      })
+      .catch(() => {
+        alert("Could not delete this message");
+      });
+  };
 
   return (
     <div className="subscriber-list">
@@ -41,9 +54,13 @@ const ContactMessages = () => {
                   <td>{message.createdAt}</td>
                   <td>{message.updatedAt}</td>
                   <td>
-                    <a className="btn btn-danger" href="#">
+                    <Link
+                      className="btn btn-danger"
+                      to=""
+                      onClick={() => deletemessage(message._id)}
+                    >
                       Delete
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../../../../../routes/axios";
+import axios from "../../../../utils/axios";
 
 const ListOfUsers = () => {
   const [listofusers, setListOfUsers] = useState("");
