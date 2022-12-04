@@ -18,6 +18,7 @@ const MealPlanCard = (props) => {
         </a> : <a className="btn btn-outline-dark" href="/#">
           Subscribe 
         </a>}
+        <button onClick={()=>props.handleAddToCart(props.plan)}>Add To Cart</button>
       </div>
     </div>
   );
