@@ -101,13 +101,10 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
-<<<<<<< HEAD
           <a href="/cart">Cart({props.cartItems})</a>
           <a href="/mealdetail">Meal Plan Detail</a>
 
-=======
           {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}
->>>>>>> 7c8224c51ec421a2f72de0331375e1c19fb33ee1
           {user ? (
             <span>
               <a href="user-profile">Profile</a>

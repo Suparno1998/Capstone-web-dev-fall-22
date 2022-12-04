@@ -66,7 +66,7 @@ export default function App() {
   }
   return (
     <div>
-      <Navbar />
+      <Navbar cartItems={cart.length}/>
 
       <BrowserRouter>
         <Routes>
@@ -80,7 +80,7 @@ export default function App() {
           <Route path="/" element={user ? <HomePage/> : <LandingPage/>}></Route>
           <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
-          <Route path="/mealplan" element={<MealPlan />} />
+          <Route path="/mealplan" element={<MealPlan handleAddToCart={handleAddToCart}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/mealdetail" element={<MealPlanDetail />} />
           <Route path="/cart" element={<Cart />} />

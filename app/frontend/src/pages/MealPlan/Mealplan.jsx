@@ -33,11 +33,7 @@ const MealPlan = ({handleAddToCart}) => {
             <div className="row d-flex">
               <div className="meal-plan-list">
                 {meals.map((meal) => (
-<<<<<<< HEAD
-                  <Mealplancard plan={meal} handleAddToCart={handleAddToCart}/>
-=======
-                  <Mealplancard plan={meal} key={meal._id}/>
->>>>>>> 7c8224c51ec421a2f72de0331375e1c19fb33ee1
+                  <Mealplancard plan={meal} key={meal._id} handleAddToCart={handleAddToCart}/>
                 ))}
               </div>
             </div>
