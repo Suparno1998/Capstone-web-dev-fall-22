@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import axios from "../../../../../utils/axios";
 import { useNavigate, useParams } from "react-router";
+import { mealPlans } from "../../../../../../../constants";
+import { useEffect } from "react";
 
 const EditMealPlan = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [short_description, setShortDescription] = useState("");
   const [description, setDescription] = useState("");
@@ -27,29 +29,27 @@ const EditMealPlan = () => {
     formData.append("short_description", short_description);
     formData.append("description", description);
     formData.append("mealplanImage", fileName);
-
-    // const mealplans = {
-    //   title: title,
-    //   short_description: short_description,
-    //   description: description,
-    //   price: price,
-    // };
-    // console.log("add meal plan", mealplans);
-    // setTitle("");
-    // setShortDescription("");
-    // setDescription("");
-    // setPrice("");
-
     axios
-      .post("/admin/add/mealplan", formData)
-      .then((res) => {
-        // setMessage(res.data);
-        alert("Meal Plan added successfully");
-        navigate("/admin-home/mealplan");
-      })
+      .put(`/admin/update/mealplan/${id}`, mealPlans)
+      .then((res) => setMessage(res.data))
       .catch((err) => {
         console.log(err);
       });
+
+    useEffect(() => {
+      axios
+        .get(`/mealplan/${id}`)
+        .then((res) => [
+          setTitle(res.data.title),
+          setShortDescription(res.data.short_description),
+          setDescription(res.data.description),
+          setPrice(res.data.price),
+          setFileName(res.data.mealplanImage),
+        ])
+        .catch((err) => {
+          console.log(err);
+        });
+    });
   };
 
   return (
@@ -61,7 +61,7 @@ const EditMealPlan = () => {
         margin: "1em",
       }}
     >
-      <h2 className="add-mealplan-heading">Add Meal Plan</h2>
+      <h2 className="add-mealplan-heading"> Update Meal Plan</h2>
       <div className="mealplan-form">
         <form onSubmit={changeOnClick} encType="multipart/form-data">
           <div className="form-item">
@@ -72,6 +72,7 @@ const EditMealPlan = () => {
               type="text"
               name="title"
               className="title_input"
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
@@ -84,6 +85,7 @@ const EditMealPlan = () => {
               type="text"
               name="price"
               className="price_input"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               required
             />
@@ -95,6 +97,7 @@ const EditMealPlan = () => {
             <textarea
               className="short_description_input"
               name="short_description"
+              value={short_description}
               onChange={(e) => setShortDescription(e.target.value)}
               required
             />
@@ -106,6 +109,7 @@ const EditMealPlan = () => {
             <textarea
               className="description_input"
               name="description"
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
             />
@@ -116,13 +120,14 @@ const EditMealPlan = () => {
               type="file"
               fileName="mealplanImage"
               className="form-control-file"
+              value={mealplanImage}
               onChange={onChangeFile}
             />
           </div>
           <div className="form-item">
             <button type="submit" className="btn btn-success">
               {" "}
-              Add Meal Plan
+              Update Meal Plan
             </button>
           </div>
         </form>
