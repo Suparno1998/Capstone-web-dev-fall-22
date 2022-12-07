@@ -40,6 +40,7 @@ const MealPlanCard = (props) => {
           ) : (
             <></>
           )}
+          <button onClick={()=>props.handleAddToCart(props.plan)}>Add To Cart</button>
         </div>
       </div>
     </>

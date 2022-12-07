@@ -32,6 +32,9 @@ import MealPlanDetail from "./pages/MealPlanDetail/MealPlanDetail.jsx";
 export default function App() {
   const [bmiModal, setBMIModal] = useState(false);
   const { user } = useAuthContext();
+  const [cart, setCart] = useState([]);
+  const [warning, setWarning] = useState(false);
+
   console.log(user);
   const handleOpen = () => {
     setBMIModal(true);
@@ -43,9 +46,27 @@ export default function App() {
     console.log("state : ", user);
     return user ? <HomePage /> : <IncorrectAccess />;
   };
+
+  const handleAddToCart = (meal) => {
+    console.log(meal);
+    let isPresent = false;
+    cart.forEach((item)=>{
+        if(meal._id === item._id)
+          isPresent = true;
+    })
+    if(isPresent){
+      setWarning(true);
+      setTimeout(()=>{
+        setWarning(false);
+      }, 2000);
+      return;
+    }
+      
+    setCart([...cart, meal]);
+  }
   return (
     <div>
-      <Navbar />
+      <Navbar cartItems={cart.length}/>
 
       <BrowserRouter>
         <Routes>
@@ -59,10 +80,10 @@ export default function App() {
           <Route path="/" element={user ? <HomePage/> : <LandingPage/>}></Route>
           <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
-          <Route path="/mealplan" element={<MealPlan />} />
+          <Route path="/mealplan" element={<MealPlan handleAddToCart={handleAddToCart}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/mealdetail" element={<MealPlanDetail />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart cart={cart} demo="demo" setCart={setCart}/>} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/user-profile"
@@ -83,6 +104,9 @@ export default function App() {
         </Modal.Body>
       </Modal>
       {user && user.role === "admin" ? <></> : <Footer></Footer>}
+      {
+        warning && <div className="warning">Already in cart</div>
+      }
     </div>
   );
 }

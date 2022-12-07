@@ -101,6 +101,9 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
+          <a href="/cart">Cart({props.cartItems})</a>
+          <a href="/mealdetail">Meal Plan Detail</a>
+
           {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}
           {user ? (
             <span>
