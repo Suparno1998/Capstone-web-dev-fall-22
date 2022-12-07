@@ -41,6 +41,16 @@ adminRouter.delete("/message/delete/:id", (req, res) => {
   });
 });
 
+adminRouter.get("/mealplan/:id", async (req, res) => {
+  const { id } = req.params;
+  const mealplan = await MealPlanModel.findById(id);
+
+  res.json({
+    success: true,
+    mealplan,
+  });
+});
+
 adminRouter.get("/mealplans", (req, res) => {
   MealPlanModel.find({}, (err, data) => {
     if (err) {
@@ -81,6 +91,25 @@ adminRouter.post(
       .save()
       .then(() => res.json("New Meal Plan Added Successfully!"))
       .catch((err) => res.status(400).json(`Error: ${err}`));
+  }
+);
+
+adminRouter.put(
+  "/update/mealplan/:id",
+  upload.single("mealplanImage"),
+  (req, res) => {
+    MealPlanModel.findById(req.params.id).then((mealplan) => {
+      mealplan.title = req.body.title;
+      mealplan.short_description = req.body.short_description;
+      mealplan.description = req.body.description;
+      mealplan.price = req.body.price;
+      mealplan.mealplanImage = req.file.filename;
+
+      mealplan
+        .save()
+        .then(() => res.json("Meal Plan Updated Successfully!"))
+        .catch((err) => res.status(400).json(`Error: ${err}`));
+    });
   }
 );
 

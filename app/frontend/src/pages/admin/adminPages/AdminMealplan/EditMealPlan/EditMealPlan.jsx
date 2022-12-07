@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import "../AddNewMealPlan/AddNewMealPlan.css";
 import axios from "../../../../../utils/axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
-const AddNewMealPlan = () => {
+const EditMealPlan = () => {
+  const {id} = useParams();
   const [title, setTitle] = useState("");
   const [short_description, setShortDescription] = useState("");
   const [description, setDescription] = useState("");
@@ -131,4 +131,4 @@ const AddNewMealPlan = () => {
   );
 };
 
-export default AddNewMealPlan;
+export default EditMealPlan;

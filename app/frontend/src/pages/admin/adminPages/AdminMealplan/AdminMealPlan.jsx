@@ -66,6 +66,7 @@ const AdminMealPlan = () => {
                   </td>
                   <td style={{ display: "flex" }}>
                     <Link
+                      to={`/update/mealplan/${mealplan._id}`}
                       className="btn btn-success"
                       style={{ "margin-right": ".5em" }}
                     >
