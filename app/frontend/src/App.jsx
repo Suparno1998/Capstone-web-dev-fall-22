@@ -33,6 +33,7 @@ export default function App() {
   const [bmiModal, setBMIModal] = useState(false);
   const { user } = useAuthContext();
   const [cart, setCart] = useState([]);
+  const carts =[];
   const [warning, setWarning] = useState(false);
 
   console.log(user);
@@ -60,13 +61,18 @@ export default function App() {
         setWarning(false);
       }, 2000);
       return;
+    }else{
+      setCart([...cart, meal]);
+      carts.push(meal);
+      console.log("carts"+carts);
+      localStorage.setItem("cart", JSON.stringify(carts));
     }
       
-    setCart([...cart, meal]);
+    
   }
   return (
     <div>
-      <Navbar cartItems={cart.length}/>
+      <Navbar cartItems={cart.length} cart={cart}/>
 
       <BrowserRouter>
         <Routes>
