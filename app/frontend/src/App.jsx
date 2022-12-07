@@ -33,6 +33,7 @@ export default function App() {
   const [bmiModal, setBMIModal] = useState(false);
   const { user } = useAuthContext();
   const [cart, setCart] = useState([]);
+  const carts =[];
   const [warning, setWarning] = useState(false);
 
   console.log(user);
@@ -60,13 +61,18 @@ export default function App() {
         setWarning(false);
       }, 2000);
       return;
+    }else{
+      setCart([...cart, meal]);
+      carts.push(meal);
+      console.log("carts"+carts);
+      localStorage.setItem("cart", JSON.stringify(carts));
     }
       
-    setCart([...cart, meal]);
+    
   }
   return (
     <div>
-      <Navbar cartItems={cart.length}/>
+      <Navbar cartItems={cart.length} cart={cart}/>
 
       <BrowserRouter>
         <Routes>
@@ -83,7 +89,7 @@ export default function App() {
           <Route path="/mealplan" element={<MealPlan handleAddToCart={handleAddToCart}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/mealdetail" element={<MealPlanDetail />} />
-          <Route path="/cart" element={<Cart cart={this.cart} demo="demo" setCart={setCart}/>} />
+          <Route path="/cart" element={<Cart cart={cart} demo="demo" setCart={setCart}/>} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/user-profile"
