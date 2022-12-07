@@ -83,7 +83,7 @@ export default function App() {
           <Route path="/mealplan" element={<MealPlan handleAddToCart={handleAddToCart}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/mealdetail" element={<MealPlanDetail />} />
-          <Route path="/cart" element={<Cart cart={cart} demo="demo" setCart={setCart}/>} />
+          <Route path="/cart" element={<Cart cart={this.cart} demo="demo" setCart={setCart}/>} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/user-profile"
