@@ -28,18 +28,6 @@ const AddNewMealPlan = () => {
     formData.append("description", description);
     formData.append("mealplanImage", fileName);
 
-    // const mealplans = {
-    //   title: title,
-    //   short_description: short_description,
-    //   description: description,
-    //   price: price,
-    // };
-    // console.log("add meal plan", mealplans);
-    // setTitle("");
-    // setShortDescription("");
-    // setDescription("");
-    // setPrice("");
-
     axios
       .post("/admin/add/mealplan", formData)
       .then((res) => {
