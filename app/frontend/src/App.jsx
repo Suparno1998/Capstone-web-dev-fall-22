@@ -83,7 +83,7 @@ export default function App() {
           <Route path="/resend" element={<ResendVerification/>}></Route>
           <Route path="/forget" element={<ForgetPassword/>}></Route>
           <Route path="/reset" element={<ResetPassword/>}></Route>
-          <Route path="/" element={user ? <HomePage/> : <LandingPage/>}></Route>
+          <Route path="/" element={user ? <HomePage/> : <LandingPage handleAddToCart={handleAddToCart}/>}></Route>
           <Route path="/home" element={user ? <HomePage/> : <IncorrectAccess/>}></Route>
           <Route path="/verify" exact element={<VerifyEmail/>}></Route>
           <Route path="/mealplan" element={<MealPlan handleAddToCart={handleAddToCart}/>} />

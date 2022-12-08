@@ -10,7 +10,7 @@ import MealPlan from "./MealPlan/Mealplan.jsx";
 import HomeTrialDay from "../components/HomeTrialDay/HomeTrialDay.jsx";
 import HomeDishPromotion from "../components/HomeDishPromotion/HomeDishPromotion.js";
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   const message =
     window.location.search === ""
       ? ""
@@ -39,7 +39,7 @@ export default function LandingPage() {
       {/* <h2>Hello, world!</h2>
                     <h1>Hello, {this.state.team.join(", ")}</h1> */}
       <HeroHomePage />
-      <MealPlan />
+      <MealPlan handleAddToCart={props.handleAddToCart}/>
       <HomeDishPromotion />
       <HomeTrialDay />
       <Newsletter />
