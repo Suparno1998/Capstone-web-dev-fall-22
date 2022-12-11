@@ -63,7 +63,7 @@ const Cart = (props) => {
                     <hr/>
                     <div className="row">
                         <div className="col">Total Items {totalItems}</div>
-                        <div className="col text-right">$ {cartTotal}</div>
+                        <div className="col text-right">$ {Number(cartTotal).toFixed(2)}</div>
                     </div>
                     <form>
                         <p>COUPON CODE</p>
@@ -71,7 +71,7 @@ const Cart = (props) => {
                     </form>
                     <div className="row" >
                         <div className="col">TOTAL PRICE</div>
-                        <div className="col text-right">$ {cartTotal}</div>
+                        <div className="col text-right">$ {Number(cartTotal).toFixed(2)}</div>
                     </div>
                     <button className="btn">CHECKOUT</button>
                 </div>
