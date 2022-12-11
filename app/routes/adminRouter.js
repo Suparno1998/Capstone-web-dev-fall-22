@@ -46,7 +46,6 @@ adminRouter.get("/mealplan/:id", async (req, res) => {
   const mealplan = await MealPlanModel.findById(id);
 
   res.json({
-    success: true,
     mealplan,
   });
 });

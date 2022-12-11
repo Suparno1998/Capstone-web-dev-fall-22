@@ -1,9 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../../../../utils/axios";
 import { useNavigate, useParams } from "react-router";
-import { mealPlans } from "../../../../../../../constants";
-import { useEffect } from "react";
 
 const EditMealPlan = () => {
   const { id } = useParams();
@@ -11,8 +8,8 @@ const EditMealPlan = () => {
   const [short_description, setShortDescription] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [message, setMessage] = useState("");
   const [fileName, setFileName] = useState("");
+  const [mealplanid, setMealPlanId] = useState("");
   const navigate = useNavigate();
 
   const onChangeFile = (e) => {
@@ -29,29 +26,32 @@ const EditMealPlan = () => {
     formData.append("short_description", short_description);
     formData.append("description", description);
     formData.append("mealplanImage", fileName);
+
     axios
-      .put(`/admin/update/mealplan/${id}`, mealPlans)
-      .then((res) => setMessage(res.data))
+      .put(`/update/mealplan/${id}`, formData)
+      .then((res) => {
+        alert("Meal Plan Updated successfully");
+        navigate("/admin-home/mealplan");
+      })
       .catch((err) => {
         console.log(err);
       });
-
-    useEffect(() => {
-      axios
-        .get(`/mealplan/${id}`)
-        .then((res) => [
-          setTitle(res.data.title),
-          setShortDescription(res.data.short_description),
-          setDescription(res.data.description),
-          setPrice(res.data.price),
-          setFileName(res.data.mealplanImage),
-        ])
-        .catch((err) => {
-          console.log(err);
-        });
-    });
   };
-
+  useEffect(() => {
+    axios
+      .get(`/admin/mealplan/${id}`)
+      .then((res) => {
+        console.log("This is get data", res.data);
+        setTitle(res.data.mealplan.title);
+        setShortDescription(res.data.mealplan.short_description);
+        setDescription(res.data.mealplan.description);
+        setPrice(res.data.mealplan.price);
+        setMealPlanId(id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div
       className="container-fluid"
@@ -61,7 +61,7 @@ const EditMealPlan = () => {
         margin: "1em",
       }}
     >
-      <h2 className="add-mealplan-heading"> Update Meal Plan</h2>
+      <h2 className="add-mealplan-heading"> Update {title}</h2>
       <div className="mealplan-form">
         <form onSubmit={changeOnClick} encType="multipart/form-data">
           <div className="form-item">
@@ -100,7 +100,7 @@ const EditMealPlan = () => {
               value={short_description}
               onChange={(e) => setShortDescription(e.target.value)}
               required
-            />
+            ></textarea>
           </div>
           <div className="form-item">
             <label htmlFor="description" className="description">
@@ -112,7 +112,7 @@ const EditMealPlan = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-            />
+            ></textarea>
           </div>
           <div className="form-item">
             <label htmlFor="file"> Choose Mealplan Image</label>
@@ -120,7 +120,6 @@ const EditMealPlan = () => {
               type="file"
               fileName="mealplanImage"
               className="form-control-file"
-              value={mealplanImage}
               onChange={onChangeFile}
             />
           </div>
