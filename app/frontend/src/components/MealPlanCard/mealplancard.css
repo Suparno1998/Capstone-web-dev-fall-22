@@ -20,6 +20,7 @@
 .meal-plan-image img {
     width: 350px;
     height: 250px;
+    object-fit: cover;
 }
 
 .meal-plan-title {

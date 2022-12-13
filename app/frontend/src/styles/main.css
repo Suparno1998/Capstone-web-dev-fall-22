@@ -270,6 +270,7 @@ footer .footer-info-media li a:hover{
 		background-color: var(--mainColor);
 		transition: 1s;
 		transform: translateY(-100vh);
+		z-index:1;
 	}
 
 	header .responsive_nav {
@@ -303,6 +304,7 @@ footer .footer-info-media li a:hover{
 	z-index: 99999;
 	font-size: 2rem !important;
 	border-radius: 50% !important;
+	width: 65px;
 }
 
 label{

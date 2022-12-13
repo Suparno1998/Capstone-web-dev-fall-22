@@ -28,7 +28,7 @@ const EditMealPlan = () => {
     formData.append("mealplanImage", fileName);
 
     axios
-      .put(`/update/mealplan/${id}`, formData)
+      .put(`/admin/update/mealplan/${id}`, formData)
       .then((res) => {
         alert("Meal Plan Updated successfully");
         navigate("/admin-home/mealplan");

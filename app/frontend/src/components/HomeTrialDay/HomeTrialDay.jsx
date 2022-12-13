@@ -11,6 +11,7 @@ function HomeTrialDay(){
                 </div>
             </div>
         </section>   
+
     )
 }
 
