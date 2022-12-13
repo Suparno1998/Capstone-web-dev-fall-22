@@ -54,12 +54,12 @@ a:hover{
    top: 0;
    bottom: 0;
    background: rgb(255 255 255 / 48%);
-   z-index: 9;
+   
 }
 
 #about .container {
    position: relative;
-   z-index: 10;
+   
    background: #fff;
    padding: 30px;
    border-radius: 10px;
