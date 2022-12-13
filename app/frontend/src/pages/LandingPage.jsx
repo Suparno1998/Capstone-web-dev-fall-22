@@ -44,7 +44,7 @@ export default function LandingPage(props) {
       <MealPlan handleAddToCart={props.handleAddToCart}/>
       <HomeDishPromotion />
       <HomeTrialDay />
-      <HomeSlider />
+      <Slider />
       <Newsletter />
     </div>
   );
