@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../utils/AuthContext";
 import SubscribeModal from "../SubscribeModal.jsx";
 import "../MealPlanCard/mealplancard.css";
+import {useCart} from "react-use-cart";
 const MealPlanCard = (props) => {
+  const {addItem} = useCart();
   const { user } = useAuthContext();
   const [subscribe, setSubscribe] = useState(false);
   console.log(props);
@@ -11,6 +13,17 @@ const MealPlanCard = (props) => {
   };
   const handleClose = () => {
     setSubscribe(false);
+  };
+  const handleCart = (item) =>{
+    let items = {
+      id: item._id,
+      title: item.title,
+      description: item.description,
+      short_description: item.short_description,
+      price: item.price,
+      mealplanImage: item.mealplanImage
+    }
+    addItem(items);
   };
   return (
     <>
@@ -40,7 +53,8 @@ const MealPlanCard = (props) => {
           ) : (
             <></>
           )}
-          <button onClick={()=>props.handleAddToCart(props.plan)}>Add To Cart</button>
+          {/* <button onClick={()=>props.handleAddToCart(props.plan)}>Add To Cart</button> */}
+          <button onClick={()=>handleCart(props.plan)}>Add To Cart</button>
         </div>
       </div>
     </>

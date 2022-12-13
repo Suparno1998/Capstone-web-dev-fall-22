@@ -11,12 +11,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "../components/Register.jsx";
 import "../styles/main.css";
 import RegisteredUsers from "./RegisteredUsers/RegisteredUsers.jsx";
+import { useCart } from "react-use-cart";
 
 function Navbar(props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("login");
   const navRef = useRef();
   const { user } = useAuthContext();
+  const { totalUniqueItems } = useCart();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
@@ -101,7 +103,7 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
-          <a href="/cart">Cart({props.cart.length})</a>
+          <a href="/cart">Cart({totalUniqueItems})</a>
           <a href="/mealdetail">Meal Plan Detail</a>
 
           {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}

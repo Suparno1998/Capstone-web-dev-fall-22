@@ -126,3 +126,16 @@
     background-position-x: 95%;
     background-position-y: center;
 }
+.cart .quantity{
+    border: none;
+    padding: 5px;
+    background:none;
+    color: red;
+    text-transform: none;
+}
+.cart .quantity:hover{
+    color:#000;
+}
+.cart .border{
+    padding: 5px 10px;
+}
