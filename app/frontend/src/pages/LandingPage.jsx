@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import MealPlan from "./MealPlan/Mealplan.jsx";
 import HomeTrialDay from "../components/HomeTrialDay/HomeTrialDay.jsx";
 import HomeDishPromotion from "../components/HomeDishPromotion/HomeDishPromotion.js";
+import Slider from "../components/Slider/Slider.jsx";
 
 export default function LandingPage(props) {
   const message =
@@ -42,6 +43,7 @@ export default function LandingPage(props) {
       <MealPlan handleAddToCart={props.handleAddToCart}/>
       <HomeDishPromotion />
       <HomeTrialDay />
+      <Slider />
       <Newsletter />
     </div>
   );
