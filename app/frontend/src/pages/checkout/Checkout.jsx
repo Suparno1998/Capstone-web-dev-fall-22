@@ -86,11 +86,16 @@ const checkout = () => {
                             }
                           })
                           console.log(subscriptionItems)
-                          let subscriptions = await fetch("/api/subscribe", {
+                          let response = await fetch("/api/subscribe", {
                             method : "POST",
                             "headers" : { 'Content-Type': 'application/json' },
                             "body" : JSON.stringify(subscriptionItems)
                           })
+                          let finalResponse = await response.json()
+                          console.log(finalResponse)
+                          if(finalResponse.status){
+                            alert("Your transaction was successfully completed")
+                          }
                         }
                     });
                 }}

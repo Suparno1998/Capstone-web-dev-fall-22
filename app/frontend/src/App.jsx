@@ -151,6 +151,8 @@ export default function App() {
 
         <button
           className="btn btn-success floating-button"
+          title="Calculate BMI"
+          type="button"
           onClick={handleOpen}
         >
           <FaCalculator></FaCalculator>

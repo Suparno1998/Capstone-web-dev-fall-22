@@ -8,7 +8,7 @@ const SubscriptionSchema = mongoose.Schema({
         type : mongoose.Types.ObjectId,
         required : true,
     },
-    start_date : {
+    startDate : {
         type : String,
         required: true,
     },
