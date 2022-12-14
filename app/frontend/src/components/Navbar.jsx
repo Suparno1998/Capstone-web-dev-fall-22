@@ -110,7 +110,7 @@ function Navbar(props) {
               src="/images/cart-icon.png"
               alt="Food Lab Logo"
             />
-            {user ? "(" + totalUniqueItems + ")" : <></>}
+            {user ? " (" + totalUniqueItems + ")" : <></>}
           </a>
           {/* <a href="/mealdetail">Meal Plan Detail</a> */}
 
