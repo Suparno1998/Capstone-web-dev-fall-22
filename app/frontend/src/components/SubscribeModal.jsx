@@ -38,7 +38,8 @@ export default function SubscribeModal(props){
           price: price,
           mealplanImage: item.mealplanImage,
           duration : duration,
-
+          startDate : startDate,
+          user : user
         }
         addItem(items);
     };

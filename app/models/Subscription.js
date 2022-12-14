@@ -19,6 +19,10 @@ const SubscriptionSchema = mongoose.Schema({
     duration : {
         type : String,
         required : true 
+    },
+    order_id : {
+        type : mongoose.Types.ObjectId,
+        required : true,
     }
 })
 

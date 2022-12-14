@@ -10,8 +10,8 @@ const checkout = () => {
   const [zipCode, setZipCode] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNum, setPhoneNum] = useState("")
-  const {cartTotal} = useCart()
-
+  const {items, cartTotal} = useCart()
+  console.log(items)
 
   const handleChange = (e)=>{
     switch(e.target.id){
@@ -75,7 +75,22 @@ const checkout = () => {
                         })
                         let resp = await data.json()
                         if(resp.status){
-                          alert(`Transaction completed by ${name}`);
+                          let order_id = resp.id
+                          let subscriptionItems = items.map(v => {
+                            return {
+                              meal_plan_id : v.id,
+                              user_id : v.user.user_id,
+                              startDate : v.startDate,
+                              duration : v.duration,
+                              order_id : order_id
+                            }
+                          })
+                          console.log(subscriptionItems)
+                          let subscriptions = await fetch("/api/subscribe", {
+                            method : "POST",
+                            "headers" : { 'Content-Type': 'application/json' },
+                            "body" : JSON.stringify(subscriptionItems)
+                          })
                         }
                     });
                 }}

@@ -46,18 +46,20 @@ secureRouter.get("/profile-data", async (req, res) => {
 
 secureRouter.post("/subscribe", async (req, res) => {
   try {
-    //console.log(req.body)
-    const startDate = new Date(req.body.startDate);
-    const end_date = new Date(
-      startDate.setMonth(
-        startDate.getMonth() + parseInt(req.body.duration.replace("m", ""))
-      )
-    );
-    const startFinal = new Date(req.body.startDate);
-    //console.log(startFinal, endDate)
-    const subscribeObj = { ...req.body, end_date };
-    console.log(subscribeObj);
-    await SubscriptionModel.create(subscribeObj);
+    let items = req.body
+    items.forEach(async v => {
+      const startDate = new Date(v.startDate);
+      const end_date = new Date(
+        startDate.setMonth(
+          startDate.getMonth() + parseInt(v.duration.replace("m", ""))
+        )
+      );
+      const startFinal = new Date(v.startDate);
+      //console.log(startFinal, endDate)
+      const subscribeObj = { ...v, end_date };
+      console.log(subscribeObj);
+      await SubscriptionModel.create(subscribeObj);
+    })
     res.json({ status: true });
   } catch (err) {
     logger.error(err);
@@ -113,8 +115,9 @@ secureRouter.post("/createorder", async (req,res)=>{
     const data = req.body
     console.log(data)
     const storedObj = await Order.create(data)
+    logger.info(storedObj._doc._id)
     await sendSuccessEmail(data)
-    res.send({status : true})
+    res.send({status : true, id : storedObj._doc._id})
   }catch(err){
     logger.error(JSON.stringify(err))
     res.send({status : false, error : JSON.stringify(err)})
