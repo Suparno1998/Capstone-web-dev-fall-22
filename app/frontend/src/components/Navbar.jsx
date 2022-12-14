@@ -44,7 +44,7 @@ function Navbar(props) {
     console.log("open login");
     setActiveTab("login");
   };
-  console.log(totalUniqueItems)
+  console.log(totalUniqueItems);
   return (
     <header>
       <div className="container topbar">
@@ -104,7 +104,7 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
-          <a href="/cart">Cart {user ? "("+totalUniqueItems+")": <></>}</a>
+          <a href="/cart">Cart {user ? "(" + totalUniqueItems + ")" : <></>}</a>
           <a href="/mealdetail">Meal Plan Detail</a>
 
           {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}
@@ -120,7 +120,11 @@ function Navbar(props) {
               Login / Register
             </a>
           )}
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+          <button
+            className="nav-btn nav-close-btn"
+            style={{ "background-color": "#fff !important" }}
+            onClick={showNavbar}
+          >
             <FaTimes />
           </button>
         </nav>
