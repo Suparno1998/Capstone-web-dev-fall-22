@@ -15,7 +15,7 @@ function Slider() {
             <Carousel.Item>
                 <img
                 className="d-block w-100"
-                src="./images/800x400.jpg"
+                src="./images/meal1slider.jpg"
                 alt="First slide"
                 />
                 <Carousel.Caption>
@@ -26,7 +26,7 @@ function Slider() {
             <Carousel.Item>
                 <img
                 className="d-block w-100"
-                src="./images/800x400.jpg"
+                src="./images/meal2slider.jpg"
                 alt="Second slide"
                 />
 
@@ -38,7 +38,7 @@ function Slider() {
             <Carousel.Item>
                 <img
                 className="d-block w-100"
-                src="./images/800x400.jpg"
+                src="./images/meal3slider.jpg"
                 alt="Third slide"
                 />
 
