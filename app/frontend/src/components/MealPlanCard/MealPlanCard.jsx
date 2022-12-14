@@ -4,7 +4,6 @@ import SubscribeModal from "../SubscribeModal.jsx";
 import "../MealPlanCard/mealplancard.css";
 import {useCart} from "react-use-cart";
 const MealPlanCard = (props) => {
-  const {addItem} = useCart();
   const { user } = useAuthContext();
   const [subscribe, setSubscribe] = useState(false);
   console.log(props);
@@ -32,7 +31,7 @@ const MealPlanCard = (props) => {
         handleClose={handleClose}
         mealPlan={props.plan}
       ></SubscribeModal>
-      <div className="card meal-plan-card" style={{ width: "385px" }}>
+      <div className="card meal-plan-card p-2" style={{ width: "370px" }}>
         <div className="card-img-top meal-plan-image ">
           <img src={`/uploads/${props.plan.mealplanImage}`} alt="Meal Plan" />
         </div>
@@ -46,7 +45,7 @@ const MealPlanCard = (props) => {
             props.plan.isSubscribed ? (
               <></>
             ) : (
-              <a className="btn btn-outline-dark" onClick={handleOpen}>
+              <a className="btn btn-outline-dark me-2" onClick={handleOpen}>
                 Subscribe{" "}
               </a>
             )
@@ -54,7 +53,7 @@ const MealPlanCard = (props) => {
             <></>
           )}
           {/* <button onClick={()=>props.handleAddToCart(props.plan)}>Add To Cart</button> */}
-          <button onClick={()=>handleCart(props.plan)}>Add To Cart</button>
+          {/* <button onClick={()=>handleCart(props.plan)}>Add To Cart</button> */}
         </div>
       </div>
     </>

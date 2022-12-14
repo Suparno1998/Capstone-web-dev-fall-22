@@ -44,6 +44,7 @@ function Navbar(props) {
     console.log("open login");
     setActiveTab("login");
   };
+  console.log(totalUniqueItems)
   return (
     <header>
       <div className="container topbar">
@@ -103,7 +104,7 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
-          <a href="/cart">Cart({totalUniqueItems})</a>
+          <a href="/cart">Cart {user ? "("+totalUniqueItems+")": <></>}</a>
           <a href="/mealdetail">Meal Plan Detail</a>
 
           {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}

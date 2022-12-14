@@ -141,7 +141,7 @@ export default function App() {
               element={<Cart cart={cart} demo="demo" setCart={setCart} />}
             />
             <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/checkout" element={user ? <CheckOut /> : <IncorrectAccess/> } />
             <Route
               path="/user-profile"
               element={user ? <UserProfile /> : <IncorrectAccess />}

@@ -44,7 +44,7 @@ const Cart = (props) => {
                     />
                   </div>
                   <div className="col">
-                    <div className="row text-muted">{item.title}</div>
+                    <div className="row text-muted">{item.title} - {item.duration}</div>
                   </div>
                   <div className="col">
                     <button

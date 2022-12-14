@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const {sendSuccessEmail} = require('../utils/utils')
 const { SubscriptionModel } = require("../models/Subscription");
 const { UserProfileModel } = require("../models/UserProfile");
 const { MealPlanModel } = require("../models/Mealplan");
 const { MessageModel } = require("../models/Message");
 const { UserModel } = require("../models/User");
 const Cart = require("../models/Cart");
+const Order = require("../models/Order");
 const logger = require("../utils/logger")("/routes/secureRoutes.js");
 const secureRouter = express.Router();
 
@@ -106,5 +108,16 @@ secureRouter.post("/cart/addtocart", async (req, res) => {
     }
   });
 });
-
+secureRouter.post("/createorder", async (req,res)=>{
+  try{
+    const data = req.body
+    console.log(data)
+    const storedObj = await Order.create(data)
+    await sendSuccessEmail(data)
+    res.send({status : true})
+  }catch(err){
+    logger.error(JSON.stringify(err))
+    res.send({status : false, error : JSON.stringify(err)})
+  }
+})
 module.exports = { secureRouter };

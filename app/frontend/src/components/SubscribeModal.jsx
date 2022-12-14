@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { Modal } from 'react-bootstrap';
 import { useAuthContext } from '../utils/AuthContext';
-
+import {useCart} from "react-use-cart";
 export default function SubscribeModal(props){
+    const {addItem} = useCart();
     const [mode,setMode] = useState(props.mode ? props.mode : "create")
     const [startDate, setStartDate] = useState(props.startDate ? props.startDate : "")
     const [duration, setDuration] = useState(props.duration ? props.duration : "")
@@ -28,6 +29,19 @@ export default function SubscribeModal(props){
                 }
         }
     }
+    const handleCart = (item) =>{
+        let items = {
+          id: item._id,
+          title: item.title,
+          description: item.description,
+          short_description: item.short_description,
+          price: price,
+          mealplanImage: item.mealplanImage,
+          duration : duration,
+
+        }
+        addItem(items);
+    };
     const handleSubscribe = async ()=>{
         if(startDate === ''){
             alert("Start Date Cannot be Empty")
@@ -37,27 +51,29 @@ export default function SubscribeModal(props){
             setDuration("1m")
         }
         else{
-            console.log(props.mealPlan)
-            let subscribeObj ={
-                start_date : startDate,
-                duration : duration,
-                meal_plan_id : props.mealPlan._id,
-                price : price,
-                user_id : user.user_id
-            }
-            const response = await fetch('/api/subscribe',{
-                method : "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body : JSON.stringify(subscribeObj)
-            })
-            const body = await response.json()
-            if(body.status){
-                alert("Successfully subscribed")
-                props.handleClose()
-            }
-            else{
-                console.log(body.error)
-            }
+            handleCart(props.mealPlan)
+            props.handleClose()
+            // console.log(props.mealPlan)
+            // let subscribeObj ={
+            //     start_date : startDate,
+            //     duration : duration,
+            //     meal_plan_id : props.mealPlan._id,
+            //     price : price,
+            //     user_id : user.user_id
+            // }
+            // const response = await fetch('/api/subscribe',{
+            //     method : "POST",
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body : JSON.stringify(subscribeObj)
+            // })
+            // const body = await response.json()
+            // if(body.status){
+            //     alert("Successfully subscribed")
+            //     props.handleClose()
+            // }
+            // else{
+            //     console.log(body.error)
+            // }
         }
     }
     return <Modal show={props.show} onHide={props.handleClose} onShow = {props.handleOpen}>
