@@ -39,10 +39,9 @@ const AdminMealPlan = () => {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th scope="col">Title</th>
             <th scope="col">short_description</th>
-            <th scope="col">description</th>
             <th scope="col">price</th>
             <th scope="col">Image</th>
             <th>Action</th>
@@ -53,10 +52,9 @@ const AdminMealPlan = () => {
             mealplans?.data.map((mealplan) => {
               return (
                 <tr>
-                  <td>{mealplan._id}</td>
+                  {/* <td>{mealplan._id}</td> */}
                   <td>{mealplan.title}</td>
                   <td>{mealplan.short_description}</td>
-                  <td>{mealplan.description}</td>
                   <td>{mealplan.price}</td>
                   <td className="mealplan-img">
                     <img
