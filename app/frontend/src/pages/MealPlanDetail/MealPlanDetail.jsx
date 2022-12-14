@@ -8,7 +8,7 @@ const MealPlanDetail = () => {
     <section className="mealplan-detail">
       <div className="container">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <img
               className="salmon-image-tag"
               src="./images/natural-100-percent.png"
@@ -19,7 +19,7 @@ const MealPlanDetail = () => {
               alt="Eggs with bacon"
             />
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h1>Regular Meal Plan</h1>
             <p>
               Regular Meal Plan contains regular food that we consume in our
