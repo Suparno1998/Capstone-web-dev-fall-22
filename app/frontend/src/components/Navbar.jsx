@@ -104,10 +104,17 @@ function Navbar(props) {
           ) : (
             <a href="/aboutus">About Us</a>
           )}
-          <a href="/cart">Cart {user ? "(" + totalUniqueItems + ")" : <></>}</a>
-          <a href="/mealdetail">Meal Plan Detail</a>
+          <a href="/cart">
+            <img
+              width={16}
+              src="/images/cart-icon.png"
+              alt="Food Lab Logo"
+            />
+            {user ? "(" + totalUniqueItems + ")" : <></>}
+          </a>
+          {/* <a href="/mealdetail">Meal Plan Detail</a> */}
 
-          {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>}
+          {/* {user && user.role === "admin" ? <></> : <a href="/cart">Cart</a>} */}
           {user ? (
             <span>
               <a href="user-profile">Profile</a>
