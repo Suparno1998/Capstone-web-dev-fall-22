@@ -19,13 +19,13 @@ function HomeDishPromotion(){
                         <button type="button" class="btn btn-primary">More info</button>
                     </div>
                     <div class="col-12 col-md-6">
-                        <img className="egg-image-tag" src="./images/natural-100-percent.png"/>
+                        <img className="egg-image-tag" src="./images/natural-.png"/>
                         <img className="product-image" src="./images/eggs-with-bacon.jpg" alt="Eggs with bacon"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <img className="salmon-image-tag" src="./images/natural-100-percent.png"/>
+                        <img className="salmon-image-tag" src="./images/natural-100-percent.png" alt="slamon-image"/>
                         <img className="product-image" src="./images/salmon-with-vegetables.jpg" alt="Eggs with bacon"/>
                     </div>
                     <div class="col-12 col-md-6">
