@@ -45,7 +45,7 @@ export default function Login(props) {
       setHasError(true);
       setVariant("danger");
     } else {
-      //window.location.href = "/home";
+      window.location.href = "/home";
     }
   };
   return (
