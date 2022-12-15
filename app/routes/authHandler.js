@@ -249,7 +249,7 @@ authHandler.post("/login", async (req, res, next) => {
           return res
             .cookie("token", token, {
               httpOnly: true,
-              secure: true,
+              secure: false,
             })
             .send({ status: true, data: body });
         });
