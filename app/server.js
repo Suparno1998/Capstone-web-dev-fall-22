@@ -46,7 +46,6 @@ app.get("/check", (req, res) => {
 //   res.redirect('/')
 // })
 app.get("/*", function (req, res) {
-  console.log("In mess api");
   res.sendFile(path.join(__dirname, "./frontend/public/index.html"));
 });
 app.listen(PORT, async (req, res) => {
