@@ -22,7 +22,7 @@ var cookieExtractor = function (req) {
     let tokenString = cookies.filter((v) => v.includes("token="));
     let token = tokenString[0].replace("token=", "");
     let payload = jwt.decode(token);
-    const expirationDate = new Date(0);
+    const expirationDate = new Date();
     const currentDate = new Date();
     expirationDate.setUTCSeconds(payload.exp);
     if (expirationDate > currentDate) {
@@ -34,7 +34,8 @@ var cookieExtractor = function (req) {
     }
     return token;
   } catch (err) {
-    logger.info(err);
+    console.log(err)
+    logger.error(err);
     return null;
   }
 };
@@ -49,7 +50,7 @@ passport.use(
     async (req, token, done) => {
       try {
         logger.info(req.isExpired);
-        if (token) {
+        if (!token) {
           logger.info("token-epxired");
         } else {
           req.user = token.user;
@@ -248,7 +249,7 @@ authHandler.post("/login", async (req, res, next) => {
           return res
             .cookie("token", token, {
               httpOnly: true,
-              secure: true,
+              secure: false,
             })
             .send({ status: true, data: body });
         });
