@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLogout } from "../../../../utils/useLogout";
 import "../../Admin.css";
 
 const Sidebar = () => {
+
+  const { logout } = useLogout();
+  
+  const handleLogout = () => {
+    window.location.href = "/";
+    logout();
+  };
+
   return (
     <nav className="navbar-default navbar-static-side" role="navigation">
       <div className="sidebar-collapse">
@@ -50,7 +59,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="/nav-item">
-            <a href="#" className="nav-label d-flex align-items-center">
+            <a href="#" className="nav-label d-flex align-items-center" onClick={handleLogout}>
               <i className="fas fa-sign-out-alt"></i>
               <span>Log Out</span>
             </a>

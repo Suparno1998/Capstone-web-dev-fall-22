@@ -70,7 +70,7 @@ function Navbar(props) {
             <></>
           )}
           {user && user.role === "admin" ? (
-            <a href="/registeredusers"> Users</a>
+            <a href="/admin-home/listofusers"> Users</a>
           ) : (
             <></>
           )}
@@ -87,7 +87,7 @@ function Navbar(props) {
           )} */}
 
           {user && user.role === "admin" ? (
-            <a href="/subscribers">Subscribers</a>
+            <a href="/admin-home/subscribers">Subscribers</a>
           ) : (
             <></>
           )}
