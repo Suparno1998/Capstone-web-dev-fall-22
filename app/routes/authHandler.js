@@ -34,7 +34,8 @@ var cookieExtractor = function (req) {
     }
     return token;
   } catch (err) {
-    logger.info(err);
+    console.log(err)
+    logger.error(err);
     return null;
   }
 };
