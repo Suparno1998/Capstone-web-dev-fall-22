@@ -149,6 +149,8 @@ export default function App() {
           </Routes>
         </BrowserRouter>
 
+        
+
         <button
           className="btn btn-success floating-button"
           title="Calculate BMI"
